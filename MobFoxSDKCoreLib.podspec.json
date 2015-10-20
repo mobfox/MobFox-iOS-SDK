@@ -12,7 +12,7 @@
     "ios": "8.0"
   },
   "source": {
-    "http": "http://sdk.starbolt.io/downloads/MobFoxSDKCore.zip"
+    "git": "https://github.com/mobfox/MobFox-iOS-SDK-Core-Lib.git"
   },
   "preserve_paths": "MobFoxSDKCore.framework",
   "public_header_files": "MobFoxSDKCore.framework/Headers/*.h",
