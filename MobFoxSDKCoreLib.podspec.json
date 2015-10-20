@@ -2,10 +2,7 @@
   "name": "MobFoxSDKCoreLib",
   "version": "0.0.1",
   "homepage": "http://mobfox.com",
-  "license": {
-    "type": "Commercial",
-    "file": "MobFoxSDKCore.framework/LICENSE"
-  },
+  "license": "MIT",
   "authors": {
     "Matomy/MobFox": "itamar.n@matomy.com"
   },
