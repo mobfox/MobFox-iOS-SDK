@@ -1,0 +1,32 @@
+{
+  "name": "MobFoxSDKCoreLib",
+  "version": "0.0.1",
+  "homepage": "http://mobfox.com",
+  "license": {
+    "type": "Commercial",
+    "file": "MobFoxSDKCore.framework/LICENSE"
+  },
+  "authors": {
+    "Matomy/MobFox": "itamar.n@matomy.com"
+  },
+  "summary": "The MobFox iOS SDK.",
+  "description": "MobFox's iOS SDK Core",
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source": {
+    "http": "http://sdk.starbolt.io/downloads/MobFoxSDKCore.zip"
+  },
+  "preserve_paths": "MobFoxSDKCore.framework",
+  "public_header_files": "MobFoxSDKCore.framework/Headers/*.h",
+  "resources": "MobFoxSDKCore.framework/MobFoxSDKCore.bundle",
+  "vendored_frameworks": "MobFoxSDKCore.framework",
+  "libraries": [
+  ],
+  "xcconfig": {
+    "FRAMEWORK_SEARCH_PATHS": "\"$(PODS_ROOT)/MobFoxSDKCoreLib/**\""
+  },
+  "frameworks": [
+  ],
+  "requires_arc": true
+}
