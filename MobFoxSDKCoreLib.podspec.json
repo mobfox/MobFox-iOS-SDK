@@ -9,7 +9,7 @@
   "summary": "The MobFox iOS SDK.",
   "description": "MobFox's iOS SDK Core",
   "platforms": {
-    "ios": "8.0"
+    "ios": "7.0"
   },
   "source": {
     "git": "https://github.com/mobfox/MobFox-iOS-SDK-Core-Lib.git"
