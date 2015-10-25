@@ -40,7 +40,6 @@
 
 #pragma mark - <MPAdViewDelegate>
 - (UIViewController *)viewControllerForPresentingModalView{
-    NSLog(@">>> no modal wanted!");
     return [self getUIViewController:self.adView];
 }
 
@@ -62,7 +61,6 @@
 
 #pragma mark - <MPAdViewDelegate>
 - (void)adViewDidFailToLoadAd:(MPAdView *)view{
-     NSLog(@">>> no ad!");
     NSError* err = [NSError errorWithDomain:@"MoPubFailed"
                                        code:40401
                                    userInfo:nil];
@@ -71,8 +69,9 @@
 
 #pragma mark - <MPAdViewDelegate>
 - (void)willLeaveApplicationFromAd:(MPAdView *)view{
-     NSLog(@">>> will leave!");
+    
 }
+
 
 @end
 

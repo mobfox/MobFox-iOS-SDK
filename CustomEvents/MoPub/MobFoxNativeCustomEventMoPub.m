@@ -14,7 +14,6 @@
 
 - (void)requestAdWithNetworkID:(NSString*)nid customEventInfo:(NSDictionary *)info{
     
-    NSLog(@">>> request native from mopub");
     NSArray* empty = [NSArray array];
     MPNativeAdRequest* req = [MPNativeAdRequest requestWithAdUnitIdentifier:nid rendererConfigurations:empty];
     [req startWithCompletionHandler:^(MPNativeAdRequest *request, MPNativeAd* response, NSError *error) {

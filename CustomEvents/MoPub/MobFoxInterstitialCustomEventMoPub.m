@@ -51,4 +51,6 @@
     [self.delegate MFInterstitialCustomEventAdClosed];
 }
 
+
+
 @end

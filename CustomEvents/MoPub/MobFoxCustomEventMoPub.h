@@ -28,7 +28,5 @@
 
 @end
 
-/*
-{"class":"MoPub","parameter":"9aa6ae18835c444ab82a5c5ae2ce02f9","pixel":"http:\/\/my.mobfox.com\/customevent.pixel.php?h=783f796a1dc5c2f154cd2b934c2993ad&stack_item_id=390955&pub=44301&inv=77199"}*/
 
 #endif /* MobFoxCustomEventMoPub_h */
