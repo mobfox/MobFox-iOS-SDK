@@ -1,5 +1,11 @@
 # MobFox-iOS-SDK-Core-Lib
 
+Supports **iOS 7.0+**
+
+#Prerequisites
+
+You will need a [MobFox](http://www.mobfox.com/) account.
+
 # Installation
 
 ## CocoaPods
@@ -35,3 +41,55 @@ For further questions about iOS9 and ATS, please create a ticket at https://acco
 
 # Usage
 
+## In-stream Ad
+
+In order to insure the best ad is ready when you wish to display it please init the MobFox ad as soon as possible in your code:
+```objective-c
+
+//define the position and dimensions of your ad
+CGRect  adRect = CGRectMake(0, 200, 320, 50);
+
+//init your ad
+MobFoxAd* mobfoxAd = [[MobFoxAd alloc] init:@"your-publication-hash" withFrame:adRect];
+```
+
+In order to be notified when certain ad events occur you can register a delegate:
+```objective-c
+
+//The delegate should implement the following protocol:
+@protocol MobFoxAdDelegate <NSObject>
+
+@optional
+
+//called when ad is displayed
+- (void)MobFoxAdDidLoad:(MobFoxAd *)banner;
+
+//called when an ad cannot be displayed
+- (void)MobFoxAdDidFailToReceiveAdWithError:(NSError *)error;
+
+//called when ad is closed/skipped
+- (void)MobFoxAdClosed;
+
+//called when ad is clicked
+- (void)MobFoxAdClicked;
+
+//called when if the ad is a video ad and it has finished playing
+- (void)MobFoxAdFinished;
+
+//called if the ad request returned custom events
+- (void) MobFoxDelegateCustomEvents:(NSArray*) events;
+
+@end
+
+```
+Set the delegate:
+
+```objective-c
+    [mobfoxAd.adDelegate=delegate];
+```
+
+Later when you wish to display the ad:
+```objective-c
+    //call to display ad
+   [mobfoxAd loadAd];
+```
