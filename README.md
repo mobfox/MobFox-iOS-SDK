@@ -52,7 +52,7 @@ CGRect  adRect = CGRectMake(0, 200, 320, 50);
 //init your ad
 MobFoxAd* mobfoxAd = [[MobFoxAd alloc] init:@"your-publication-hash" withFrame:adRect];
 
-//add it tour view
+//add it to your view
 [self.view addSubview: mobfoxAd];
 
 ```
@@ -68,7 +68,6 @@ In order to be notified when certain ad events occur you can register a delegate
 
 //called when ad is displayed
 - (void)MobFoxAdDidLoad:(MobFoxAd *)banner;
- [self.view addSubview: mobfoxAd];
 //called when an ad cannot be displayed
 - (void)MobFoxAdDidFailToReceiveAdWithError:(NSError *)error;
 
@@ -101,10 +100,10 @@ Later when you wish to display the ad:
 
 ## Interstitial Ad
 
-In order to insure the best ad is ready when you wish to display it, please init the MobFox inerstitial ad as soon as possible in your code:
+In order to insure the best ad is ready when you wish to display it, please init the MobFox interstitial ad as soon as possible in your code:
 ```objective-c
 
-//init the interstital ad giving it your main/root controller
+//init the interstitial ad giving it your main/root controller
 MobFoxInterstitialAd* mobfoxInterAd = [[MobFoxInterstitialAd alloc] init:@"your-publication-hash" withMainViewController:self];
 ```    
 
@@ -141,6 +140,80 @@ mobfoxInterAd.delegate = delegate;
 ```
 
 ### Show Ad
+Later when you wish to display the ad:
 ```objective-c
 [mobfoxInterAd loadAd];
 ```
+
+## Native Ad
+
+This is a special type of ad as it returns a JSON object containing the ad data and it's the publisher's responsibility to display the ad assets, call the impression pixels and the click URL if clicked.
+
+```objective-c
+
+MobFoxNativeAd* nativeAd = [[MobFoxNativeAd alloc] init:@"your-publication-hash"];
+```
+
+### Ad Delegate
+```objective-c
+//you must define a delegate to get the JSON response
+//The delegate should implement the following protocol:
+@protocol MobFoxNativeAdDelegate <NSObject>
+
+//called when ad response is returned
+- (void)MobFoxNativeAdDidLoad:(NSDictionary *)ad;
+
+//called when ad response cannot be returned
+- (void)MobFoxNativeAdDidFailToReceiveAdWithError:(NSError *)error;
+@end
+
+nativeAd.adDelegate = delegate;
+```
+
+The response ```NSDictionary*``` is a json of the following structure:
+```json
+{
+   "imageassets":{
+      "icon":{
+         "url":"<IMAGE_URL>",
+         "width":"512",
+         "height":"512"
+      },
+      "main":{
+         "url":"<IMAGE_URL>",
+         "width":"1200",
+         "height":"627"
+      }
+   },
+   "textassets":{
+      "headline":"Hay Day",
+      "description":"Hay Day is a totally new farming experience with smooth gestural controls lovingly hand..."
+   },
+   "click_url":"<CLICK_URL>",
+   "trackers":[
+      {
+         "type":"impression",
+         "url":"<PIXEL_URL>"
+      },
+      {
+         "type":"impression",
+         "url":"<PIXEL_URL>"
+      },
+      {
+         "type":"impression",
+         "url":"<PIXEL_URL>"
+      }
+   ]
+}
+```
+You must call all ```trackers``` when you decide to render the ad and navigate to the ```click_url``` when the ad is clicked.
+
+Please refer to [MobFox Native API](http://dev.mobfox.com/index.php?title=Ad_Request_API_-_Native) for full documentation.
+
+### Get Native Ad
+```objective-c
+[nativeAd loadAd];
+
+```
+
+
