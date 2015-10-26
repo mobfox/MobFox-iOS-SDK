@@ -114,6 +114,7 @@ Later when you wish to display the ad:
 //call to display ad
 [mobfoxAd loadAd];
 ```
+---
 
 ## Interstitial Ad
 
@@ -161,6 +162,7 @@ Later when you wish to display the ad:
 ```objective-c
 [mobfoxInterAd loadAd];
 ```
+---
 
 ## Native Ad
 
@@ -232,6 +234,7 @@ Please refer to [MobFox Native API](http://dev.mobfox.com/index.php?title=Ad_Req
 [nativeAd loadAd];
 
 ```
+---
 
 ## Custom Events
 
