@@ -57,7 +57,7 @@ MobFoxAd* mobfoxAd = [[MobFoxAd alloc] init:@"your-publication-hash" withFrame:a
 
 ```
 
-### Ad Delegate
+#### Ad Delegate
 In order to be notified when certain ad events occur you can register a delegate:
 
 ```objective-c
@@ -91,7 +91,7 @@ Set the delegate:
 mobfoxAd.adDelegate = delegate;
 ```
 
-### Show Ad
+#### Show Ad
 Later when you wish to display the ad:
 ```objective-c
 //call to display ad
@@ -107,7 +107,7 @@ In order to insure the best ad is ready when you wish to display it, please init
 MobFoxInterstitialAd* mobfoxInterAd = [[MobFoxInterstitialAd alloc] init:@"your-publication-hash" withMainViewController:self];
 ```    
 
-### Ad Delegate
+#### Ad Delegate
 In order to be notified when certain ad events occur you can register a delegate:
 
 ```objective-c
@@ -139,7 +139,7 @@ Set the delegate:
 mobfoxInterAd.delegate = delegate;
 ```
 
-### Show Ad
+#### Show Ad
 Later when you wish to display the ad:
 ```objective-c
 [mobfoxInterAd loadAd];
@@ -154,7 +154,7 @@ This is a special type of ad as it returns a JSON object containing the ad data 
 MobFoxNativeAd* nativeAd = [[MobFoxNativeAd alloc] init:@"your-publication-hash"];
 ```
 
-### Ad Delegate
+#### Ad Delegate
 ```objective-c
 //you must define a delegate to get the JSON response
 //The delegate should implement the following protocol:
@@ -210,7 +210,7 @@ You must call all ```trackers``` when you decide to render the ad and navigate t
 
 Please refer to [MobFox Native API](http://dev.mobfox.com/index.php?title=Ad_Request_API_-_Native) for full documentation.
 
-### Get Native Ad
+#### Get Native Ad
 ```objective-c
 [nativeAd loadAd];
 
