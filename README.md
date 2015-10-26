@@ -232,3 +232,10 @@ Please refer to [MobFox Native API](http://dev.mobfox.com/index.php?title=Ad_Req
 [nativeAd loadAd];
 
 ```
+
+## Custom Events
+
+This feature lets you use your accounts on other advertising platforms such as MoPub inside MobFox's SDK.
+
+- [MoPub]
+- [Vungle]
