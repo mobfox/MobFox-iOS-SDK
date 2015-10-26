@@ -105,7 +105,7 @@ In order to be notified when certain ad events occur you can register a delegate
 Set the delegate:
 
 ```objective-c
-mobfoxAd.adDelegate = delegate;
+mobfoxAd.delegate = delegate;
 ```
 
 #### Show Ad
@@ -184,7 +184,7 @@ MobFoxNativeAd* nativeAd = [[MobFoxNativeAd alloc] init:@"your-publication-hash"
 - (void)MobFoxNativeAdDidFailToReceiveAdWithError:(NSError *)error;
 @end
 
-nativeAd.adDelegate = delegate;
+nativeAd.delegate = delegate;
 ```
 
 The response ```NSDictionary*``` is a json of the following structure:
