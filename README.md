@@ -43,7 +43,7 @@ For further questions about iOS9 and ATS, please create a ticket at https://acco
 
 ## In-stream Ad
 
-In order to insure the best ad is ready when you wish to display it please init the MobFox ad as soon as possible in your code:
+In order to insure the best ad is ready when you wish to display it, please init the MobFox ad as soon as possible in your code:
 ```objective-c
 
 //define the position and dimensions of your ad
@@ -51,11 +51,16 @@ CGRect  adRect = CGRectMake(0, 200, 320, 50);
 
 //init your ad
 MobFoxAd* mobfoxAd = [[MobFoxAd alloc] init:@"your-publication-hash" withFrame:adRect];
+
+//add it tour view
+[self.view addSubview: mobfoxAd];
+
 ```
 
+### Ad Delegate
 In order to be notified when certain ad events occur you can register a delegate:
-```objective-c
 
+```objective-c
 //The delegate should implement the following protocol:
 @protocol MobFoxAdDelegate <NSObject>
 
@@ -63,7 +68,7 @@ In order to be notified when certain ad events occur you can register a delegate
 
 //called when ad is displayed
 - (void)MobFoxAdDidLoad:(MobFoxAd *)banner;
-
+ [self.view addSubview: mobfoxAd];
 //called when an ad cannot be displayed
 - (void)MobFoxAdDidFailToReceiveAdWithError:(NSError *)error;
 
@@ -80,16 +85,62 @@ In order to be notified when certain ad events occur you can register a delegate
 - (void) MobFoxDelegateCustomEvents:(NSArray*) events;
 
 @end
-
 ```
 Set the delegate:
 
 ```objective-c
-    [mobfoxAd.adDelegate=delegate];
+mobfoxAd.adDelegate = delegate;
 ```
 
+### Show Ad
 Later when you wish to display the ad:
 ```objective-c
-    //call to display ad
-   [mobfoxAd loadAd];
+//call to display ad
+[mobfoxAd loadAd];
+```
+
+## Interstitial Ad
+
+In order to insure the best ad is ready when you wish to display it, please init the MobFox inerstitial ad as soon as possible in your code:
+```objective-c
+
+//init the interstital ad giving it your main/root controller
+MobFoxInterstitialAd* mobfoxInterAd = [[MobFoxInterstitialAd alloc] init:@"your-publication-hash" withMainViewController:self];
+```    
+
+### Ad Delegate
+In order to be notified when certain ad events occur you can register a delegate:
+
+```objective-c
+//The delegate should implement the following protocol:
+@protocol MobFoxInterstitialAdDelegate <NSObject>
+
+@optional
+//called when ad is displayed
+- (void)MobFoxInterstitialAdDidLoad:(MobFoxInterstitialAd *)interstitial;
+
+//called when an ad cannot be displayed
+- (void)MobFoxInterstitialAdDidFailToReceiveAdWithError:(NSError *)error;
+
+//called when ad is closed/skipped
+- (void)MobFoxInterstitialAdClosed;
+
+//called w mobfoxInterAd.delegate = self;hen ad is clicked
+- (void)MobFoxInterstitialAdClicked;
+
+//called when if the ad is a video ad and it has finished playing
+- (void)MobFoxInterstitialAdFinished;
+
+@end
+```
+
+Set the delegate:
+
+```objective-c
+mobfoxInterAd.delegate = delegate;
+```
+
+### Show Ad
+```objective-c
+[mobfoxInterAd loadAd];
 ```
