@@ -36,7 +36,9 @@ pod 'MobFoxSDKCoreLib', :git => 'https://github.com/mobfox/MobFox-iOS-SDK-Core-L
 
 1. Download and unzip [MobFoxSDKCore.zip](http://sdk.starbolt.io/downloads/MobFoxSDKCore.zip) or clone this repository and extract the ```MobFoxSDKCore.embeddedframework```.
 
-2. Drag ```MobFoxSDKCore.embeddedframework``` from the Finder into your project.
+2. Drag ```MobFoxSDKCore.embeddedframework``` from the Finder into your project
+
+3. If you prefer a Dynamic Framework use ```MobFoxSDKCoreDynamic.embeddedframework``` instead.
 
 
 ## iOS 9+ Specific
