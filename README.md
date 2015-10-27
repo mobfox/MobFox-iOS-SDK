@@ -191,7 +191,7 @@ MobFoxNativeAd* nativeAd = [[MobFoxNativeAd alloc] init:@"your-publication-hash"
 nativeAd.delegate = delegate;
 ```
 
-The response ```NSDictionary*``` is a json of the following structure:
+The response ```NSDictionary*``` is a JSON object of the following structure:
 ```json
 {
    "imageassets":{
