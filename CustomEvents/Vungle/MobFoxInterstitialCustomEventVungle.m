@@ -12,27 +12,21 @@
 @implementation MobFoxInterstitialCustomEventVungle
 
 
-- (void)requestInterstitial:(NSString*)networkId customEventInfo:(NSDictionary *)info{
+- (void)requestInterstitialWithRootController:(UIViewController *)rootViewController networkId:(NSString*)networkId customEventInfo:(NSDictionary *)info{
+
     VungleSDK* sdk = [VungleSDK sharedSDK];
     // start vungle publisher library
     [sdk setDelegate:self];
     [sdk startWithAppId:networkId];
-    [self.delegate MFInterstitialCustomEventAd:self didLoad:nil];
-}
-
-- (void)showInterstitialFromRootViewController:(UIViewController *)rootViewController{
-   
-    VungleSDK* sdk = [VungleSDK sharedSDK];
     NSError *error;
     [sdk playAd:rootViewController error:&error];
-   
+
     if(error){
         [self.delegate MFInterstitialCustomEventAdDidFailToReceiveAdWithError:error];
         return;
     }
-    
-
 }
+
 
 - (void)vungleSDKAdPlayableChanged:(BOOL)isAdPlayable{
     

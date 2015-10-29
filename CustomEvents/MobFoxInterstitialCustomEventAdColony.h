@@ -14,9 +14,7 @@
 
 @interface MobFoxInterstitialCustomEventAdColony : MobFoxInterstitialCustomEvent<AdColonyDelegate,AdColonyAdDelegate>
 
-- (void)requestInterstitial:(NSString*)networkId customEventInfo:(NSDictionary *)info;
-
-- (void)showInterstitialFromRootViewController:(UIViewController *)rootViewController;
+- (void)requestInterstitialWithRootController:(UIViewController *)rootViewController networkId:(NSString*)networkId customEventInfo:(NSDictionary *)info;
 
 @end
 
