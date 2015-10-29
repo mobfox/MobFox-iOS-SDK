@@ -12,6 +12,7 @@
 #import <MobFoxSDKCore/MobFoxSDKCore.h>
 #import <AdColony/AdColony.h>
 
+
 @interface MobFoxInterstitialCustomEventAdColony : MobFoxInterstitialCustomEvent<AdColonyDelegate,AdColonyAdDelegate>
 
 - (void)requestInterstitialWithRootController:(UIViewController *)rootViewController networkId:(NSString*)networkId customEventInfo:(NSDictionary *)info;
