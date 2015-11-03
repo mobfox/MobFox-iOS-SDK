@@ -13,8 +13,6 @@
 
 - (void)requestAdWithSize:(CGSize)size networkID:(NSString*)nid customEventInfo:(NSDictionary *)info{
     
-    NSLog(@"AdMob >>> got custom event: %@",nid);
-    
     //self.bannerView = [[GADBannerView alloc] initWithAdSize:kGADAdSizeBanner];
     //GADBannerView* bannerView = [[GADBannerView alloc] initWithAdSize:kGADAdSizeSmartBannerPortrait];
    
@@ -57,7 +55,7 @@
 }
 
 - (void)adViewWillLeaveApplication:(GADBannerView *)bannerView{
-
+    [self.delegate MFCustomEventMobFoxAdClicked];
 }
 
 @end
