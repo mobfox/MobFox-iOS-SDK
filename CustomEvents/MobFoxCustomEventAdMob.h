@@ -15,6 +15,7 @@
 
 @interface MobFoxCustomEventAdMob : MobFoxCustomEvent<GADBannerViewDelegate>
 
+@property GADBannerView* bannerView;
 
 - (void)requestAdWithSize:(CGSize)size networkID:(NSString*)nid customEventInfo:(NSDictionary *)info;
 

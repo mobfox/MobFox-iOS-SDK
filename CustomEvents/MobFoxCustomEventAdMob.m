@@ -15,28 +15,49 @@
     
     NSLog(@"AdMob >>> got custom event: %@",nid);
     
-    //GADBannerView* bannerView = [[GADBannerView alloc] initWithAdSize:kGADAdSizeBanner];
-    GADBannerView* bannerView = [[GADBannerView alloc] initWithAdSize:kGADAdSizeSmartBannerPortrait];
-     NSLog(@"AdMob >>> init banner");
-    //self.bannerView.frame = CGRectMake(0.0,0.0,size.width,size.height);
+    //self.bannerView = [[GADBannerView alloc] initWithAdSize:kGADAdSizeBanner];
+    //GADBannerView* bannerView = [[GADBannerView alloc] initWithAdSize:kGADAdSizeSmartBannerPortrait];
+   
+    CGRect rect =CGRectMake(0,0,size.width,size.height);
+    self.bannerView = [[GADBannerView alloc] initWithFrame:rect];
     
+    self.bannerView.delegate = self;
     
-    bannerView.delegate = self;
-    NSLog(@"AdMob >>> about to config network id");
-    bannerView.adUnitID = nid;
-    NSLog(@"AdMob >>> about to send request");
-    [bannerView loadRequest:[GADRequest request]];
-    NSLog(@"AdMob >>> sent request");
+    UIViewController* rootVC = (UIViewController*)[[[[[UIApplication sharedApplication] keyWindow] subviews] objectAtIndex:0] nextResponder];
+    //NSLog(@"root vc: %@",[rootVC description]);
+    
+    self.bannerView.rootViewController = rootVC;
+    
+    self.bannerView.adUnitID = nid;
+    
+    GADRequest* request = [GADRequest request];
+    request.testDevices = @[ kGADSimulatorID ];
+    [self.bannerView loadRequest:request];
+    
 }
 
 - (void)adViewDidReceiveAd:(GADBannerView *)bannerView{
-    NSLog(@"AdMob >>> showing it");
     [self.delegate MFCustomEventAd:self didLoad:bannerView];
 }
 
 - (void)adView:(GADBannerView *)bannerView didFailToReceiveAdWithError:(GADRequestError *)error{
-    NSLog(@"AdMob >>> failed");
     [self.delegate MFCustomEventAdDidFailToReceiveAdWithError:error];
+}
+
+- (void)adViewWillPresentScreen:(GADBannerView *)bannerView{
+
+}
+
+- (void)adViewDidDismissScreen:(GADBannerView *)bannerView{
+    [self.delegate MFCustomEventAdClosed];
+}
+
+- (void)adViewWillDismissScreen:(GADBannerView *)bannerView{
+
+}
+
+- (void)adViewWillLeaveApplication:(GADBannerView *)bannerView{
+
 }
 
 @end
