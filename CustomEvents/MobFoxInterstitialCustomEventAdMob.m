@@ -53,7 +53,7 @@ didFailToReceiveAdWithError:(GADRequestError *)error{
 // while the interstitial is on screen (e.g. to visit the App Store from a link
 // on the interstitial).
 - (void)interstitialWillPresentScreen:(GADInterstitial *)ad{
-
+    [self.delegate MFInterstitialCustomEventAdDidLoad:self];
 }
 
 // Sent before the interstitial is to be animated off the screen.
