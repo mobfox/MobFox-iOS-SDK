@@ -34,7 +34,7 @@ pod 'MobFoxSDKCoreLib', :git => 'https://github.com/mobfox/MobFox-iOS-SDK-Core-L
 ```
 ## Manual Installation
 
-1. Download and unzip [MobFoxSDKCore.zip](http://sdk.starbolt.io/downloads/MobFoxSDKCore.zip) or clone this repository and extract the ```MobFoxSDKCore.embeddedframework```.
+1. Download and unzip [MobFoxSDKCore.zip](https://github.com/mobfox/MobFox-iOS-SDK-Core-Lib/archive/v1.0.1.zip) or clone this repository and extract the ```MobFoxSDKCore.embeddedframework```.
 
 2. Drag ```MobFoxSDKCore.embeddedframework``` from the Finder into your project
 
