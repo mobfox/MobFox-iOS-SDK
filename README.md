@@ -127,7 +127,7 @@ In order to insure the best ad is ready when you wish to display it, please init
 MobFoxInterstitialAd* mobfoxInterAd = [[MobFoxInterstitialAd alloc] init:@"your-publication-hash" withMainViewController:self];
 ```    
 
-#### Ad Delegate
+#### Interstitial Ad Delegate
 In order to be notified when certain ad events occur you can register a delegate:
 
 ```objective-c
@@ -153,16 +153,24 @@ In order to be notified when certain ad events occur you can register a delegate
 @end
 ```
 
-Set the delegate:
+Set the delegate and preload the ad:
 
 ```objective-c
 mobfoxInterAd.delegate = delegate;
+[mobfoxInterAd loadAd];
 ```
 
 #### Show Ad
 Later when you wish to display the ad:
 ```objective-c
-[mobfoxInterAd loadAd];
+
+//best to show after delegate informs an ad was loaded
+- (void)MobFoxInterstitialAdDidLoad:(MobFoxInterstitialAd *)interstitial{
+    if(mobfoxInterAd.ready){
+        [mobfoxInterAd show];
+    }
+}
+
 ```
 ---
 
@@ -175,7 +183,7 @@ This is a special type of ad as it returns a JSON object containing the ad data 
 MobFoxNativeAd* nativeAd = [[MobFoxNativeAd alloc] init:@"your-publication-hash"];
 ```
 
-#### Ad Delegate
+#### Native Ad Delegate
 ```objective-c
 //you must define a delegate to get the JSON response
 //The delegate should implement the following protocol:
