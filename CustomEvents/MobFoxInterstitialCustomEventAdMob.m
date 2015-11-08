@@ -20,12 +20,9 @@
     self.interstitial = [[GADInterstitial alloc] initWithAdUnitID:networkId];
     self.interstitial.delegate = self;
     GADRequest* request = [GADRequest request];
-    request.testDevices = @[ kGADSimulatorID ];
+    //request.testDevices = @[ kGADSimulatorID ];
     
     [self.interstitial loadRequest:request];
-    
-    
-    
 }
 
 // Sent when an interstitial ad request succeeded.  Show it at the next
@@ -74,4 +71,7 @@ didFailToReceiveAdWithError:(GADRequestError *)error{
     [self.delegate MFInterstitialCustomEventMobFoxAdClicked];
 }
 
+-(void)dealloc{
+    self.interstitial = nil;
+}
 @end

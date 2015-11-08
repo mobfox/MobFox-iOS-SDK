@@ -14,7 +14,10 @@
 
 @interface MobFoxInterstitialCustomEventMoPub : MobFoxInterstitialCustomEvent<MPInterstitialAdControllerDelegate>
 
-- (void)requestInterstitialWithRootController:(UIViewController *)rootViewController networkId:(NSString*)networkId customEventInfo:(NSDictionary *)info;
+-(void)requestInterstitialWithNetworkId:(NSString*)networkId customEventInfo:(NSDictionary *)info;
+
+-(void)presentWithRootController:(UIViewController *)rootViewController;
+
 @end
 
 #endif /* MobFoxInterstitialCustomEventMoPub_h */

@@ -10,14 +10,19 @@
 
 @implementation MobFoxInterstitialCustomEventApplifier
 
-- (void)requestInterstitialWithRootController:(UIViewController *)rootViewController networkId:(NSString*)networkId customEventInfo:(NSDictionary *)info{
-    
+-(void)requestInterstitialWithNetworkId:(NSString*)networkId customEventInfo:(NSDictionary *)info{
+    NSLog(@"MF-Unity >>> request");
     [[UnityAds sharedInstance] setDelegate:self];
     [[UnityAds sharedInstance] setDebugMode:NO];
     [[UnityAds sharedInstance] setTestMode:NO];
+    [[UnityAds sharedInstance] startWithGameId:networkId];
+}
+
+-(void)presentWithRootController:(UIViewController *)rootViewController{
+    NSLog(@"MF-Unity >>> present");
+    [[UnityAds sharedInstance] setViewController:rootViewController];
+    [[UnityAds sharedInstance] show];
     
-    // Initialize Unity Ads
-    [[UnityAds sharedInstance] startWithGameId:networkId andViewController:rootViewController];
 }
 
 - (void)unityAdsVideoCompleted:(NSString *)rewardItemKey skipped:(BOOL)skipped{
@@ -35,8 +40,7 @@
     {
         NSLog(@"MF-Unity >>> show ad");
         // If both are ready, show the ad.
-        [[UnityAds sharedInstance] show];
-         [self.delegate MFInterstitialCustomEventAdDidLoad:self];
+        [self.delegate MFInterstitialCustomEventAdDidLoad:self];
     }
 }
 

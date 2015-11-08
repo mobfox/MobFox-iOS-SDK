@@ -29,7 +29,7 @@
     self.bannerView.adUnitID = nid;
     
     GADRequest* request = [GADRequest request];
-    request.testDevices = @[ kGADSimulatorID ];
+   // request.testDevices = @[ kGADSimulatorID ];
     [self.bannerView loadRequest:request];
     
 }
@@ -56,6 +56,10 @@
 
 - (void)adViewWillLeaveApplication:(GADBannerView *)bannerView{
     [self.delegate MFCustomEventMobFoxAdClicked];
+}
+
+-(void)dealloc{
+    self.bannerView = nil;
 }
 
 @end

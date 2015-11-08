@@ -12,14 +12,13 @@
 @implementation MobFoxInterstitialCustomEventMoPub
 {
     MPInterstitialAdController *interstitial;
-    UIViewController *rootViewController;
 }
 
-- (void)requestInterstitialWithRootController:(UIViewController *)rootViewController networkId:(NSString*)networkId customEventInfo:(NSDictionary *)info{
-
+-(void)requestInterstitialWithNetworkId:(NSString*)networkId customEventInfo:(NSDictionary *)info{
+    
     // Instantiate the interstitial using the class convenience method.
     interstitial = [MPInterstitialAdController
-                         interstitialAdControllerForAdUnitId:networkId];
+                    interstitialAdControllerForAdUnitId:networkId];
     
     interstitial.delegate = self;
     
@@ -27,15 +26,18 @@
     [interstitial loadAd];
 }
 
-
-- (void)interstitialDidLoadAd:(MPInterstitialAdController *)inter{
+-(void)presentWithRootController:(UIViewController *)rootViewController{
     if (interstitial.ready){
         [interstitial showFromViewController:rootViewController];
-        [self.delegate MFInterstitialCustomEventAdDidLoad:self];
     }
     else {
         // The interstitial wasn't ready, so continue as usual.
     }
+}
+
+
+- (void)interstitialDidLoadAd:(MPInterstitialAdController *)inter{
+    [self.delegate MFInterstitialCustomEventAdDidLoad:self];
 }
 
 
@@ -50,7 +52,6 @@
 - (void)interstitialDidDisappear:(MPInterstitialAdController *)inter{
     [self.delegate MFInterstitialCustomEventAdClosed];
 }
-
 
 
 @end

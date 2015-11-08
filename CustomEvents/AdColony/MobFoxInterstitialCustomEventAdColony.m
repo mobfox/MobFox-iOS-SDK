@@ -8,13 +8,14 @@
 
 #import "MobFoxInterstitialCustomEventAdColony.h"
 
+@interface MobFoxInterstitialCustomEventAdColony()
+    @property NSString* zoneId;
+@end
 
 @implementation MobFoxInterstitialCustomEventAdColony
 
 
-- (void)requestInterstitialWithRootController:(UIViewController *)rootViewController networkId:(NSString*)networkId
-
-    customEventInfo:(NSDictionary *)info{
+-(void)requestInterstitialWithNetworkId:(NSString*)networkId customEventInfo:(NSDictionary *)info{
     
     NSArray *lines = [networkId componentsSeparatedByString: @";"];
     
@@ -24,17 +25,17 @@
                          logging:YES];
 }
 
+-(void)presentWithRootController:(UIViewController *)rootViewController{
+    [AdColony playVideoAdForZone:self.zoneId withDelegate:self];
+}
+
 
 - (void) onAdColonyAdAvailabilityChange:(BOOL)available inZone:(NSString *)zoneID{
     
-    if(!available) return;
+    if(!available || [AdColony videoAdCurrentlyRunning]) return;
     
-    if( [AdColony videoAdCurrentlyRunning]){
-        [self.delegate MFInterstitialCustomEventAdDidLoad:self];
-        return;
-    }
-    
-    [AdColony playVideoAdForZone:zoneID withDelegate:self];
+    self.zoneId = zoneID;
+    [self.delegate MFInterstitialCustomEventAdDidLoad:self];
     
 }
 
