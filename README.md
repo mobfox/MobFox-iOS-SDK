@@ -160,7 +160,7 @@ mobfoxInterAd.delegate = delegate;
 [mobfoxInterAd loadAd];
 ```
 
-#### Show Ad
+#### Show Interstitial Ad
 Later when you wish to display the ad:
 ```objective-c
 
