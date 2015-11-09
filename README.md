@@ -250,5 +250,10 @@ Please refer to [MobFox Native API](http://dev.mobfox.com/index.php?title=Ad_Req
 
 This feature lets you use your accounts on other advertising platforms such as MoPub inside MobFox's SDK.
 
-- [MoPub]
-- [Vungle]
+[Custom Events](https://github.com/mobfox/MobFox-iOS-SDK-Core-Lib/wiki/Custom-Events)
+
+## Adapters
+
+Adapters are the opposite of Custom Events, they let you use MobFox as a Custom Event in other networks. Currently only AdMob is supported.
+
+[Adapters](https://github.com/mobfox/MobFox-iOS-SDK-Core-Lib/wiki/Adapters)
