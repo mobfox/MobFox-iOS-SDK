@@ -3,7 +3,6 @@
 Supports **iOS 7.0+**
 
 
-
 <!-- toc -->
 
 * [Prerequisites](#prerequisites)
@@ -15,8 +14,11 @@ Supports **iOS 7.0+**
   * [In-stream Ad](#in-stream-ad)
   * [Interstitial Ad](#interstitial-ad)
   * [Native Ad](#native-ad)
+  * [Custom Events](#custom-events)
+  * [Adapters](#adapters)
 
 <!-- toc stop -->
+
 
 
 #Prerequisites
