@@ -256,6 +256,7 @@ MobFoxNativeAd* nativeAd = [[MobFoxNativeAd alloc] init:@"your-publication-hash"
 nativeAd.delegate = delegate;
 ```
 
+### Setting Additonal Parameters
 Setting additional parametes on the ad object that can help you get better targeted ads or help you with reporting:
 ```objective-c
 @property (nonatomic, copy) NSString* longitude;
