@@ -201,7 +201,6 @@ Set the delegate and preload the ad:
 mobfoxInterAd.delegate = delegate;
 [mobfoxInterAd loadAd];
 ```
-
 Setting additional parametes on the ad object that can help you get better targeted ads or help you with reporting:
 ```objective-c
 @property (nonatomic, copy) NSString* longitude;
@@ -216,7 +215,7 @@ Setting additional parametes on the ad object that can help you get better targe
 @property (nonatomic, copy) NSString* v_dur_max;
 @property (nonatomic, copy) NSString* r_floor;
 ```
-More information can be found here: http://dev.mobfox.com/index.php?title=Ad_Request_API_-_Native 
+More information can be found here: http://dev.mobfox.com/index.php?title=Ad_Request_API#Request_Parameters 
 
 #### Show Interstitial Ad
 Later when you wish to display the ad:
@@ -256,6 +255,22 @@ MobFoxNativeAd* nativeAd = [[MobFoxNativeAd alloc] init:@"your-publication-hash"
 
 nativeAd.delegate = delegate;
 ```
+
+Setting additional parametes on the ad object that can help you get better targeted ads or help you with reporting:
+```objective-c
+@property (nonatomic, copy) NSString* longitude;
+@property (nonatomic, copy) NSString* latitude;
+@property (nonatomic, copy) NSString* demo_gender; //"m/f"
+@property (nonatomic, copy) NSString* demo_age;
+@property (nonatomic, copy) NSString* s_subid;
+@property (nonatomic, copy) NSString* sub_name;
+@property (nonatomic, copy) NSString* sub_domain;
+@property (nonatomic, copy) NSString* sub_storeurl;
+@property (nonatomic, copy) NSString* v_dur_min;
+@property (nonatomic, copy) NSString* v_dur_max;
+@property (nonatomic, copy) NSString* r_floor;
+```
+More information can be found here: http://dev.mobfox.com/index.php?title=Ad_Request_API_-_Native 
 
 The response ```NSDictionary*``` is a JSON object of the following structure:
 ```json
