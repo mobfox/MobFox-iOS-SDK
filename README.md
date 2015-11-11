@@ -79,8 +79,8 @@ MobFoxAd* mobfoxAd = [[MobFoxAd alloc] init:@"your-publication-hash" withFrame:a
 ```
 
 ### Setting Additonal Parameters
-You can set additional parametes on the ad object that can help you get better targeted ads or help you with reporting:
-```
+Setting additional parametes on the ad object that can help you get better targeted ads or help you with reporting:
+```objective-c
 property (nonatomic, copy) NSString* longitude;
 @property (nonatomic, copy) NSString* latitude;
 @property (nonatomic, copy) NSString* demo_gender; //"m/f"
@@ -146,13 +146,13 @@ In order to insure the best ad is ready when you wish to display it, please init
 MobFoxInterstitialAd* mobfoxInterAd = [[MobFoxInterstitialAd alloc] init:@"your-publication-hash" withRootViewController:self];
 ```    
 ### Setting Additonal Parameters
-You can set additional parametes on the internal ad object that can help you get better targeted ads or help you with reporting:
+Setting additional parametes on the internal ad object that can help you get better targeted ads or help you with reporting:
 For example:
-```
-    mobfoxInterAd.ad.demo_gender = @"f";
+```objective-c
+mobfoxInterAd.ad.demo_gender = @"f";
 ```
 The available properties are:
-```
+```objective-c
 property (nonatomic, copy) NSString* longitude;
 @property (nonatomic, copy) NSString* latitude;
 @property (nonatomic, copy) NSString* demo_gender; //"m/f"
