@@ -78,6 +78,23 @@ MobFoxAd* mobfoxAd = [[MobFoxAd alloc] init:@"your-publication-hash" withFrame:a
 
 ```
 
+### Setting Additonal Parameters
+You can set additional parametes on the ad object that can help you get better targeted ads or help you with reporting:
+```
+property (nonatomic, copy) NSString* longitude;
+@property (nonatomic, copy) NSString* latitude;
+@property (nonatomic, copy) NSString* demo_gender; //"m/f"
+@property (nonatomic, copy) NSString* demo_age;
+@property (nonatomic, copy) NSString* s_subid;
+@property (nonatomic, copy) NSString* sub_name;
+@property (nonatomic, copy) NSString* sub_domain;
+@property (nonatomic, copy) NSString* sub_storeurl;
+@property (nonatomic, copy) NSString* v_dur_min;
+@property (nonatomic, copy) NSString* v_dur_max;
+@property (nonatomic, copy) NSString* r_floor;
+```
+More information can be found here: http://dev.mobfox.com/index.php?title=Ad_Request_API#Request_Parameters 
+
 #### Ad Delegate
 In order to be notified when certain ad events occur you can register a delegate:
 
@@ -128,6 +145,29 @@ In order to insure the best ad is ready when you wish to display it, please init
 //init the interstitial ad giving it your main/root controller
 MobFoxInterstitialAd* mobfoxInterAd = [[MobFoxInterstitialAd alloc] init:@"your-publication-hash" withRootViewController:self];
 ```    
+### Setting Additonal Parameters
+You can set additional parametes on the internal ad object that can help you get better targeted ads or help you with reporting:
+For example:
+```
+    mobfoxInterAd.ad.demo_gender = @"f";
+```
+The available properties are:
+```
+property (nonatomic, copy) NSString* longitude;
+@property (nonatomic, copy) NSString* latitude;
+@property (nonatomic, copy) NSString* demo_gender; //"m/f"
+@property (nonatomic, copy) NSString* demo_age;
+@property (nonatomic, copy) NSString* s_subid;
+@property (nonatomic, copy) NSString* sub_name;
+@property (nonatomic, copy) NSString* sub_domain;
+@property (nonatomic, copy) NSString* sub_storeurl;
+@property (nonatomic, copy) NSString* v_dur_min;
+@property (nonatomic, copy) NSString* v_dur_max;
+@property (nonatomic, copy) NSString* r_floor;
+```
+More information can be found here: http://dev.mobfox.com/index.php?title=Ad_Request_API#Request_Parameters 
+
+
 
 #### Interstitial Ad Delegate
 In order to be notified when certain ad events occur you can register a delegate:
