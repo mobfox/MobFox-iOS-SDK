@@ -12,8 +12,8 @@
 
 - (void)requestBannerAd:(GADAdSize)adSize parameter:(NSString *)serverParameter label:(NSString *)serverLabel request:(GADCustomEventRequest *)request{
 
-    NSLog(@"asking MobFox for custom ad!");
-    NSLog(@"custom param: %@",serverParameter);
+    NSLog(@"MobFox >> GADMAdapterMobFox >> Got Ad Request");
+    NSLog(@"MobFox >> GADMAdapterMobFox >> hash: %@",serverParameter);
     
     self.banner = [[MobFoxAd alloc] init:serverParameter withFrame:CGRectMake(0,0,adSize.size.width,adSize.size.height)];
     
@@ -26,12 +26,12 @@
                    
 //called when ad is displayed
 - (void)MobFoxAdDidLoad:(MobFoxAd *)banner{
-     NSLog(@"custom got ad!");
+     NSLog(@"MobFox >> GADMAdapterMobFox >> Got Ad");
     [self.delegate customEventBanner:self didReceiveAd:banner];
 }
 
 - (void)MobFoxAdDidFailToReceiveAdWithError:(NSError *)error{
-      NSLog(@"no ad! %@",[error description]);
+    NSLog(@"MobFox >> GADMAdapterMobFox >> Error: %@",[error description]);
     [self.delegate customEventBanner:self didFailAd:error];
 }
 
