@@ -5,6 +5,10 @@
 - (instancetype)initWithMobFoxNativeAd:(NSDictionary *)ad{
     self = [super init];
     
+    NSLog(@"MoPub >> Adapter >> MobFox >> init");
+    
+    //NSLog(@"MoPub >> Adapter >> MobFox >> ad: %@",[ad description]);
+    
     NSDictionary* textAssets = [ad valueForKey:@"textassets"];
     [self.properties setValue:[textAssets valueForKey:@"headline"] forKey:@"kAdTitleKey"];
     [self.properties setValue:[textAssets valueForKey:@"description"] forKey:@"kAdTextKey"];
@@ -13,11 +17,11 @@
     
     
     NSDictionary* imageAssets = [ad valueForKey:@"imageassets"];
-    [self.properties setValue:[[imageAssets valueForKey:@"icon"] valueForKey:@"url"] forKey:@"kAdIconImageKey"];
-    [self.properties setValue:[[imageAssets valueForKey:@"main"] valueForKey:@"url"] forKey:@"kAdMainImageKey"];
+    [self.properties setValue:[NSURL URLWithString:[[imageAssets valueForKey:@"icon"] valueForKey:@"url"]] forKey:@"kAdIconImageKey"];
+    [self.properties setValue:[NSURL URLWithString:[[imageAssets valueForKey:@"main"] valueForKey:@"url"]] forKey:@"kAdMainImageKey"];
 
     
-    [self.properties setValue:[ad valueForKey:@"click_url"] forKey:@"kDefaultActionURLKey"];
+    [self.properties setValue:[NSURL URLWithString:[ad valueForKey:@"click_url"]] forKey:@"kDefaultActionURLKey"];
     
     NSArray* trackers = [ad valueForKey:@"trackers"];
     NSMutableArray *impressionURLs = [NSMutableArray array];
@@ -25,7 +29,7 @@
     for (NSDictionary* tracker in trackers) {
         NSString* type = [tracker valueForKey:@"type"];
         if([type isEqualToString:@"impression"]){
-            [impressionURLs addObject:[tracker valueForKey:@"url"]];
+            [impressionURLs addObject:[NSURL URLWithString:[tracker valueForKey:@"url"]]];
         }
     }
     
