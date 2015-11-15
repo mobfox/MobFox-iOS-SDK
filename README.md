@@ -11,7 +11,7 @@ Supports **iOS 7.0+**
   * [Manual Installation](#manual-installation)
   * [iOS 9+ Specific](#ios-9-specific)
 * [Usage](#usage)
-  * [In-stream Ad](#in-stream-ad)
+  * [Banner Ad](#banner-ad)
   * [Interstitial Ad](#interstitial-ad)
   * [Native Ad](#native-ad)
   * [Custom Events](#custom-events)
@@ -62,7 +62,7 @@ For further questions about iOS9 and ATS, please create a ticket at https://acco
 
 # Usage
 
-## In-stream Ad
+## Banner Ad
 
 In order to insure the best ad is ready when you wish to display it, please init the MobFox ad as soon as possible in your code:
 ```objective-c
