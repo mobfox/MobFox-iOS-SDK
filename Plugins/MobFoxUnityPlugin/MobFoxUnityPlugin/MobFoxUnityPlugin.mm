@@ -40,6 +40,8 @@ extern "C"
     [self.ads setValue:banner forKey:key];
     int cur = self.nextId;
     self.nextId= self.nextId + 1;
+    //banner.type = @"video";
+    [banner loadAd];
     return cur;
 }
 
@@ -50,9 +52,7 @@ extern "C"
         NSLog(@"MobFoxUnityPlugin >> showBanner >> banner with id %d was not found",bannerId);
         return;
     }
-    
-    //banner.type = @"video";
-    [banner loadAd];
+    banner.hidden = NO;
     NSLog(@"MobFoxUnityPlugin >> showBanner >> show banner %d",bannerId);
 
 }
@@ -64,7 +64,7 @@ extern "C"
         NSLog(@"MobFoxUnityPlugin >> hideBanner >> banner with id %d was not found",bannerId);
         return;
     }
-    [banner removeFromSuperview];
+   banner.hidden = YES;
     NSLog(@"MobFoxUnityPlugin >> hideBanner >> hiding banner %d",bannerId);
 }
 
@@ -148,7 +148,7 @@ extern "C"
     void _showBanner(int bannerId){
         [plugin showBanner:bannerId];
     }
-    void  _showHide(int bannerId){
+    void  _hideBanner(int bannerId){
         [plugin hideBanner:bannerId];
     }
     
