@@ -99,18 +99,19 @@ extern "C"
 }
 
 - (void)MobFoxAdDidFailToReceiveAdWithError:(NSError *)error{
-
+     UnitySendMessage([self.gameObject UTF8String],"bannerError",[[error description] UTF8String]);
 }
 
 - (void)MobFoxAdClosed{
+     UnitySendMessage([self.gameObject UTF8String],"banneClosed","");
 }
 
 - (void)MobFoxAdClicked{
-
+    UnitySendMessage([self.gameObject UTF8String],"banneClicked","");
 }
 
 - (void)MobFoxAdFinished{
-
+    UnitySendMessage([self.gameObject UTF8String],"banneFinished","");
 }
 
 - (void)MobFoxInterstitialAdDidLoad:(MobFoxInterstitialAd *)interstitial{
@@ -122,15 +123,23 @@ extern "C"
 }
 
 
-- (void)MobFoxInterstitialAdDidFailToReceiveAdWithError:(NSError *)error{}
+- (void)MobFoxInterstitialAdDidFailToReceiveAdWithError:(NSError *)error{
+    UnitySendMessage([self.gameObject UTF8String],"interstitalError",[[error description] UTF8String]);
+}
 
-- (void)MobFoxInterstitialAdClosed{}
+- (void)MobFoxInterstitialAdClosed{
+    UnitySendMessage([self.gameObject UTF8String],"interstitialClosed","");
+}
 
 
-- (void)MobFoxInterstitialAdClicked{}
+- (void)MobFoxInterstitialAdClicked{
+    UnitySendMessage([self.gameObject UTF8String],"interstitialClicked","");
+}
 
 
-- (void)MobFoxInterstitialAdFinished{}
+- (void)MobFoxInterstitialAdFinished{
+    UnitySendMessage([self.gameObject UTF8String],"interstitialFinished","");
+}
 
 @end
 
