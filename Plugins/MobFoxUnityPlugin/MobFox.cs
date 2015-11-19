@@ -30,12 +30,13 @@ public class MobFox : MonoBehaviour
 	//	_showInterstitial(interId);
 	//}
 
-	public static void setGameObject(string gameObj){
+	/*public static void setGameObject(string gameObj){
 		_setGameObject(gameObj);
-	}
+	}*/
 	
 	//banners
-	public static int createBanner(string invh){
+	public static int createBanner(GameObject obj,string invh){
+		_setGameObject (obj.name);
 		return _createBanner(invh);
 	}
 
@@ -52,7 +53,8 @@ public class MobFox : MonoBehaviour
 		_showInterstitial();
 	}
 
-	public static void createInterstitial(string invh){
+	public static void createInterstitial(GameObject obj,string invh){
+		_setGameObject (obj.name);
 		_createInterstitial(invh);
 	}
 
