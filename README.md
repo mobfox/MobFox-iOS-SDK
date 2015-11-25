@@ -92,6 +92,9 @@ Setting additional parametes on the ad object that can help you get better targe
 @property (nonatomic, copy) NSString* v_dur_min;
 @property (nonatomic, copy) NSString* v_dur_max;
 @property (nonatomic, copy) NSString* r_floor;
+
+//set this (in seconds) to make the ad refresh
+@property (nonatomic, assign) NSNumber* refresh;
 ```
 More information can be found here: http://dev.mobfox.com/index.php?title=Ad_Request_API#Request_Parameters 
 
@@ -164,6 +167,9 @@ The available properties are:
 @property (nonatomic, copy) NSString* v_dur_min;
 @property (nonatomic, copy) NSString* v_dur_max;
 @property (nonatomic, copy) NSString* r_floor;
+
+//set this (in seconds) to make the ad refresh
+@property (nonatomic, assign) NSNumber* refresh;
 ```
 More information can be found here: http://dev.mobfox.com/index.php?title=Ad_Request_API#Request_Parameters 
 
