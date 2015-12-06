@@ -27,6 +27,8 @@ You will need a [MobFox](http://www.mobfox.com/) account.
 
 # Installation
 
+Make sure ```AdSupport.framework``` is included in your project's frameworks. 
+
 ## CocoaPods
 
 Add to your Podfile:
