@@ -1,9 +1,9 @@
 //
 //  MobFoxNativeCustomEventFacebook.m
-//  MobFox-iOS-Demo
+//  MobFoxSDKCore
 //
 //  Created by Shimi Sheetrit on 1/18/16.
-//  Copyright © 2016 Shimi Sheetrit. All rights reserved.
+//  Copyright © 2016 Matomy Media Group Ltd. All rights reserved.
 //
 
 #import "MobFoxNativeCustomEventFacebook.h"
@@ -23,13 +23,8 @@
     
     self.nativeAd = [[FBNativeAd alloc] initWithPlacementID:nid];
     self.nativeAd.delegate = self;
-    
-    // When testing on a device, add its hashed ID to force test ads.
-    // The hash ID is printed to console when running on a device.
-    [FBAdSettings addTestDevice:@"70906627c2231c2a8a79d733ff37bbe90f6a3a58"];
-    
     [self.nativeAd loadAd];
-    
+
 }
 
 - (void)registerViewWithInteraction:(UIView *)view withViewController:(UIViewController *)viewController {
@@ -56,8 +51,6 @@
     mobFoxNativeData.callToActionText = nativeAd.callToAction;
     mobFoxNativeData.socialContext = nativeAd.socialContext;
     
-    
-
     [self.delegate MFNativeCustomEventAd:self didLoad:mobFoxNativeData];
     
 }

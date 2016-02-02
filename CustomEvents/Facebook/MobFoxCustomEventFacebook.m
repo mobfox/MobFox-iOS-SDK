@@ -1,9 +1,9 @@
 //
 //  MobFoxCustomEventFacebook.h
-//  MobFoxCoreDemo
+//  MobFoxSDKCore
 //
 //  Created by Shimi Sheetrit on 11/1/16.
-//  Copyright © 2015 Shimi Sheetrit. All rights reserved.
+//  Copyright © 2015 Matomy Media Group Ltd. All rights reserved.
 //
 
 #import "MobFoxCustomEventFacebook.h"
@@ -64,8 +64,6 @@
 - (void)adView:(FBAdView *)adView didFailWithError:(NSError *)error;
 {
     NSLog(@"Ad failed to load");
-    // Add code to hide the ad unit...
-    // E.g. adView.hidden = YES;
     
     self.adView.hidden = YES;
     [self.delegate MFCustomEventAdDidFailToReceiveAdWithError:error];
@@ -75,8 +73,6 @@
 - (void)adViewDidLoad:(FBAdView *)adView;
 {
     NSLog(@"Ad was loaded and ready to be displayed");
-    // Add code to show the ad unit...
-    // E.g. adView.hidden = NO;
     
     self.adView.hidden = NO;
     [self.delegate MFCustomEventAd:self didLoad:adView];
