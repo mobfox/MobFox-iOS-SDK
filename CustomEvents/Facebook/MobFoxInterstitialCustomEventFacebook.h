@@ -1,9 +1,9 @@
 //
 //  MobFoxInterstitialCustomEventFacebook.h
-//  MobFox-iOS-Demo
+//  MobFoxSDKCore
 //
 //  Created by Shimi Sheetrit on 1/13/16.
-//  Copyright © 2016 Shimi Sheetrit. All rights reserved.
+//  Copyright © 2016 Matomy Media Group Ltd. All rights reserved.
 //
 
 #import <MobFoxSDKCore/MobFoxSDKCore.h>
@@ -11,7 +11,6 @@
 
 @interface MobFoxInterstitialCustomEventFacebook : MobFoxInterstitialCustomEvent <FBInterstitialAdDelegate>
 
-//- (void)requestAdWithSize:(CGSize)size networkID:(NSString*)nid customEventInfo:(NSDictionary *)info;
 
 
 @end

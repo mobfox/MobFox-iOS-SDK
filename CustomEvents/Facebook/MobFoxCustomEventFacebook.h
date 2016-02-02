@@ -1,9 +1,9 @@
 //
 //  MobFoxCustomEventFacebook.h
-//  MobFoxCoreDemo
+//  MobFoxSDKCore
 //
 //  Created by Shimi Sheetrit on 11/1/16.
-//  Copyright © 2015 Shimi Sheetrit. All rights reserved.
+//  Copyright © 2015 Matomy Media Group Ltd. All rights reserved.
 //
 
 #ifndef MobFoxCustomEventFacebook_h
@@ -15,8 +15,6 @@
 
 @interface MobFoxCustomEventFacebook : MobFoxCustomEvent <FBAdViewDelegate>
 
-
-//- (void)requestAdWithSize:(CGSize)size networkID:(NSString*)nid customEventInfo:(NSDictionary *)info;
 
 @end
 
