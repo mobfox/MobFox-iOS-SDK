@@ -44,7 +44,8 @@ pod 'MobFoxSDKCoreLib', :git => 'https://github.com/mobfox/MobFox-iOS-SDK-Core-L
 
 3. If you prefer a Dynamic Framework use ```MobFoxSDKCoreDynamic.embeddedframework``` instead.
 
-
+## Project Definitions
+Select project target and under Build Settings setup ```Other Linker Flags``` to -all_load.
 ## iOS 9+ Specific
 One of the changes in iOS9 is a default setting that requires apps to make network connections only over SSL, this is known as App Transport Security. MobFox is facilitating the transition to support this change for each of our demand partners in order to ensure they are compliant. In the meantime, developers who want to release apps that support iOS9, will need to disable ATS in order to ensure MobFox continues to work as expected. To do so, developers should add the following to their plist:
 ```xml
@@ -80,8 +81,8 @@ MobFoxAd* mobfoxAd = [[MobFoxAd alloc] init:@"your-publication-hash" withFrame:a
 
 ```
 
-### Setting Additonal Parameters
-Setting additional parametes on the ad object that can help you get better targeted ads or help you with reporting:
+### Setting Additional Parameters
+Setting additional parameters on the ad object that can help you get better targeted ads or help you with reporting:
 ```objective-c
 @property (nonatomic, copy) NSString* longitude;
 @property (nonatomic, copy) NSString* latitude;
@@ -150,8 +151,8 @@ In order to insure the best ad is ready when you wish to display it, please init
 //init the interstitial ad giving it your main/root controller
 MobFoxInterstitialAd* mobfoxInterAd = [[MobFoxInterstitialAd alloc] init:@"your-publication-hash" withRootViewController:self];
 ```    
-### Setting Additonal Parameters
-Setting additional parametes on the internal ad object that can help you get better targeted ads or help you with reporting:
+### Setting Additional Parameters
+Setting additional parameters on the internal ad object that can help you get better targeted ads or help you with reporting:
 For example:
 ```objective-c
 mobfoxInterAd.ad.demo_gender = @"f";
@@ -255,17 +256,18 @@ MobFoxNativeAd* nativeAd = [[MobFoxNativeAd alloc] init:@"your-publication-hash"
 @protocol MobFoxNativeAdDelegate <NSObject>
 
 //called when ad response is returned
-- (void)MobFoxNativeAdDidLoad:(NSDictionary *)ad;
+- (void)MobFoxNativeAdDidLoad:(MobFoxNativeData *)ad;
 
 //called when ad response cannot be returned
 - (void)MobFoxNativeAdDidFailToReceiveAdWithError:(NSError *)error;
+
 @end
 
 nativeAd.delegate = delegate;
 ```
 
-### Setting Additonal Parameters
-Setting additional parametes on the ad object that can help you get better targeted ads or help you with reporting:
+### Setting Additional Parameters
+Setting additional parameters on the ad object that can help you get better targeted ads or help you with reporting:
 ```objective-c
 @property (nonatomic, copy) NSString* longitude;
 @property (nonatomic, copy) NSString* latitude;
@@ -281,51 +283,47 @@ Setting additional parametes on the ad object that can help you get better targe
 ```
 More information can be found here: http://dev.mobfox.com/index.php?title=Ad_Request_API_-_Native 
 
-The response ```NSDictionary*``` is a JSON object of the following structure:
-```json
-{
-   "imageassets":{
-      "icon":{
-         "url":"<IMAGE_URL>",
-         "width":"512",
-         "height":"512"
-      },
-      "main":{
-         "url":"<IMAGE_URL>",
-         "width":"1200",
-         "height":"627"
-      }
-   },
-   "textassets":{
-      "headline":"Hay Day",
-      "description":"Hay Day is a totally new farming experience with smooth gestural controls lovingly hand..."
-   },
-   "click_url":"<CLICK_URL>",
-   "trackers":[
-      {
-         "type":"impression",
-         "url":"<PIXEL_URL>"
-      },
-      {
-         "type":"impression",
-         "url":"<PIXEL_URL>"
-      },
-      {
-         "type":"impression",
-         "url":"<PIXEL_URL>"
-      }
-   ]
-}
+The response ```MobFoxNativeData*``` :
+```objective-c
+
+@interface MobFoxNativeData : NSObject
+
+@property (nonatomic, strong) MobFoxNativeImage *icon;
+@property (nonatomic, strong) MobFoxNativeImage *main;
+
+@property (nonatomic, copy) NSString *assetHeadline;
+@property (nonatomic, copy) NSString *assetDescription;
+@property (nonatomic, copy) NSString *callToActionText;
+@property (nonatomic, copy) NSString *advertiserName;
+@property (nonatomic, copy) NSString *socialContext;
+@property (nonatomic, copy) NSNumber *rating;
+@property (nonatomic, copy) NSURL *clickURL;
+
+@property (nonatomic, strong) NSMutableArray *trackersArray;
+
+@end
 ```
+
 You must call all ```trackers``` when you decide to render the ad and navigate to the ```click_url``` when the ad is clicked.
+
 
 Please refer to [MobFox Native API](http://dev.mobfox.com/index.php?title=Ad_Request_API_-_Native) for full documentation.
 
 #### Get Native Ad
 ```objective-c
+
 [nativeAd loadAd];
 
 ```
+
+#### Register Interaction
+When the native ad loads you must register the ad for interaction:
+```objective-c
+- (void)MobFoxNativeAdDidLoad:(MobFoxNativeAd*)ad withAdData:(MobFoxNativeData *)adData {
+   [ad registerViewWithInteraction:view withViewController:viewController]; 
+}
+```
+
 ---
 
 ## Custom Events
