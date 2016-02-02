@@ -319,8 +319,8 @@ Please refer to [MobFox Native API](http://dev.mobfox.com/index.php?title=Ad_Req
 #### Register Interaction
 When the native ad loads you must register the ad for interaction:
 ```objective-c
-- (void)MobFoxNativeAdDidLoad:(MobFoxNativeData *)adData{
-   [nativeAd registerViewWithInteraction:view withViewController:viewController]; 
+- (void)MobFoxNativeAdDidLoad:(MobFoxNativeAd*)ad withAdData:(MobFoxNativeData *)adData {
+   [ad registerViewWithInteraction:view withViewController:viewController]; 
 }
 ```
 
