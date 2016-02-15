@@ -95,6 +95,8 @@ Setting additional parameters on the ad object that can help you get better targ
 @property (nonatomic, copy) NSString* v_dur_min;
 @property (nonatomic, copy) NSString* v_dur_max;
 @property (nonatomic, copy) NSString* r_floor;
+@property (nonatomic, assign) BOOL no_markup;
+
 
 //set this (in seconds) to make the ad refresh
 @property (nonatomic, assign) NSNumber* refresh;
