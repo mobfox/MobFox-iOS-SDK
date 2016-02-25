@@ -16,6 +16,7 @@ Supports **iOS 7.0+**
   * [Native Ad](#native-ad)
   * [Custom Events](#custom-events)
   * [Adapters](#adapters)
+  * [Demo App Swift](#DemoAppSwift)
 
 <!-- toc stop -->
 
