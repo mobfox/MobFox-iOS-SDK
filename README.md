@@ -339,3 +339,7 @@ This feature lets you use your accounts on other advertising platforms such as M
 Adapters are the opposite of Custom Events, they let you use MobFox as a Custom Event in other networks. Currently only AdMob is supported.
 
 [Adapters](https://github.com/mobfox/MobFox-iOS-SDK-Core-Lib/wiki/Adapters)
+
+## Demo App Swift
+
+[Demo App Swift](https://github.com/mobfox/MobFox-iOS-SDK-Core-Lib/wiki/Demo-Application-in-Swift)
