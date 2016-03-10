@@ -170,12 +170,12 @@ The available properties are:
 @property (nonatomic, copy) NSString* sub_name;
 @property (nonatomic, copy) NSString* sub_domain;
 @property (nonatomic, copy) NSString* sub_storeurl;
-@property (nonatomic, copy) NSString* v_dur_min;
-@property (nonatomic, copy) NSString* v_dur_max;
 @property (nonatomic, copy) NSString* r_floor;
 
 //set this (in seconds) to make the ad refresh
 @property (nonatomic, assign) NSNumber* refresh;
+@property (nonatomic, copy) NSNumber* v_dur_min;
+@property (nonatomic, copy) NSNumber* v_dur_max;
 ```
 More information can be found here: http://dev.mobfox.com/index.php?title=Ad_Request_API#Request_Parameters 
 
