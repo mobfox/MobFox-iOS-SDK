@@ -30,7 +30,7 @@
  */
 @property (nonatomic, weak) id<MPNativeAdAdapterDelegate> delegate;
 
-- (instancetype)initWithMobFoxNativeAd:(MobFoxNativeData *)adData;
+- (instancetype)initWithMobFoxNativeAd:(MobFoxNativeData *)ad;
 
 
 @end
