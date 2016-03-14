@@ -18,22 +18,22 @@
     [self.ad loadAd];
 }
 
-- (void)MobFoxNativeAdDidLoad:(NSDictionary *)ad{
+- (void)MobFoxNativeAdDidLoad:(MobFoxNativeAd*)ad withAdData:(MobFoxNativeData *)adData {
     
-    NSLog(@"MoPub >> MobFox >> Native ad >> loaded");
+    NSLog(@"adData ---> %@", adData);
     NSLog(@"MoPub >> MobFox >> Native ad >> response: %@",[ad description]);
     
-    MPMobFoxNativeAdAdapter *adAdapter = [[MPMobFoxNativeAdAdapter alloc] initWithMobFoxNativeAd:ad];
+    MPMobFoxNativeAdAdapter *adAdapter = [[MPMobFoxNativeAdAdapter alloc] initWithMobFoxNativeAd:adData];
     MPNativeAd *interfaceAd = [[MPNativeAd alloc] initWithAdAdapter:adAdapter];
     
     NSMutableArray *imageURLs = [NSMutableArray array];
     
-    NSDictionary* imageAssets = [ad valueForKey:@"imageassets"];
-    [imageURLs addObject:[NSURL URLWithString:[[imageAssets valueForKey:@"icon"] valueForKey:@"url"]]];
-    [imageURLs addObject:[NSURL URLWithString:[[imageAssets valueForKey:@"main"] valueForKey:@"url"]]];
+    [imageURLs addObject:adData.icon.url];
+    [imageURLs addObject:adData.main.url];
+    
     
     NSLog(@">> got image assets: %@",[imageURLs description]);
-   
+    
     [super precacheImagesWithURLs:imageURLs completionBlock:^(NSArray *errors) {
         
         NSLog(@"MoPub >> MobFox >> Native ad >> cached images");

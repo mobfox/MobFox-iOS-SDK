@@ -259,7 +259,7 @@ MobFoxNativeAd* nativeAd = [[MobFoxNativeAd alloc] init:@"your-publication-hash"
 @protocol MobFoxNativeAdDelegate <NSObject>
 
 //called when ad response is returned
-- (void)MobFoxNativeAdDidLoad:(MobFoxNativeData *)ad;
+- (void)MobFoxNativeAdDidLoad:(MobFoxNativeAd*)ad withAdData:(MobFoxNativeData *)adData;
 
 //called when ad response cannot be returned
 - (void)MobFoxNativeAdDidFailToReceiveAdWithError:(NSError *)error;
