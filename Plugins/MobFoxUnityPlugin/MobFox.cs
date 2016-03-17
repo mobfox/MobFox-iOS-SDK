@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Runtime.InteropServices;
+using System.Drawing;
 
 public class MobFox : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class MobFox : MonoBehaviour
 	public static extern void _setGameObject(string gameObject);
 
 	[DllImport("__Internal")]
-	public static extern int _createBanner(string invh);
+	public static extern int _createBanner(string invh, Rectangle rect);
 
 	[DllImport("__Internal")]
 	public static extern void _showBanner (int bannerId);
@@ -35,9 +36,10 @@ public class MobFox : MonoBehaviour
 	}*/
 	
 	//banners
-	public static int createBanner(GameObject obj,string invh){
+	public static int createBanner(GameObject obj,string invh, Rectangle rect){
 		_setGameObject (obj.name);
-		return _createBanner(invh);
+		return _createBanner(invh, rect);
+
 	}
 
 	public static void showBanner (int bannerId){

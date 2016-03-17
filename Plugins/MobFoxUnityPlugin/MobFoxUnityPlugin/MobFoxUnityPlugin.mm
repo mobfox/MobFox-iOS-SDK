@@ -32,7 +32,7 @@ extern "C"
     return self;
 }
 
--(int) createBanner:(NSString*)invh  withDimensions:(CGRect) placement{
+-(int) createBanner:(NSString*)invh  withDimensions:(CGRect)placement{
     
     MobFoxAd* banner = [[MobFoxAd alloc] init:invh withFrame:placement];
     banner.delegate = self;
@@ -96,6 +96,9 @@ extern "C"
     UIViewController* vc = UnityGetGLViewController();
     [vc.view addSubview:banner];
     NSLog(@"MobFoxUnityPlugin >> showBanner >> showing banner");
+    
+    UnitySendMessage([self.gameObject UTF8String],"ad display!!","");
+
 }
 
 - (void)MobFoxAdDidFailToReceiveAdWithError:(NSError *)error{
@@ -151,7 +154,8 @@ extern "C"
         plugin.gameObject = [NSString stringWithUTF8String:gameObject];
     }
     
-    int _createBanner(const char* invh){
+    int _createBanner(const char* invh, Rectangle rect){
+        
         return [plugin createBanner:[NSString stringWithUTF8String:invh] withDimensions:CGRectMake(0.0, 0.0, 300.0, 250.0)];
     }
     void _showBanner(int bannerId){
