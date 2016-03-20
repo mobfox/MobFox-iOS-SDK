@@ -341,6 +341,16 @@ Adapters are the opposite of Custom Events, they let you use MobFox as a Custom 
 
 [Adapters](https://github.com/mobfox/MobFox-iOS-SDK-Core-Lib/wiki/Adapters)
 
+## Plugins
+
+## Unity Plugin
+
+This feature lets you develop with unity and use MobFox's SDK.
+
+Instructions:
+
+Create new project in Unity. Add MobFoxSDKCore.embeddedframework file and MobFoxUnityPlugin directory under Assets -> Plugins-> iOS. add SDKDemo directory to your project. for running the project connect your device, select 'File', then select 'Build Settings', choose the scene and the platform (iOS) and press 'Build And Run'.
+
 ## Demo App Swift
 
 [Demo App Swift](https://github.com/mobfox/MobFox-iOS-SDK-Core-Lib/wiki/Demo-Application-in-Swift)
