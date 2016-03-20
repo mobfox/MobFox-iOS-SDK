@@ -20,6 +20,7 @@ extern "C"
     @property int nextId;
     @property NSString* gameObject;
     @property (nonatomic,strong) MobFoxInterstitialAd* inter;
+
 @end
 
 @implementation MobFoxUnityPlugin
@@ -91,57 +92,60 @@ extern "C"
     
 }
 
+// MobFox Ad Delegate
 - (void)MobFoxAdDidLoad:(MobFoxAd *)banner{
     //show banner
     UIViewController* vc = UnityGetGLViewController();
     [vc.view addSubview:banner];
-    NSLog(@"MobFoxUnityPlugin >> showBanner >> showing banner");
     
-    UnitySendMessage([self.gameObject UTF8String],"ad display!!","");
-
+    NSLog(@"MobFoxUnityPlugin >> MobFoxAdDidLoad:");
+    UnitySendMessage([self.gameObject UTF8String], "bannerReady", "MobFoxAdDidLoad msg");
+    
 }
 
 - (void)MobFoxAdDidFailToReceiveAdWithError:(NSError *)error{
-     UnitySendMessage([self.gameObject UTF8String],"bannerError",[[error description] UTF8String]);
+    UnitySendMessage([self.gameObject UTF8String], "bannerError", [[error description] UTF8String]);
+    
 }
 
 - (void)MobFoxAdClosed{
-     UnitySendMessage([self.gameObject UTF8String],"banneClosed","");
+    UnitySendMessage([self.gameObject UTF8String], "banneClosed", "MobFoxAdClosed msg");
 }
 
 - (void)MobFoxAdClicked{
-    UnitySendMessage([self.gameObject UTF8String],"banneClicked","");
+    UnitySendMessage([self.gameObject UTF8String], "banneClicked", "MobFoxAdClicked msg");
 }
 
 - (void)MobFoxAdFinished{
-    UnitySendMessage([self.gameObject UTF8String],"banneFinished","");
+    UnitySendMessage([self.gameObject UTF8String], "banneFinished", "MobFoxAdFinished msg");
 }
 
+// MobFox Interstitial Ad Delegate
 - (void)MobFoxInterstitialAdDidLoad:(MobFoxInterstitialAd *)interstitial{
     
     NSLog(@"MobFoxUnityPlugin >> MobFoxInterstitialAdDidLoad >> inter loaded");
+    
     interstitial.rootViewController = UnityGetGLViewController();
-    UnitySendMessage([self.gameObject UTF8String],"interstitialReady","");
-   
+    UnitySendMessage([self.gameObject UTF8String], "interstitialReady", "MobFoxInterstitialAdDidLoad msg");
+        
 }
 
-
 - (void)MobFoxInterstitialAdDidFailToReceiveAdWithError:(NSError *)error{
-    UnitySendMessage([self.gameObject UTF8String],"interstitalError",[[error description] UTF8String]);
+    UnitySendMessage([self.gameObject UTF8String], "interstitalError", [[error description] UTF8String]);
 }
 
 - (void)MobFoxInterstitialAdClosed{
-    UnitySendMessage([self.gameObject UTF8String],"interstitialClosed","");
+    UnitySendMessage([self.gameObject UTF8String], "interstitialClosed", "MobFoxInterstitialAdClosed msg");
 }
 
 
 - (void)MobFoxInterstitialAdClicked{
-    UnitySendMessage([self.gameObject UTF8String],"interstitialClicked","");
+    UnitySendMessage([self.gameObject UTF8String], "interstitialClicked", "MobFoxInterstitialAdClicked msg");
 }
 
 
 - (void)MobFoxInterstitialAdFinished{
-    UnitySendMessage([self.gameObject UTF8String],"interstitialFinished","");
+    UnitySendMessage([self.gameObject UTF8String], "interstitialFinished", "MobFoxInterstitialAdFinished msg");
 }
 
 @end
@@ -154,9 +158,15 @@ extern "C"
         plugin.gameObject = [NSString stringWithUTF8String:gameObject];
     }
     
-    int _createBanner(const char* invh, Rectangle rect){
+    int _createBanner(const char* invh, float x, float y, float width, float height){
         
-        return [plugin createBanner:[NSString stringWithUTF8String:invh] withDimensions:CGRectMake(0.0, 0.0, 300.0, 250.0)];
+        NSLog(@"rect width: %f", width);
+        NSLog(@"rect height: %f", height);
+        
+        CGRect rect = CGRectMake(x, y, width, height);
+
+        return [plugin createBanner:[NSString stringWithUTF8String:invh] withDimensions:rect];
+        
     }
     void _showBanner(int bannerId){
         [plugin showBanner:bannerId];
