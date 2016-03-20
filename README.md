@@ -350,10 +350,10 @@ This feature lets you develop with unity and use MobFox's SDK.
 
 Instructions:
 
-* Create a new project in Unity. 
-* Add the ```MobFoxSDKCore.embeddedframework``` directory and ```MobFoxUnityPlugin``` directory under Assets -> Plugins-> iOS. 
-* Add the SDKDemo (sample code) directory to your project. 
-* For running the project: connect your device, select 'File', then select 'Build Settings', choose the scene and the platform (iOS) and press 'Build And Run'.
+1. Create a new project in Unity. 
+1. Add the ```MobFoxSDKCore.embeddedframework``` directory and ```MobFoxUnityPlugin``` directory under Assets -> Plugins-> iOS. 
+1. Add the SDKDemo (sample code) directory to your project. 
+1. For running the project: connect your device, select 'File', then select 'Build Settings', choose the scene and the platform (iOS) and press 'Build And Run'.
 
 ## Demo App Swift
 
