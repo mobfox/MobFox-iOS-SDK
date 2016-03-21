@@ -6,13 +6,13 @@
 //  Copyright © 2015 Google. All rights reserved.
 //
 
-#ifndef GADMobFoxCustomEvent_h
-#define GADMobFoxCustomEvent_h
+#ifndef DFPMAdapterMobFox_h
+#define DFPMAdapterMobFox_h
 
 #import <MobFoxSDKCore/MobFoxSDKCore.h>
 #import <GoogleMobileAds/GoogleMobileAds.h>
 
-@interface GADMAdapterMobFox : NSObject <GADCustomEventBanner, MobFoxAdDelegate>
+@interface DFPMAdapterMobFox : NSObject <GADCustomEventBanner, MobFoxAdDelegate>
 
 @property(nonatomic,weak)id <GADCustomEventBannerDelegate> delegate;
 @property(nonatomic,strong) MobFoxAd* banner;
