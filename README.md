@@ -16,6 +16,7 @@ Supports **iOS 7.0+**
   * [Native Ad](#native-ad)
   * [Custom Events](#custom-events)
   * [Adapters](#adapters)
+  * [Plugins](#plugins)
   * [Demo App Swift](#demo-app-swift)
 
 <!-- toc stop -->
@@ -340,6 +341,19 @@ This feature lets you use your accounts on other advertising platforms such as M
 Adapters are the opposite of Custom Events, they let you use MobFox as a Custom Event in other networks. Currently only AdMob is supported.
 
 [Adapters](https://github.com/mobfox/MobFox-iOS-SDK-Core-Lib/wiki/Adapters)
+
+## Plugins
+
+## Unity Plugin
+
+This feature lets you develop with unity and use MobFox's SDK.
+
+Instructions:
+
+1. Create a new project in Unity. 
+1. Add the ```MobFoxSDKCore.embeddedframework``` directory and ```MobFoxUnityPlugin``` directory under Assets -> Plugins-> iOS. 
+1. Add the SDKDemo (sample code) directory to your project. 
+1. For running the project: connect your device, select 'File', then select 'Build Settings', choose the scene and the platform (iOS) and press 'Build And Run'.
 
 ## Demo App Swift
 
