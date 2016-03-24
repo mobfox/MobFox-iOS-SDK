@@ -320,11 +320,12 @@ Please refer to [MobFox Native API](http://dev.mobfox.com/index.php?title=Ad_Req
 
 ```
 
-#### Register Interaction
+#### Register Interaction and Fire Tracking Pixel
 When the native ad loads you must register the ad for interaction:
 ```objective-c
 - (void)MobFoxNativeAdDidLoad:(MobFoxNativeAd*)ad withAdData:(MobFoxNativeData *)adData {
 
+       // Register interaction
        [ad registerViewWithInteraction:view withViewController:viewController]; 
    
        for (MobFoxNativeTracker *tracker in adData.trackersArray) {
