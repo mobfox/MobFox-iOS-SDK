@@ -383,3 +383,7 @@ Instructions:
 ## Demo App Swift
 
 [Demo App Swift](https://github.com/mobfox/MobFox-iOS-SDK-Core-Lib/wiki/Demo-Application-in-Swift)
+
+## Location Services
+
+This feature finds the current loction and sets the values of longitude and latitude. alternativrly, you could disable location services by calling the function + (void)locationServicesDisabled:(BOOL)disabled with false value, and declare those values by yourself.
