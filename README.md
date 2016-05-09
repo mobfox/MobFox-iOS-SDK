@@ -387,4 +387,4 @@ Instructions:
 
 ## Location Services
 
-This feature finds the current loction and sets the parameters of longitude and latitude. Alternatively, location services can be disabled by calling the function ```+ (void)locationServicesDisabled:(BOOL)disabled``` with a ```true``` value, and those parameters can be accessed and are assignable.
+This feature finds the current loction and sets the parameters of longitude and latitude. Alternatively, location services can be disabled by calling the function ```+ (void)locationServicesDisabled:(BOOL)disabled``` with a ```true``` value (After ad declaration), and those parameters can be accessed and are assignable.
