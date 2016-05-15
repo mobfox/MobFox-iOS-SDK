@@ -1,6 +1,6 @@
 # MobFox-iOS-SDK-Core-Lib
 
-Supports **iOS 7.0+**
+Supports **iOS 8.0+**
 
 
 <!-- toc -->
@@ -18,6 +18,7 @@ Supports **iOS 7.0+**
   * [Adapters](#adapters)
   * [Plugins](#plugins)
   * [Demo App Swift](#demo-app-swift)
+  * [Location Services](#location-services)
 
 <!-- toc stop -->
 
@@ -383,3 +384,7 @@ Instructions:
 ## Demo App Swift
 
 [Demo App Swift](https://github.com/mobfox/MobFox-iOS-SDK-Core-Lib/wiki/Demo-Application-in-Swift)
+
+## Location Services
+
+This feature finds the current loction and sets the parameters of longitude and latitude. Alternatively, location services can be disabled by calling the function ```+ (void)locationServicesDisabled:(BOOL)disabled``` with a ```true``` value (After ad declaration), and those parameters can be accessed and are assignable.
