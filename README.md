@@ -1,6 +1,6 @@
 # MobFox-iOS-SDK-Core-Lib
 
-Supports **iOS 8.0+**
+Supports **iOS 7.0+**
 
 
 <!-- toc -->
