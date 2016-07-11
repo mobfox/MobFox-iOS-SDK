@@ -43,9 +43,8 @@ pod 'MobFoxSDKCoreLib', :git => 'https://github.com/mobfox/MobFox-iOS-SDK-Core-L
 
 1. Download and unzip [MobFox-SDK-Core-Lib](https://github.com/mobfox/MobFox-iOS-SDK-Core-Lib/releases/latest) or clone this repository and extract the ```MobFoxSDKCore.embeddedframework```.
 
-2. Drag ```MobFoxSDKCore.embeddedframework``` from the Finder into your project
+2. Drag ```MobFoxSDKCoreDynamic.embeddedframework``` from the Finder into your project
 
-3. If you prefer a Dynamic Framework use ```MobFoxSDKCoreDynamic.embeddedframework``` instead.
 
 ## iOS 9+ Specific
 One of the changes in iOS9 is a default setting that requires apps to make network connections only over SSL, this is known as App Transport Security. MobFox is facilitating the transition to support this change for each of our demand partners in order to ensure they are compliant. In the meantime, developers who want to release apps that support iOS9, will need to disable ATS in order to ensure MobFox continues to work as expected. To do so, developers should add the following to their plist:
