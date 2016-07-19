@@ -387,3 +387,7 @@ Instructions:
 ## Location Services
 
 This feature finds the current loction and sets the parameters longitude and latitude. Alternatively, location services can be disabled by calling the function ```+ (void)locationServicesDisabled:(BOOL)disabled``` with a ```true``` value (Before ad declaration) using one of ad class name.
+
+## Bitcode Enabled
+
+For using Bitcode declare the parameter ```Enable Bitcode``` to ```YES``` in project settings. and drag the directory 'MobFoxSDKCoreDynamicBitCode' to your project.
