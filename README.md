@@ -44,7 +44,7 @@ pod 'MobFoxSDKCoreLib', :git => 'https://github.com/mobfox/MobFox-iOS-SDK-Core-L
 
 1. Download and unzip [MobFox-SDK-Core-Lib](https://github.com/mobfox/MobFox-iOS-SDK-Core-Lib/releases/latest) or clone this repository.
 
-2. Drag ```MobFoxSDKCore.embeddedframework``` from the Finder into your project to support Bitcode, or ```MobFoxSDKCoreWithoutBitCode.embeddedframework``` to disable Bitcode. If you provide bitcode (in project settings), all apps and frameworks in the app bundle (all targets in the project) need to include bitcode.
+2. Drag ```MobFoxSDKCore.embeddedframework``` from the Finder into your project to support Bitcode (```Enable BitCode``` should be set to ```YES``` by default), or ```MobFoxSDKCoreWithoutBitCode.embeddedframework``` to disable Bitcode (```Enable BitCode``` needs to be set to ```NO```). If you provide bitcode (in project settings), all apps and frameworks in the app bundle (all targets in the project) need to include bitcode.
 
 
 ## iOS 9+ Specific
