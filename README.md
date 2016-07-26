@@ -391,6 +391,6 @@ This feature finds the current loction and sets the parameters longitude and lat
 
 ## Bitcode Enabled
 
-Including bitcode will allow Apple to re-optimize your app binary without the need to submit a new version of your app to the store. For using Bitcode declare the parameter ```Enable Bitcode``` to ```YES``` in project settings. and drag the directory 'MobFoxSDKCoreDynamicBitCode' to your project.
+Including bitcode will allow Apple to re-optimize your app binary without the need to submit a new version of your app to the store. For using Bitcode declare the parameter ```Enable Bitcode``` to ```YES``` in project settings. and drag the directory 'MobFoxSDKCore' to your project.
 
 
