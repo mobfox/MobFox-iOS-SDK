@@ -1,5 +1,5 @@
 //
-//  GADMAdNetworkAdapter.m
+//  GADMAdapterMobFox.m
 //  DemoApp
 //
 //  Created by Shimi Sheetrit on 6/22/16.
@@ -9,6 +9,18 @@
 #import "GADMAdapterMobFox.h"
 
 @implementation GADMAdapterMobFox
+
+#pragma mark GADMAdapterMobFox Delegate
+
++ (NSString *)adapterVersion {
+    
+    return @"1.0";
+}
+
++ (Class<GADAdNetworkExtras>)networkExtrasClass {
+    
+    return nil;
+}
 
 - (id)initWithGADMAdNetworkConnector:(id<GADMAdNetworkConnector>)c {
     if ((self = [super init])) {
@@ -37,9 +49,8 @@
         [self.connector adapter:self didFailAd:error];
         return;
     }
-    NSDictionary *dict = [self.connector credentials];
-    NSLog(@"dict: %@", dict);
-    NSString *invh = [[self.connector credentials] objectForKey:@"pubid"]; // @"ad_unit"
+
+    NSString *invh = [[self.connector credentials] objectForKey:@"pubid"];
     self.banner = [[MobFoxAd alloc] init:invh withFrame:CGRectMake(0, 0, adSize.size.width, adSize.size.height)];
     self.banner.delegate = self;
     [self.banner loadAd];
@@ -48,12 +59,9 @@
 
 - (void)getInterstitial {
     
-    NSLog(@"MobFox >> GADInterstitialAdapterMobFox >> Got Ad Request");
-    
-    NSDictionary *dict = [self.connector credentials];
-    NSLog(@"dict: %@", dict);
-    NSString *invh = [[self.connector credentials] objectForKey:@"pubid"]; // @"ad_unit"
-    
+    NSLog(@"MobFox >> GADMAdapterMobFox >> Got Ad Request");
+
+    NSString *invh = [[self.connector credentials] objectForKey:@"pubid"];
     self.interstitial = [[MobFoxInterstitialAd alloc] init:invh];
     self.interstitial.delegate = self;
     [self.interstitial loadAd];
@@ -62,18 +70,22 @@
 - (void)presentInterstitialFromRootViewController:
 (UIViewController *)rootViewController {
     
-    NSLog(@"MobFox >> GADInterstitialAdapterMobFox >> Got Display Request");
+    NSLog(@"MobFox >> GADMAdapterMobFox >> Got Display Request");
     
     if(self.interstitial.ready) {
         self.interstitial.rootViewController = rootViewController;
         [self.interstitial show];
     }
-    
 }
 
 - (void)stopBeingDelegate {
     
     NSLog(@"MobFox >> GADMAdapterMobFox >> stopBeingDelegate");
+}
+
+- (BOOL)isBannerAnimationOK:(GADMBannerAnimationType)animType {
+    
+    return YES;
 }
 
 
@@ -83,25 +95,20 @@
     NSLog(@"MobFox >> GADMAdapterMobFox >> Got Ad");
     
     [self.connector adapter:self didReceiveAdView:banner];
-    //self.banner = nil;
     
 }
 
 - (void)MobFoxAdDidFailToReceiveAdWithError:(NSError *)error{
     NSLog(@"MobFox >> GADMAdapterMobFox >> Error: %@",[error description]);
     
-    self.banner = nil;
-    [self.connector adapter:self
-                  didFailAd:[NSError errorWithDomain:@"Ad request failed"
-                                                code:error
-                                            userInfo:nil]];
+    [self.connector adapter:self didFailAd:error];
+    
 }
 
 - (void)MobFoxAdClicked {
     
     [self.connector adapterDidGetAdClick:self];
     [self.connector adapterWillLeaveApplication:self];
-
 }
 
 - (void)MobFoxAdClosed {
@@ -115,36 +122,33 @@
 
 - (void)MobFoxInterstitialAdDidLoad:(MobFoxInterstitialAd *)interstitial{
     
-    NSLog(@"MobFox >> GADInterstitialAdapterMobFox >> Ad Loaded");
+    NSLog(@"MobFox >> GADMAdapterMobFox >> Interstitial Ad Loaded");
     
     [self.connector adapterDidReceiveInterstitial:self];
 
 }
 
 - (void)MobFoxInterstitialAdDidFailToReceiveAdWithError:(NSError *)error{
-    NSLog(@"MobFox >> GADInterstitialAdapterMobFox >> Ad Load Error: %@",[error description]);
-    // deprecated!
-    /*
-    [self.connector adapter:self
-        didFailInterstitial:[NSError errorWithDomain:@"Ad request failed"
-                                                code:error
-                                            userInfo:nil]];*/
+    NSLog(@"MobFox >> GADMAdapterMobFox >> Interstitial Ad Load Error: %@",[error description]);
+    
+    [self.connector adapter:self didFailAd:error];
+
 }
 
 - (void)MobFoxInterstitialAdWillShow:(MobFoxInterstitialAd *)interstitial{
-    NSLog(@"MobFox >> GADInterstitialAdapterMobFox >> Ad will show");
+    NSLog(@"MobFox >> GADMAdapterMobFox >> Interstitial Ad will show");
     [self.connector adapterWillPresentInterstitial:self];
 }
 
 //called when ad is closed/skipped
 - (void)MobFoxInterstitialAdClosed{
-    NSLog(@"MobFox >> GADInterstitialAdapterMobFox >> Ad Closed");
+    NSLog(@"MobFox >> GADMAdapterMobFox >> Interstitial Ad Closed");
     [self.connector adapterDidDismissInterstitial:self];
 }
 
 //called when ad is clicked
 - (void)MobFoxInterstitialAdClicked {
-    NSLog(@"MobFox >> GADInterstitialAdapterMobFox >> Ad Clicked");
+    NSLog(@"MobFox >> GADMAdapterMobFox >> Interstitial Ad Clicked");
     [self.connector adapterDidGetAdClick:self];
     [self.connector adapterWillLeaveApplication:self];
 }

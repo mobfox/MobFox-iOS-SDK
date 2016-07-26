@@ -1,5 +1,5 @@
 //
-//  GADMAdNetworkAdapter.h
+//  GADMAdapterMobFox.h
 //  DemoApp
 //
 //  Created by Shimi Sheetrit on 6/22/16.
