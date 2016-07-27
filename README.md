@@ -44,7 +44,7 @@ pod 'MobFoxSDKCoreLib', :git => 'https://github.com/mobfox/MobFox-iOS-SDK-Core-L
 
 1. Download and unzip [MobFox-SDK-Core-Lib](https://github.com/mobfox/MobFox-iOS-SDK-Core-Lib/releases/latest) or clone this repository.
 
-2. Drag ```MobFoxSDKCore.embeddedframework``` from the Finder into your project to use static library, or ```MobFoxSDKCoreDynamicBitCode.embeddedframework``` to support Bitcode (```Enable Bitcode``` needs to be set to ```YES```) and ```MobFoxSDKCoreDynamicWithoutBitCode.embeddedframework```. If you provide bitcode (in project settings), all apps and frameworks in the app bundle (all targets in the project) need to include bitcode.
+2. Drag ```MobFoxSDKCore.embeddedframework``` from the Finder into your project to use static library, or ```MobFoxSDKCoreDynamicBitCode.embeddedframework``` to support Bitcode (```Enable Bitcode``` needs to be set to ```YES```) and ```MobFoxSDKCoreDynamicWithoutBitCode.embeddedframework``` for not supporting Bitcode. If you provide bitcode (in project settings), all apps and frameworks in the app bundle (all targets in the project) need to include bitcode.
 
 
 ## iOS 9+ Specific
@@ -391,6 +391,6 @@ This feature finds the current loction and sets the parameters longitude and lat
 
 ## Bitcode Enabled
 
-Including bitcode will allow Apple to re-optimize your app binary without the need to submit a new version of your app to the store. For using Bitcode declare the parameter ```Enable Bitcode``` to ```YES``` in project settings. and drag the directory 'MobFoxSDKCore' to your project.
+Including bitcode will allow Apple to re-optimize your app binary without the need to submit a new version of your app to the store. For using Bitcode declare the parameter ```Enable Bitcode``` to ```YES``` in project settings.
 
 
