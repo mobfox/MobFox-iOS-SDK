@@ -44,7 +44,8 @@ pod 'MobFoxSDKCoreLib', :git => 'https://github.com/mobfox/MobFox-iOS-SDK-Core-L
 
 1. Download and unzip [MobFox-SDK-Core-Lib](https://github.com/mobfox/MobFox-iOS-SDK-Core-Lib/releases/latest) or clone this repository.
 
-2. Drag ```MobFoxSDKCore.embeddedframework``` from the Finder into your project, or ```MobFoxSDKCoreBitCode.embeddedframework```to enabling Bitcode. both of then are static libraries.
+2. For integrating static lib: Drag ```MobFoxSDKCore.embeddedframework``` from the Finder into your project, or ```MobFoxSDKCoreBitCode.embeddedframework```to enabling Bitcode.
+For dynamic lib: Drag ```MobFoxSDKCoreDynamic.embeddedframework``` from the Finder into your project, or ```MobFoxSDKCoreDynamicBitCode.embeddedframework```to enabling Bitcode.
 
 
 
