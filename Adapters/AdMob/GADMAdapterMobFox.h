@@ -1,23 +1,19 @@
 //
-//  GADMobFoxCustomEvent.h
-//  BannerExample
+//  GADMAdapterMobFox.h
+//  DemoApp
 //
-//  Created by Itamar Nabriski on 11/3/15.
-//  Copyright © 2015 Google. All rights reserved.
+//  Created by Shimi Sheetrit on 6/22/16.
+//  Copyright © 2016 Matomy Media Group Ltd. All rights reserved.
 //
-
-#ifndef GADMobFoxCustomEvent_h
-#define GADMobFoxCustomEvent_h
 
 #import <MobFoxSDKCore/MobFoxSDKCore.h>
 #import <GoogleMobileAds/GoogleMobileAds.h>
+#import "GADMAdNetworkAdapterProtocol.h"
 
-@interface GADMAdapterMobFox : NSObject<GADCustomEventBanner,MobFoxAdDelegate>
+@interface GADMAdapterMobFox : NSObject <GADMAdNetworkAdapter, MobFoxAdDelegate, MobFoxInterstitialAdDelegate>
 
-    @property(nonatomic,weak)id<GADCustomEventBannerDelegate> delegate;
-    @property(nonatomic,strong) MobFoxAd* banner;
+@property (nonatomic, strong) MobFoxAd* banner;
+@property (nonatomic, strong) MobFoxInterstitialAd* interstitial;
+@property (nonatomic, weak) id <GADMAdNetworkConnector> connector;
 
-    - (void)requestBannerAd:(GADAdSize)adSize parameter:(NSString *)serverParameter label:(NSString *)serverLabel request:(GADCustomEventRequest *)request;
 @end
-
-#endif /* GADMobFoxCustomEvent_h */
