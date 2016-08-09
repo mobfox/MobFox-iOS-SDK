@@ -16,7 +16,9 @@ Supports **iOS 7.0+**
   * [Native Ad](#native-ad)
   * [Custom Events](#custom-events)
   * [Adapters](#adapters)
+  * [Plugins](#plugins)
   * [Demo App Swift](#demo-app-swift)
+  * [Location Services](#location-services)
 
 <!-- toc stop -->
 
@@ -29,6 +31,7 @@ You will need a [MobFox](http://www.mobfox.com/) account.
 # Installation
 
 Make sure ```AdSupport.framework``` is included in your project's frameworks. 
+Set ```Embedded Content Contains Swift Code``` to Yes.
 
 ## CocoaPods
 
@@ -39,14 +42,13 @@ pod 'MobFoxSDKCoreLib', :git => 'https://github.com/mobfox/MobFox-iOS-SDK-Core-L
 ```
 ## Manual Installation
 
-1. Download and unzip [MobFox-SDK-Core-Lib](https://github.com/mobfox/MobFox-iOS-SDK-Core-Lib/releases/latest) or clone this repository and extract the ```MobFoxSDKCore.embeddedframework```.
+1. Download and unzip [MobFox-SDK-Core-Lib](https://github.com/mobfox/MobFox-iOS-SDK-Core-Lib/releases/latest) or clone this repository.
 
-2. Drag ```MobFoxSDKCore.embeddedframework``` from the Finder into your project
+2. For integrating static lib: Drag ```MobFoxSDKCore.embeddedframework``` from the Finder into your project, or ```MobFoxSDKCoreBitCode.embeddedframework```to enabling Bitcode.
+For dynamic lib: Drag ```MobFoxSDKCoreDynamic.embeddedframework``` from the Finder into your project, or ```MobFoxSDKCoreDynamicBitCode.embeddedframework```to enabling Bitcode.
 
-3. If you prefer a Dynamic Framework use ```MobFoxSDKCoreDynamic.embeddedframework``` instead.
 
-## Project Definitions
-Select project target and under Build Settings setup ```Other Linker Flags``` to -all_load.
+
 ## iOS 9+ Specific
 One of the changes in iOS9 is a default setting that requires apps to make network connections only over SSL, this is known as App Transport Security. MobFox is facilitating the transition to support this change for each of our demand partners in order to ensure they are compliant. In the meantime, developers who want to release apps that support iOS9, will need to disable ATS in order to ensure MobFox continues to work as expected. To do so, developers should add the following to their plist:
 ```xml
@@ -259,7 +261,7 @@ MobFoxNativeAd* nativeAd = [[MobFoxNativeAd alloc] init:@"your-publication-hash"
 @protocol MobFoxNativeAdDelegate <NSObject>
 
 //called when ad response is returned
-- (void)MobFoxNativeAdDidLoad:(MobFoxNativeData *)ad;
+- (void)MobFoxNativeAdDidLoad:(MobFoxNativeAd*)ad withAdData:(MobFoxNativeData *)adData;
 
 //called when ad response cannot be returned
 - (void)MobFoxNativeAdDidFailToReceiveAdWithError:(NSError *)error;
@@ -319,11 +321,38 @@ Please refer to [MobFox Native API](http://dev.mobfox.com/index.php?title=Ad_Req
 
 ```
 
-#### Register Interaction
+#### Register Interaction and Fire Tracking Pixel
 When the native ad loads you must register the ad for interaction:
 ```objective-c
 - (void)MobFoxNativeAdDidLoad:(MobFoxNativeAd*)ad withAdData:(MobFoxNativeData *)adData {
-   [ad registerViewWithInteraction:view withViewController:viewController]; 
+
+       // Register interaction
+       [ad registerViewWithInteraction:view withViewController:viewController]; 
+   
+       for (MobFoxNativeTracker *tracker in adData.trackersArray) {
+
+        if ([tracker.url absoluteString].length > 0)
+        {
+            
+            // Fire tracking pixel
+            UIWebView* wv = [[UIWebView alloc] initWithFrame:CGRectZero];
+            NSString* userAgent = [wv stringByEvaluatingJavaScriptFromString:@"navigator.userAgent"];
+            NSLog(@"userAgent: %@", userAgent);
+            NSURLSessionConfiguration* conf = [NSURLSessionConfiguration defaultSessionConfiguration];
+            conf.HTTPAdditionalHeaders = @{ @"User-Agent" : userAgent };
+            NSURLSession* session = [NSURLSession sessionWithConfiguration:conf];
+            NSURLSessionDataTask* task = [session dataTaskWithURL:tracker.url completionHandler:
+                                          ^(NSData *data,NSURLResponse *response, NSError *error){
+                                          
+                                              if(error) NSLog(@"err %@",[error description]);
+
+                                          }];
+            [task resume];
+            
+        }
+        
+    }
+
 }
 ```
 
@@ -341,6 +370,29 @@ Adapters are the opposite of Custom Events, they let you use MobFox as a Custom 
 
 [Adapters](https://github.com/mobfox/MobFox-iOS-SDK-Core-Lib/wiki/Adapters)
 
+## Plugins
+
+## Unity Plugin
+
+This feature lets you develop with unity and use MobFox's SDK.
+
+Instructions:
+
+1. Create a new project in Unity. 
+1. Add the ```MobFoxSDKCore.embeddedframework``` directory and ```MobFoxUnityPlugin``` directory under Assets -> Plugins-> iOS. 
+1. Add the SDKDemo (sample code) directory to your project. 
+1. For running the project: connect your device, select 'File', then select 'Build Settings', choose the scene and the platform (iOS) and press 'Build And Run'.
+
 ## Demo App Swift
 
 [Demo App Swift](https://github.com/mobfox/MobFox-iOS-SDK-Core-Lib/wiki/Demo-Application-in-Swift)
+
+## Location Services
+
+This feature finds the current loction and sets the parameters longitude and latitude. Alternatively, location services can be disabled by calling the function ```+ (void)locationServicesDisabled:(BOOL)disabled``` with a ```true``` value (Before ad declaration) using one of ad class name.
+
+## Bitcode Enabled
+
+Including bitcode will allow Apple to re-optimize your app binary without the need to submit a new version of your app to the store. For using Bitcode declare the parameter ```Enable Bitcode``` to ```YES``` in project settings.
+
+

@@ -13,7 +13,9 @@
 
 - (void)requestAdWithCustomEventInfo:(NSDictionary *)info{
     NSLog(@"dict %@",[info description]);
-    self.ad = [[MobFoxNativeAd alloc] init:[info valueForKey:@"invh"]];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        self.ad = [[MobFoxNativeAd alloc] init:[info valueForKey:@"invh"]];
+    });
     self.ad.delegate = self;
     [self.ad loadAd];
 }

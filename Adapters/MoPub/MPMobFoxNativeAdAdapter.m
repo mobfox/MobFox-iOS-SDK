@@ -11,16 +11,13 @@
     
     NSLog(@"ad.callToActionText %@", ad.callToActionText);
     
-    [properties setObject:ad.assetHeadline forKey:@"title"];
-    [properties setObject:ad.assetDescription forKey:@"text"];
-    [properties setObject:ad.callToActionText forKey:@"ctatext"];
-    [properties setObject:ad.rating forKey:@"starrating"];
-    
-    
-    [properties setObject:ad.icon.url.absoluteString forKey:@"iconimage"];
-    [properties setObject:ad.main.url.absoluteString forKey:@"mainimage"];
-    
-    [properties setObject:ad.clickURL.absoluteString forKey:@"clk"];
+    if (ad.assetHeadline) [properties setObject:ad.assetHeadline forKey:@"title"];
+    if (ad.assetDescription) [properties setObject:ad.assetDescription forKey:@"text"];
+    if (ad.callToActionText) [properties setObject:ad.callToActionText forKey:@"ctatext"];
+    if (ad.rating) [properties setObject:ad.rating forKey:@"starrating"];
+    if (ad.icon.url.absoluteString) [properties setObject:ad.icon.url.absoluteString forKey:@"iconimage"];
+    if (ad.main.url.absoluteString) [properties setObject:ad.main.url.absoluteString forKey:@"mainimage"];
+    if (ad.clickURL.absoluteString) [properties setObject:ad.clickURL.absoluteString forKey:@"clk"];
     
     NSMutableArray *impressionURLs = [NSMutableArray array];
     
