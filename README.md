@@ -382,13 +382,10 @@ Instructions:
 1. In your **Unity** project, create a folder ```Assets/Plugin/iOS```.
  Copy the following files from  ```MobFox-iOS-SDK-Core-Lib/Plugins/Unity/``` into that directory:
 
-  ```MobFoxSDKCore.bundle```
-  
-  ```MobFoxSDKCore.framework```
-  
-  ```MobFoxUnityPlugin.h```
-  
-  ```MobFoxUnityPlugin.mm```
+ * ```MobFoxSDKCore.bundle```
+ * ```MobFoxSDKCore.framework```
+ * ```MobFoxUnityPlugin.h```
+ * ```MobFoxUnityPlugin.mm```
   
 
 1. In your **Unity** project, create a folder ```Assets/Scripts```.
