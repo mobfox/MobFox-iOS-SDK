@@ -396,7 +396,8 @@ Copy the following file from **Scripts** directory into that directory:
 3. In your **Unity** project, create a game object called ```MobFoxObject```. Attach the **MobFox** script to it.
 
   ![Image of Unityproject](https://github.com/mobfox/MobFox-Android-SDK-Core-Lib/blob/master/Unity%20project.png)
-
+ 
+ 
 4. Fill the **‘Mob Fox Banner Inventory Hash’** field with your MobFox hash id for banners.
 5. Fill the **‘Mob Fox Interstitial Inventory Hash’** field with your MobFox hash id for interstitials.
 6. Fill the **‘Mob Fox Game Object Name’** field with the name of the game object if you use one other than ‘MobFoxObject’.
