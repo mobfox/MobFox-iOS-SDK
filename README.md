@@ -378,7 +378,6 @@ This feature lets you develop with unity and use MobFox's SDK.
 
 Instructions:
 
-
 1. In your **Unity** project, create a folder ```Assets/Plugin/iOS```.
  Copy the following files from  ```MobFox-iOS-SDK-Core-Lib/Plugins/Unity/``` into that directory:
 
@@ -387,7 +386,6 @@ Instructions:
  * ```MobFoxUnityPlugin.h```
  * ```MobFoxUnityPlugin.mm```
   
-
 1. In your **Unity** project, create a folder ```Assets/Scripts```.
 Copy the following file from **Scripts** directory into that directory:
 
@@ -395,11 +393,11 @@ Copy the following file from **Scripts** directory into that directory:
  
 ![Image of MobFox.cs](https://github.com/mobfox/MobFox-Android-SDK-Core-Lib/blob/master/MobFox.cs.png)
 
-1. In your **Unity** project, create a game object called ```MobFoxObject```. Attach the **MobFox** script to it.
+3. In your **Unity** project, create a game object called ```MobFoxObject```. Attach the **MobFox** script to it.
 
 ![Image of Unityproject](https://github.com/mobfox/MobFox-Android-SDK-Core-Lib/blob/master/Unity%20project.png)
 
-1. Fill the **‘Mob Fox Banner Inventory Hash’** field with your MobFox hash id for banners.
+4. Fill the **‘Mob Fox Banner Inventory Hash’** field with your MobFox hash id for banners.
 1. Fill the **‘Mob Fox Interstitial Inventory Hash’** field with your MobFox hash id for interstitials.
 1. Fill the **‘Mob Fox Game Object Name’** field with the name of the game object if you use one other than ‘MobFoxObject’.
 1. Now you can use ```MobFox.ShowMobFoxBanner``` to display a banner ad, and/or
