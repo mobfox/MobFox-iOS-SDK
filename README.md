@@ -386,7 +386,7 @@ Instructions:
  * ```MobFoxUnityPlugin.h```
  * ```MobFoxUnityPlugin.mm```
   
-1. In your **Unity** project, create a folder ```Assets/Scripts```.
+2. In your **Unity** project, create a folder ```Assets/Scripts```.
 Copy the following file from **Scripts** directory into that directory:
 
  **MobFox.cs**
