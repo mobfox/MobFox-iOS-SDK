@@ -385,22 +385,22 @@ Instructions:
  * ```MobFoxSDKCore.framework```
  * ```MobFoxUnityPlugin.h```
  * ```MobFoxUnityPlugin.mm```
-  
+ 
 2. In your **Unity** project, create a folder ```Assets/Scripts```.
 Copy the following file from **Scripts** directory into that directory:
 
  **MobFox.cs**
  
-![Image of MobFox.cs](https://github.com/mobfox/MobFox-Android-SDK-Core-Lib/blob/master/MobFox.cs.png)
+ ![Image of MobFox.cs](https://github.com/mobfox/MobFox-Android-SDK-Core-Lib/blob/master/MobFox.cs.png)
 
 3. In your **Unity** project, create a game object called ```MobFoxObject```. Attach the **MobFox** script to it.
 
-![Image of Unityproject](https://github.com/mobfox/MobFox-Android-SDK-Core-Lib/blob/master/Unity%20project.png)
+ ![Image of Unityproject](https://github.com/mobfox/MobFox-Android-SDK-Core-Lib/blob/master/Unity%20project.png)
 
 4. Fill the **‘Mob Fox Banner Inventory Hash’** field with your MobFox hash id for banners.
-1. Fill the **‘Mob Fox Interstitial Inventory Hash’** field with your MobFox hash id for interstitials.
-1. Fill the **‘Mob Fox Game Object Name’** field with the name of the game object if you use one other than ‘MobFoxObject’.
-1. Now you can use ```MobFox.ShowMobFoxBanner``` to display a banner ad, and/or
+5. Fill the **‘Mob Fox Interstitial Inventory Hash’** field with your MobFox hash id for interstitials.
+6. Fill the **‘Mob Fox Game Object Name’** field with the name of the game object if you use one other than ‘MobFoxObject’.
+7. Now you can use ```MobFox.ShowMobFoxBanner``` to display a banner ad, and/or
     ```MobFox.ShowMobFoxInterstitial``` to display an interstitial ad.
 
 Inside the MobFox script you can find the callback functions you can use to handle events related to the banner ads (bannerReady, bannerError, bannerClosed, bannerClicked, bannerFinished) or interstitial ads (interstitialReady, interstitialError, interstitialClosed, interstitialClicked, interstitialFinished).
