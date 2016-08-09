@@ -11,7 +11,11 @@
 
 @interface MobFoxUnityPlugin : NSObject<MobFoxAdDelegate,MobFoxInterstitialAdDelegate>
 
--(int) createBanner:(NSString*)invh  withDimensions:(CGRect) placement;
+-(int) createBanner:(NSString*)invh 
+			originX:(CGFloat)originX 
+			originY:(CGFloat)originY
+          sizeWidth:(CGFloat)sizeWidth
+         sizeHeight:(CGFloat)sizeHeight;
 
 -(void) showBanner:(int) bannerId;
 -(void) hideBanner:(int) bannerId;
