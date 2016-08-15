@@ -378,10 +378,39 @@ This feature lets you develop with unity and use MobFox's SDK.
 
 Instructions:
 
-1. Create a new project in Unity. 
-1. Add the ```MobFoxSDKCore.embeddedframework``` directory and ```MobFoxUnityPlugin``` directory under Assets -> Plugins-> iOS. 
-1. Add the SDKDemo (sample code) directory to your project. 
-1. For running the project: connect your device, select 'File', then select 'Build Settings', choose the scene and the platform (iOS) and press 'Build And Run'.
+1. In your **Unity** project, create a folder ```Assets/Plugin/iOS```.
+ Copy the following files from  ```MobFox-iOS-SDK-Core-Lib/Plugins/Unity/``` into that directory:
+
+ * ```MobFoxSDKCore.bundle```
+ * ```MobFoxSDKCore.framework```
+ * ```MobFoxUnityPlugin.h```
+ * ```MobFoxUnityPlugin.mm```
+ 
+2. In your **Unity** project, create a folder ```Assets/Scripts```.
+Copy the following file from **Scripts** directory into that directory:
+
+ **MobFox.cs**
+ 
+ ![Image of MobFox.cs](https://github.com/mobfox/MobFox-Android-SDK-Core-Lib/blob/master/MobFox.cs.png)
+
+3. In your **Unity** project, create a game object called ```MobFoxObject```. Attach the **MobFox** script to it.
+
+ ![Image of Unityproject](https://github.com/mobfox/MobFox-Android-SDK-Core-Lib/blob/master/Unity%20project.png)
+ 
+ 
+ 
+4. Fill the **‘Mob Fox Banner Inventory Hash’** field with your MobFox hash id for banners.
+
+5. Fill the **‘Mob Fox Interstitial Inventory Hash’** field with your MobFox hash id for interstitials.
+
+6. Fill the **‘Mob Fox Game Object Name’** field with the name of the game object if you use one other than ‘MobFoxObject’.
+
+7. Now you can use ```MobFox.ShowMobFoxBanner``` to display a banner ad, and/or ```MobFox.ShowMobFoxInterstitial``` to display an interstitial ad.
+
+Inside the MobFox script you can find the callback functions you can use to handle events related to the banner ads (bannerReady, bannerError, bannerClosed, bannerClicked, bannerFinished) or interstitial ads (interstitialReady, interstitialError, interstitialClosed, interstitialClicked, interstitialFinished).
+
+You can also change the location and dimensions of banner ads by altering the parameters passed in ```ShowMobFoxBanner_iPhone``` 
+(0, 0, 320, 50) are the default.
 
 ## Demo App Swift
 
