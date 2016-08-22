@@ -32,6 +32,7 @@
     [self.view addSubview: self.gadBannerView];
     GADRequest *request = [[GADRequest alloc] init];
     [self.gadBannerView loadRequest:request];
+    
 }
 
 - (void)didReceiveMemoryWarning {
