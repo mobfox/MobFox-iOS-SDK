@@ -12,11 +12,12 @@
 #import <MobFoxSDKCore/MobFoxSDKCore.h>
 #import <GoogleMobileAds/GoogleMobileAds.h>
 
-@interface MobFoxInterstitialCustomEventAdMob : MobFoxInterstitialCustomEvent<GADInterstitialDelegate>
+@interface MobFoxInterstitialCustomEventAdMob : MobFoxInterstitialCustomEvent <GADInterstitialDelegate>
+
+-(void)requestInterstitialWithNetworkId:(NSString*)networkId customEventInfo:(NSDictionary *)info;
+-(void)presentWithRootController:(UIViewController *)rootViewController;
 
 @property(nonatomic, strong) GADInterstitial *interstitial;
-
-- (void)requestInterstitialWithRootController:(UIViewController *)rootViewController networkId:(NSString*)networkId customEventInfo:(NSDictionary *)info;
 
 @end
 

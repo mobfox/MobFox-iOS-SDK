@@ -8,30 +8,69 @@
 
 #import "MobFoxInterstitialCustomEventAdMob.h"
 
+#define TEST_DEVICES @""
+
 @interface MobFoxInterstitialCustomEventAdMob()
-    @property(nonatomic,weak) UIViewController* root;
 @end
 
 @implementation MobFoxInterstitialCustomEventAdMob
 
-- (void)requestInterstitialWithRootController:(UIViewController *)rootViewController networkId:(NSString*)networkId customEventInfo:(NSDictionary *)info{
     
-    self.root = rootViewController;
+-(void)requestInterstitialWithNetworkId:(NSString*)networkId customEventInfo:(NSDictionary *)info {
+
+    NSLog(@"dbg: ### AdMob: >>> INTERSTITIAL: loadAd <<<");
+    
     self.interstitial = [[GADInterstitial alloc] initWithAdUnitID:networkId];
     self.interstitial.delegate = self;
     GADRequest* request = [GADRequest request];
-    //request.testDevices = @[ kGADSimulatorID ];
+    //request.testDevices = @[TEST_DEVICES];
+    
+    
+    if([info valueForKey:@"accuracy"] && [info valueForKey:@"latitude"] && [info valueForKey:@"longitude"]) {
+        
+        CGFloat accuracy = [[info objectForKey:@"accuracy"] floatValue];
+        CGFloat latitude = [[info objectForKey:@"latitude"] floatValue];
+        CGFloat longitude = [[info objectForKey:@"longitude"] floatValue];
+        
+        [request setLocationWithLatitude:latitude longitude:longitude accuracy:accuracy];
+
+    }
+    
+    NSString *gender = [info valueForKey:@"demo_gender"];
+    
+    if([gender isEqualToString:@"m"]) {
+        
+        request.gender = kGADGenderMale;
+        
+    } else if([gender isEqualToString:@"f"]) {
+        
+        request.gender = kGADGenderFemale;
+        
+    } else {
+        
+        request.gender = kGADGenderUnknown;
+    }
     
     [self.interstitial loadRequest:request];
 }
+
+-(void)presentWithRootController:(UIViewController *)rootViewController {
+    
+    NSLog(@"dbg: ### AdMob: >>> INTERSTITIAL: presentAd <<<");
+    
+    [self.interstitial presentFromRootViewController:rootViewController];
+}
+
 
 // Sent when an interstitial ad request succeeded.  Show it at the next
 // transition point in your application such as when transitioning between view
 // controllers.
 - (void)interstitialDidReceiveAd:(GADInterstitial *)ad{
     
-    if ([self.interstitial isReady]) {
-        [self.interstitial presentFromRootViewController:self.root];
+    NSLog(@"dbg: ### AdMob: >>> INTERSTITIAL: didReceiveAd <<<");
+    
+    if ([ad isReady]) {
+        [self.delegate MFInterstitialCustomEventAdDidLoad:self];
     }
 }
 
@@ -39,6 +78,9 @@
 // show.  This is common since interstitials are shown sparingly to users.
 - (void)interstitial:(GADInterstitial *)ad
 didFailToReceiveAdWithError:(GADRequestError *)error{
+    
+    NSLog(@"dbg: ### AdMob: >>> INTERSTITIAL: receiveAdWithError <<<");
+
     [self.delegate MFInterstitialCustomEventAdDidFailToReceiveAdWithError:error];
 }
 
@@ -50,7 +92,7 @@ didFailToReceiveAdWithError:(GADRequestError *)error{
 // while the interstitial is on screen (e.g. to visit the App Store from a link
 // on the interstitial).
 - (void)interstitialWillPresentScreen:(GADInterstitial *)ad{
-    [self.delegate MFInterstitialCustomEventAdDidLoad:self];
+   // [self.delegate MFInterstitialCustomEventAdDidLoad:self];
 }
 
 // Sent before the interstitial is to be animated off the screen.
@@ -72,6 +114,7 @@ didFailToReceiveAdWithError:(GADRequestError *)error{
 }
 
 -(void)dealloc{
+    self.interstitial.delegate = nil;
     self.interstitial = nil;
 }
 @end

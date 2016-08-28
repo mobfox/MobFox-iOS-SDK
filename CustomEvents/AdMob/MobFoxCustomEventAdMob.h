@@ -13,7 +13,7 @@
 #import <GoogleMobileAds/GoogleMobileAds.h>
 
 
-@interface MobFoxCustomEventAdMob : MobFoxCustomEvent<GADBannerViewDelegate>
+@interface MobFoxCustomEventAdMob : MobFoxCustomEvent <GADBannerViewDelegate>
 
 @property(nonatomic, strong) GADBannerView* bannerView;
 
