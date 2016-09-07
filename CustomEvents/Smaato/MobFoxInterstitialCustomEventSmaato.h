@@ -12,13 +12,15 @@
 #import <MobFoxSDKCore/MobFoxSDKCore.h>
 #import <iSoma/iSoma.h>
 
-@interface MobFoxInterstitialCustomEventSmaato : MobFoxInterstitialCustomEvent<SOMAAdViewDelegate>
+@interface MobFoxInterstitialCustomEventSmaato : MobFoxInterstitialCustomEvent <SOMAAdViewDelegate>
 
-@property(nonatomic, strong) SOMAInterstitialAdView *interstitial;
+@property (readwrite) BOOL mInFullScreen;
+@property (nonatomic, strong) SOMAInterstitialAdView *interstitial;
+@property (strong, nonatomic) UIViewController *parentViewController;
 
-@property(readwrite) BOOL mInFullScreen;
 
 -(void)requestInterstitialWithNetworkId:(NSString*)networkId customEventInfo:(NSDictionary *)info;
+-(void)presentWithRootController:(UIViewController *)rootViewController;
 
 @end
 

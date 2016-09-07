@@ -1,26 +1,24 @@
 //
-//  MobFoxCustomEventSmaato.h
+//  MobFoxCustomEventMillennial.h
 //  MobFoxCoreDemo
 //
 //  Created by Shimon Shnitzer on 17/5/16.
 //  Copyright © 2015 Shimon Shnitzer. All rights reserved.
 //
 
-#ifndef MobFoxCustomEventSmaato_h
-#define MobFoxCustomEventSmaato_h
+#ifndef MobFoxCustomEventMillennial_h
+#define MobFoxCustomEventMillennial_h
 
 #import <MobFoxSDKCore/MobFoxSDKCore.h>
-#import <iSoma/iSoma.h>
+#import <MMAdSDK/MMAdSDK.h>
 
-@interface MobFoxCustomEventSmaato : MobFoxCustomEvent<SOMAAdViewDelegate>
+@interface MobFoxCustomEventMillennial : MobFoxCustomEvent <MMInlineDelegate>
 
+@property (strong, nonatomic) MMInlineAd *mInlineAd;
 @property (strong, nonatomic) UIViewController *parentViewController;
-@property(nonatomic, strong) SOMAAdView* bannerView;
-
-@property(readwrite) BOOL mInFullScreen;
 
 - (void)requestAdWithSize:(CGSize)size networkID:(NSString*)nid customEventInfo:(NSDictionary *)info;
 
 @end
 
-#endif /* MobFoxCustomEventSmaato_h */
+#endif /* MobFoxCustomEventMillennial_h */
