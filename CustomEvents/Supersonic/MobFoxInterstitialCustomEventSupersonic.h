@@ -12,6 +12,7 @@
 
 @interface MobFoxInterstitialCustomEventSupersonic : MobFoxInterstitialCustomEvent <SupersonicISDelegate>
 
--(void)requestInterstitialWithNetworkId:(NSString*)networkId customEventInfo:(NSDictionary *)info;
+-(void)requestInterstitialWithNetworkId:(NSString*)networkId customEventInfo:(NSMutableDictionary *)info;
+-(void)presentWithRootController:(UIViewController *)rootViewController;
 
 @end

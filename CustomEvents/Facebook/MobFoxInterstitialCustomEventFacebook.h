@@ -11,6 +11,7 @@
 
 @interface MobFoxInterstitialCustomEventFacebook : MobFoxInterstitialCustomEvent <FBInterstitialAdDelegate>
 
-
+-(void)requestInterstitialWithNetworkId:(NSString*)networkId customEventInfo:(NSDictionary *)info;
+-(void)presentWithRootController:(UIViewController *)rootViewController;
 
 @end
