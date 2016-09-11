@@ -26,26 +26,24 @@ static bool mChartboostInitialized = false;
 
 - (void)didInitialize:(BOOL)status
 {
-    NSLog(@"Chartboost: ChartBoostInitialize %@",status?@"TRUE":@"FALSE");
+    NSLog(@"dbg: ### Chartboost: ChartBoostInitialize %@",status?@"TRUE":@"FALSE");
     
     if (status)
     {
         mChartboostInitialized = true;
-        [Chartboost showInterstitial:CBLocationHomeScreen];
+        [self.delegate MFInterstitialCustomEventAdDidLoad:self];
     }
 }
 
 - (void)didDisplayInterstitial:(CBLocation)location
 {
-    NSLog(@"Chartboost: didDisplayInterstitial ###");
-    
-    [self.delegate MFInterstitialCustomEventAdDidLoad:self];
+    NSLog(@"dbg: ### Chartboost: didDisplayInterstitial ###");
 }
 
 - (void)didFailToLoadInterstitial:(CBLocation)location
                         withError:(CBLoadError)numError
 {
-    NSLog(@"Chartboost: didFailToLoadInterstitial error: %lu",(unsigned long)numError);
+    NSLog(@"dbg: ### Chartboost: didFailToLoadInterstitial error: %lu",(unsigned long)numError);
     
     NSString *domain = @"Unknown";
     
@@ -99,7 +97,7 @@ static bool mChartboostInitialized = false;
 
 - (void)didDismissInterstitial:(CBLocation)location
 {
-    NSLog(@"Chartboost: didDismissInterstitial ###");
+    NSLog(@"dbg: ### Chartboost: didDismissInterstitial ###");
     
     [self.delegate MFInterstitialCustomEventMobFoxAdFinished];
     
@@ -108,7 +106,7 @@ static bool mChartboostInitialized = false;
 
 - (void)didCloseInterstitial:(CBLocation)location
 {
-    NSLog(@"Chartboost: didCloseInterstitial ###");
+    NSLog(@"dbg: ### Chartboost: didCloseInterstitial ###");
     
     [self.delegate MFInterstitialCustomEventAdClosed];
     
@@ -117,7 +115,7 @@ static bool mChartboostInitialized = false;
 
 - (void)didClickInterstitial:(CBLocation)location
 {
-    NSLog(@"Chartboost: didClickInterstitial ###");
+    NSLog(@"dbg: ### Chartboost: didClickInterstitial ###");
     
     [self.delegate MFInterstitialCustomEventMobFoxAdClicked];
 }
@@ -126,12 +124,11 @@ static bool mChartboostInitialized = false;
 
 -(void)requestInterstitialWithNetworkId:(NSString*)networkId customEventInfo:(NSDictionary *)info
 {
-    NSLog(@"Chartboost: loadAd ###");
-    NSLog(@"Chartboost: params: %@",info);
-    NSLog(@"Chartboost: networkID: %@",networkId);
+    NSLog(@"dbg: ### Chartboost: loadAd ###");
+    NSLog(@"dbg: ### Chartboost: networkID: %@",networkId);
     
-    NSString *appId  = @"574446edf6cd454f24f9d93b";
-    NSString *appSig = @"62886b3169cb89ef136c5901e98b3f8227de3aba";
+    NSString *appId;
+    NSString *appSig;
     
     if ((networkId!=nil) && ([networkId length]>0))
     {
@@ -143,18 +140,27 @@ static bool mChartboostInitialized = false;
             appSig = [parts objectAtIndex:1];
         }
     }
-    NSLog(@"Chartboost: AppId=%@, sig=%@",appId,appSig);
+    NSLog(@"dbg: ### Chartboost: AppId=%@, sig=%@", appId, appSig);
     
-
-    if (mChartboostInitialized)
+    if (!mChartboostInitialized)
     {
-        [Chartboost showInterstitial:CBLocationHomeScreen];
-    } else {
         // Initialize the Chartboost library
         [Chartboost startWithAppId:appId
-                      appSignature:appSig
-                          delegate:self];
+                  appSignature:appSig
+                      delegate:self];
+    } else {
+        
+        [self.delegate MFInterstitialCustomEventAdDidLoad:self];
+
     }
+ 
+}
+
+-(void)presentWithRootController:(UIViewController *)rootViewController {
+    
+    [Chartboost showInterstitial:CBLocationHomeScreen];
+
+    
 }
 
 @end

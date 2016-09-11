@@ -33,7 +33,7 @@
 
 - (void)interstitialAdDidLoad:(FBInterstitialAd *)interstitialAd
 {
-    NSLog(@"Ad is loaded and ready to be displayed");
+    NSLog(@"FB Ad is loaded and ready to be displayed");
     // You can now display the full screen ad using this code:
     
     [self.delegate MFInterstitialCustomEventAdDidLoad:self];
@@ -41,14 +41,14 @@
 
 - (void)interstitialAd:(FBInterstitialAd *)interstitialAd didFailWithError:(NSError *)error
 {
-    NSLog(@"Ad failed to load");
+    NSLog(@"FB Ad failed to load");
     
     [self.delegate MFInterstitialCustomEventAdDidFailToReceiveAdWithError:error];
 }
 
 - (void)interstitialAdDidClick:(FBInterstitialAd *)interstitialAd
 {
-    NSLog(@"The user clicked on the ad and will be taken to its destination");
+    NSLog(@"FB The user clicked on the ad and will be taken to its destination");
     // Use this function as indication for a user's click on the ad.
     
     [self.delegate MFInterstitialCustomEventMobFoxAdClicked];
@@ -56,14 +56,14 @@
 
 - (void)interstitialAdWillClose:(FBInterstitialAd *)interstitialAd
 {
-    NSLog(@"The user clicked on the close button, the ad is just about to close");
+    NSLog(@"FB The user clicked on the close button, the ad is just about to close");
     // Consider to add code here to resume your app's flow
     
 }
 
 - (void)interstitialAdDidClose:(FBInterstitialAd *)interstitialAd
 {
-    NSLog(@"Interstitial had been closed");
+    NSLog(@"FB Interstitial had been closed");
     // Consider to add code here to resume your app's flow
     
     [self.delegate MFInterstitialCustomEventAdClosed];

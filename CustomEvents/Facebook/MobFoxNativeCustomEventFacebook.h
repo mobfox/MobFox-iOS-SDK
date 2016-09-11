@@ -12,5 +12,7 @@
 
 @interface MobFoxNativeCustomEventFacebook : MobFoxNativeCustomEvent <FBNativeAdDelegate>
 
+- (void)registerViewWithInteraction:(UIView *)view withViewController:(UIViewController *)viewController;
+- (void)requestAdWithNetworkID:(NSString*)nid customEventInfo:(NSDictionary *)info;
 
 @end

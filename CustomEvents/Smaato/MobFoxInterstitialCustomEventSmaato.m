@@ -9,27 +9,16 @@
 #import "MobFoxInterstitialCustomEventSmaato.h"
 
 @interface MobFoxInterstitialCustomEventSmaato()
-    @property(nonatomic,weak) UIViewController* root;
 @end
 
 @implementation MobFoxInterstitialCustomEventSmaato
 
 //============================================================================
 
-/*
- - (void)MFInterstitialCustomEventAdClosed;
- 
- - (void)MFInterstitialCustomEventMobFoxAdClicked;
- 
- - (void)MFInterstitialCustomEventMobFoxAdFinished;
-*/
-
 - (void)somaAdViewDidLoadAd:(SOMAAdView*)adview{
     
-    NSLog(@"Smaato: >>> INTERSTITIAL SMAATO: somaAdViewDidLoadAd <<<");
+    NSLog(@"dbg: ### Smaato: >>> INTERSTITIAL SMAATO: somaAdViewDidLoadAd <<<");
 
-    [self.interstitial show];
-    
     if (!self.mInFullScreen)
     {
         [self.delegate MFInterstitialCustomEventAdDidLoad:self];
@@ -38,14 +27,14 @@
 
 - (void)somaAdView:(SOMAAdView *)adview didFailToReceiveAdWithError:(NSError *)error
 {
-    NSLog(@"Smaato: >>> INTERSTITIAL SMAATO: didFailToReceiveAdWithError %@ <<<",error.description);
+    NSLog(@"dbg: ### Smaato: >>> INTERSTITIAL SMAATO: didFailToReceiveAdWithError %@ <<<",error.description);
     
     [self.delegate MFInterstitialCustomEventAdDidFailToReceiveAdWithError:error];
 }
 
 - (void)somaAdViewWillEnterFullscreen:(SOMAAdView *)adview
 {
-    NSLog(@"Smaato: >>> INTERSTITIAL SMAATO: somaAdViewWillEnterFullscreen <<<");
+    NSLog(@"dbg: ### Smaato: >>> INTERSTITIAL SMAATO: somaAdViewWillEnterFullscreen <<<");
     
     self.mInFullScreen = TRUE;
 
@@ -54,7 +43,7 @@
 
 - (void)somaAdViewDidExitFullscreen:(SOMAAdView *)adview
 {
-    NSLog(@"Smaato: >>> INTERSTITIAL SMAATO: somaAdViewDidExitFullscreen <<<");
+    NSLog(@"dbg: ### Smaato: >>> INTERSTITIAL SMAATO: somaAdViewDidExitFullscreen <<<");
     
     self.mInFullScreen = FALSE;
 
@@ -63,17 +52,17 @@
 
 - (void)somaAdView:(SOMAAdView *)adview didReceivedMediationResponse:(NSArray*)networksWithStatus
 {
-    NSLog(@"Smaato: >>> INTERSTITIAL SMAATO: didReceivedMediationResponse %@ <<<",networksWithStatus);
+    NSLog(@"dbg: ### Smaato: >>> INTERSTITIAL SMAATO: didReceivedMediationResponse %@ <<<",networksWithStatus);
 }
 
 - (void)somaAdView:(SOMAAdView *)adview csm:(SOMAMediatedNetworkConfiguration*)network status:(NSString*)status
 {
-    NSLog(@"Smaato: >>> INTERSTITIAL SMAATO: csm %@ <<<",status);
+    NSLog(@"dbg: ### Smaato: >>> INTERSTITIAL SMAATO: csm %@ <<<",status);
 }
 
 - (void)somaAdViewWillHide:(SOMAAdView *)adview
 {
-    NSLog(@"Smaato: >>> INTERSTITIAL SMAATO: somaAdViewWillHide <<<");
+    NSLog(@"dbg: ### Smaato: >>> INTERSTITIAL SMAATO: somaAdViewWillHide <<<");
     
     [self.delegate MFInterstitialCustomEventAdClosed];
 }
@@ -88,9 +77,8 @@
 
 -(void)requestInterstitialWithNetworkId:(NSString*)networkId customEventInfo:(NSDictionary *)info
 {
-    NSLog(@"Smaato: loadAd ###");
-    NSLog(@"Smaato: params: %@",info);
-    NSLog(@"Smaato: networkID: %@",networkId);
+    NSLog(@"dbg: ### Smaato: loadAd ###");
+    NSLog(@"dbg: ### Smaato: networkID: %@",networkId);
     
     long publisherId = 0;
     long adSpaceId   = 0;
@@ -105,28 +93,33 @@
             publisherId = [((NSString *)[parts objectAtIndex:1]) intValue];
         }
     }
-    NSLog(@"Smaato: pubId=%ld, adId=%ld",publisherId,adSpaceId);
+    NSLog(@"dbg: ### Smaato: pubId=%ld, adId=%ld",publisherId,adSpaceId);
     
-
-    UIViewController* rootVC = (UIViewController*)[[[[[UIApplication sharedApplication] keyWindow] subviews] objectAtIndex:0] nextResponder];
-
-    self.root = rootVC;
-    
+    self.parentViewController = [info objectForKey:@"viewcontroller_parent"];
+    CGFloat adSpaceWidth = [[info objectForKey:@"adspace_width"] floatValue];
+    CGFloat adSpaceHeight = [[info objectForKey:@"adspace_height"] floatValue];
+ 
     self.mInFullScreen = FALSE;
-    
-    self.interstitial  = [[SOMAInterstitialAdView alloc] initWithFrame:CGRectMake(0,0,320,480)];
+    self.interstitial  = [[SOMAInterstitialAdView alloc] initWithFrame:CGRectMake(0, 0, adSpaceWidth, adSpaceHeight)];
     
     self.interstitial.delegate = self;
-    
-    self.interstitial.rootViewController = rootVC;
-    
-    self.interstitial.adSettings.publisherId = 0; //publisherId;//1100021907;
-    self.interstitial.adSettings.adSpaceId   = 0; //adSpaceId;//130129911;
+    self.interstitial.rootViewController = self.parentViewController;
+    self.interstitial.adSettings.publisherId = publisherId;
+    self.interstitial.adSettings.adSpaceId   = adSpaceId;
     
     [self.interstitial load];
 }
 
+-(void)presentWithRootController:(UIViewController *)rootViewController {
+    
+    [self.interstitial show];
+
+}
+
+
 -(void)dealloc{
+    self.parentViewController = nil;
+    self.interstitial.delegate = nil;
     self.interstitial = nil;
 }
 @end
