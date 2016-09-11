@@ -8,9 +8,10 @@
 
 #import "MobFoxInterstitialCustomEventSupersonic.h"
 
+static BOOL mfInitISSucceded;
+
 @implementation MobFoxInterstitialCustomEventSupersonic
 
-static bool mSupersonicInitialized = false;
 
 //--------------------------------------
 
@@ -21,7 +22,7 @@ static bool mSupersonicInitialized = false;
  */
 - (void)supersonicISInitFailedWithError:(NSError *)error
 {
-    NSLog(@"Supersonic: supersonicISInitFailedWithError error: %@",error.description);
+    NSLog(@"dbg: ### Supersonic: supersonicISInitFailedWithError error: %@",error.description);
     
     [self.delegate MFInterstitialCustomEventAdDidFailToReceiveAdWithError:error];
 }
@@ -33,7 +34,7 @@ static bool mSupersonicInitialized = false;
  */
 - (void)supersonicISShowFailWithError:(NSError *)error
 {
-    NSLog(@"Supersonic: supersonicISShowFailWithError error: %@",error.description);
+    NSLog(@"dbg: ### Supersonic: supersonicISShowFailWithError error: %@",error.description);
     
     [self.delegate MFInterstitialCustomEventAdDidFailToReceiveAdWithError:error];
 }
@@ -43,9 +44,9 @@ static bool mSupersonicInitialized = false;
  */
 - (void)supersonicISFailed
 {
-    NSLog(@"Supersonic: supersonicISFailed ###");
+    NSLog(@"dbg: ### Supersonic: supersonicISFailed ###");
     
-    NSError *error = [[NSError alloc] initWithDomain:@"No ad received" code:6 userInfo:nil];
+    NSError *error = [[NSError alloc] initWithDomain:@"Ad is not available" code:0 userInfo:nil];
     
     [self.delegate MFInterstitialCustomEventAdDidFailToReceiveAdWithError:error];
 }
@@ -57,10 +58,8 @@ static bool mSupersonicInitialized = false;
  */
 - (void)supersonicISInitSuccess
 {
-    NSLog(@"Supersonic: supersonicISInitSuccess");
-    
-    mSupersonicInitialized = true;
-    
+    NSLog(@"dbg: ### Supersonic: supersonicISInitSuccess");
+    mfInitISSucceded = true;
     [[Supersonic sharedInstance] loadIS];
 }
 
@@ -69,11 +68,9 @@ static bool mSupersonicInitialized = false;
  */
 - (void)supersonicISReady
 {
-    NSLog(@"Supersonic: supersonicISReady ###");
+    NSLog(@"dbg: ### Supersonic: supersonicISReady ###");
     
-    UIViewController* rootVC = (UIViewController*)[[[[[UIApplication sharedApplication] keyWindow] subviews] objectAtIndex:0] nextResponder];
-    
-    [[Supersonic sharedInstance] showISWithViewController:rootVC];
+    [self.delegate MFInterstitialCustomEventAdDidLoad:self];
 }
 
 /*!
@@ -81,7 +78,7 @@ static bool mSupersonicInitialized = false;
  */
 - (void)supersonicISAdOpened
 {
-    NSLog(@"Supersonic: supersonicISAdOpened ###");
+    NSLog(@"dbg: ### Supersonic: supersonicISAdOpened ###");
 }
 
 /*!
@@ -89,7 +86,7 @@ static bool mSupersonicInitialized = false;
  */
 - (void)supersonicISAdClosed
 {
-    NSLog(@"Supersonic: supersonicISAdClosed ###");
+    NSLog(@"dbg: ### Supersonic: supersonicISAdClosed ###");
     
     [self.delegate MFInterstitialCustomEventAdClosed];
 }
@@ -99,9 +96,7 @@ static bool mSupersonicInitialized = false;
  */
 - (void)supersonicISShowSuccess
 {
-    NSLog(@"Supersonic: supersonicISShowSuccess ###");
-    
-    [self.delegate MFInterstitialCustomEventAdDidLoad:self];
+    NSLog(@"dbg: ### Supersonic: supersonicISShowSuccess ###");
 }
 
 /*!
@@ -109,35 +104,37 @@ static bool mSupersonicInitialized = false;
  */
 - (void)supersonicISAdClicked
 {
-    NSLog(@"Supersonic: supersonicISAdClicked ###");
+    NSLog(@"dbg: ### Supersonic: supersonicISAdClicked ###");
     
     [self.delegate MFInterstitialCustomEventMobFoxAdClicked];
 }
 
 //--------------------------------------
 
--(void)requestInterstitialWithNetworkId:(NSString*)networkId customEventInfo:(NSDictionary *)info
-{
-    NSLog(@"Supersonic: loadAd ###");
-    NSLog(@"Supersonic: params: %@",info);
-    NSLog(@"Supersonic: networkID: %@",networkId);
+-(void)presentWithRootController:(UIViewController *)rootViewController {
     
-    NSString *mAppKey = @"4ba4e24d";
-    NSString *mUserId = @"APPLICATION_USER_ID_HERE";
-    if ((networkId!=nil) && ([networkId length]>0))
-    {
-        mAppKey = networkId;
-    }
-    NSLog(@"Supersonic: AppKey=%@",mAppKey);
+    NSLog(@"dbg: ### Supersonic: >>> INTERSTITIAL: presentAd <<<");
+    
+    [[Supersonic sharedInstance] showISWithViewController:rootViewController];
+}
 
-    [[Supersonic sharedInstance] setISDelegate:self];
+-(void)requestInterstitialWithNetworkId:(NSString*)networkId customEventInfo:(NSMutableDictionary *)info
+{
     
-    if (mSupersonicInitialized)
-    {
-        [self supersonicISInitSuccess];
+    NSLog(@"dbg: ### Supersonic: >>> INTERSTITIAL: loadAd <<<");
+    //NSLog(@"dbg: ### Supersonic: params: %@",info);
+    NSLog(@"dbg: ### Supersonic: networkID: %@",networkId);
+    
+    
+    if (mfInitISSucceded) {
+        [[Supersonic sharedInstance] loadIS];
     } else {
-        [[Supersonic sharedInstance] initISWithAppKey:mAppKey withUserId:mUserId];
+        NSString *appKey = networkId; //@"4ba4e24d";
+        NSString *userId = [info objectForKey:@"o_iosadvid"];
+        [[Supersonic sharedInstance] setISDelegate:self];
+        [[Supersonic sharedInstance] initISWithAppKey:appKey withUserId:userId];
     }
+
 }
 
 @end

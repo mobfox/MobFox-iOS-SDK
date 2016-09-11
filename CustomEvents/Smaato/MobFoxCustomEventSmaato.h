@@ -14,6 +14,7 @@
 
 @interface MobFoxCustomEventSmaato : MobFoxCustomEvent<SOMAAdViewDelegate>
 
+@property (strong, nonatomic) UIViewController *parentViewController;
 @property(nonatomic, strong) SOMAAdView* bannerView;
 
 @property(readwrite) BOOL mInFullScreen;
