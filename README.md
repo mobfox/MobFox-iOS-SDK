@@ -68,6 +68,10 @@ For further questions about iOS9 and ATS, please create a ticket at https://acco
 
 # Usage
 
+```objective-c
+#import <MobFoxSDKCore/MobFoxSDKCore.h>
+```
+
 ## Banner Ad
 
 In order to insure the best ad is ready when you wish to display it, please init the MobFox ad as soon as possible in your code:
