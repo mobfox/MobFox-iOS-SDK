@@ -8,6 +8,10 @@
 
 #import "GADMAdapterMobFox.h"
 
+@interface GADMAdapterMobFox()
+@property (nonatomic, assign) BOOL smart;
+@end
+
 @implementation GADMAdapterMobFox
 
 #pragma mark GADMAdapterMobFox Delegate
@@ -31,29 +35,52 @@
 
 - (void)getBannerWithSize:(GADAdSize)adSize {
     
+    self.smart = NO;
     NSLog(@"MobFox >> GADMAdapterMobFox >> Got Ad Request");
 
+    NSString *invh = [[self.connector credentials] objectForKey:@"pubid"];
+    
     //The adapter should fail immediately if the adSize is not supported
-    if (!GADAdSizeEqualToSize(adSize, kGADAdSizeBanner) &&
-        !GADAdSizeEqualToSize(adSize, kGADAdSizeMediumRectangle) &&
-        !GADAdSizeEqualToSize(adSize, kGADAdSizeFullBanner) &&
-        !GADAdSizeEqualToSize(adSize, kGADAdSizeLeaderboard)) {
-        NSString *errorDesc =
-        [NSString stringWithFormat:@"Invalid ad type %@, not going to get ad.",
-         NSStringFromGADAdSize(adSize)];
-        NSDictionary *errorInfo = [NSDictionary
-                                   dictionaryWithObjectsAndKeys:errorDesc, NSLocalizedDescriptionKey, nil];
-        NSError *error = [NSError errorWithDomain:kGADErrorDomain
-                                             code:kGADErrorMediationInvalidAdSize
-                                         userInfo:errorInfo];
-        [self.connector adapter:self didFailAd:error];
+    if (GADAdSizeEqualToSize(adSize, kGADAdSizeBanner) ||
+        GADAdSizeEqualToSize(adSize, kGADAdSizeMediumRectangle) ||
+        GADAdSizeEqualToSize(adSize, kGADAdSizeFullBanner) ||
+        GADAdSizeEqualToSize(adSize, kGADAdSizeLeaderboard)) {
+        /**/
+        
+        self.banner = [[MobFoxAd alloc] init:invh withFrame:CGRectMake(0, 0, adSize.size.width, adSize.size.height)];
+        self.banner.delegate = self;
+        [self.banner loadAd];
         return;
     }
-
-    NSString *invh = [[self.connector credentials] objectForKey:@"pubid"];
-    self.banner = [[MobFoxAd alloc] init:invh withFrame:CGRectMake(0, 0, adSize.size.width, adSize.size.height)];
-    self.banner.delegate = self;
-    [self.banner loadAd];
+    
+   
+    
+    UIInterfaceOrientation interfaceOrientation = [[UIApplication sharedApplication] statusBarOrientation];
+    if(GADAdSizeEqualToSize(adSize, kGADAdSizeSmartBannerPortrait) && UIInterfaceOrientationIsPortrait(interfaceOrientation)){
+        float width = 320.0f;
+        float height = 50.0f;
+        if([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad){
+            width = 728.0f;
+            height = 90.0f;
+        }
+        
+        self.banner = [[MobFoxAd alloc] init:invh withFrame:CGRectMake(0, 0, width, height)];
+        self.banner.delegate = self;
+        [self.banner loadAd];
+        self.smart = YES;
+        return;
+    }
+            
+    NSString *errorDesc =
+    [NSString stringWithFormat:@"Invalid ad type %@.",NSStringFromGADAdSize(adSize)];
+    NSLog(@"MobFox >> GADAdapterMobFox: %@",errorDesc);
+            
+    NSDictionary *errorInfo = [NSDictionary dictionaryWithObjectsAndKeys:errorDesc, NSLocalizedDescriptionKey, nil];
+    NSError *error = [NSError errorWithDomain:kGADErrorDomain
+                            code:kGADErrorMediationInvalidAdSize
+                            userInfo:errorInfo];
+    [self.connector adapter:self didFailAd:error];
+            
 
 }
 
@@ -78,10 +105,11 @@
     }
 }
 
+
 - (void)stopBeingDelegate {
-    
-    NSLog(@"MobFox >> GADMAdapterMobFox >> stopBeingDelegate");
+
 }
+
 
 - (BOOL)isBannerAnimationOK:(GADMBannerAnimationType)animType {
     
@@ -94,6 +122,10 @@
 - (void)MobFoxAdDidLoad:(MobFoxAd *)banner{
     NSLog(@"MobFox >> GADMAdapterMobFox >> Got Ad");
     
+    if(self.smart){
+        [banner _changeWidth:[[UIScreen mainScreen] bounds].size.width];
+    }
+  
     [self.connector adapter:self didReceiveAdView:banner];
     
 }
@@ -159,12 +191,11 @@
 
 - (void) dealloc{
     
-    [self stopBeingDelegate];
-    self.banner.bridge          = nil;
+    self.banner.delegate        = nil;
     self.banner                 = nil;
+    self.interstitial.delegate  = nil;
     self.interstitial           = nil;
-    self.interstitial.ad        = nil;
-    self.interstitial.ad.bridge = nil;
+
 }
 
 
