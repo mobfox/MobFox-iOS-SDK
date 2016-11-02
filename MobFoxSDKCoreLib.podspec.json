@@ -25,7 +25,7 @@
   },
   "frameworks": [
   ],
-  "requires_arc": true
+  "requires_arc": true,
   
   "subspecs": [
     {
