@@ -27,15 +27,15 @@
   ],
   "requires_arc": true
   
-  
-      subspec 'AdMob' do |sp|
-      sp.source_files = 'CustomEvents/AdMob/*.{h,m}'
-      end
-  
-      subspec 'MoPub' do |sp|
-      sp.source_files = 'CustomEvents/MoPub/*.{h,m}'
-      end
-  
- 
+  "subspecs": [
+    {
+      "name": "AdMob",
+      "source_files": "CustomEvents/AdMob/*.{h,m}"
+    },
+    {
+      "name": "MoPub",
+      "source_files": "CustomEvents/MoPub/*.{h,m}"
+    }
+   ]
 
 }
