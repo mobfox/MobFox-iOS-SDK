@@ -23,6 +23,8 @@
   ],
   "requires_arc": true,
   
+  "default_subspecs": "MobFoxSDKCoreLib",
+
   "subspecs": [
     {
       "name": "MobFoxSDKCoreLib",
