@@ -10,6 +10,7 @@ Supports **iOS 7.0+**
   * [CocoaPods](#cocoapods)
   * [Manual Installation](#manual-installation)
   * [iOS 9+ Specific](#ios-9-specific)
+  * [Beta Version](#beta-version)
 * [Usage](#usage)
   * [Banner Ad](#banner-ad)
   * [Interstitial Ad](#interstitial-ad)
@@ -65,6 +66,12 @@ In the future MobFox will provide an additional parameter for requesting only se
 More information about this change can be found on Apple's website: https://developer.apple.com/library/prerelease/ios/technotes/App-Transport-Security-Technote/index.html#//apple_ref/doc/uid/TP40016240
 
 For further questions about iOS9 and ATS, please create a ticket at https://account.mobfox.com/www/cp/create_ticket.php
+
+# Beta Version
+
+There's a new advanced beta version available (version 3.0.0). you can integrate it manauly (from beta directories), using the same steps as appear before:
+For integrating static lib: Drag ```MobFoxSDKCore.embeddedframework``` from the Finder into your project, or ```MobFoxSDKCoreBitCode.embeddedframework```to enabling Bitcode.
+For dynamic lib: Drag ```MobFoxSDKCoreDynamic.embeddedframework``` from the Finder into your project, or ```MobFoxSDKCoreDynamicBitCode.embeddedframework```to enabling Bitcode.
 
 # Usage
 
