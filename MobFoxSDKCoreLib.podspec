@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "MobFoxSDKCoreLib"
-  s.version      = "2.4.0"
+  s.version      = "2.4.1"
   s.summary      = "A short description of MobFoxSDKCoreLib."
 
   # This description is used to generate tags and improve search results.
@@ -79,7 +79,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://github.com/mobfox/MobFox-iOS-SDK-Core-Lib/tree/pod_update", :tag => "v2.4.0" }
+  s.source       = { :git => "https://github.com/mobfox/MobFox-iOS-SDK-Core-Lib", :tag => "v2.4.1" }
 
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
