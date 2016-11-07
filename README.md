@@ -1,4 +1,4 @@
-# MobFox-iOS-SDK-Core-Lib
+# MobFox-iOS-SDK
 
 Supports **iOS 7.0+**
 
