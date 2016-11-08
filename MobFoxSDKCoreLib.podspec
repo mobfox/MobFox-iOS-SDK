@@ -83,6 +83,9 @@ Pod::Spec.new do |s|
 
   s.source       = { :git => "https://github.com/mobfox/MobFox-iOS-SDK-Core-Lib", :tag => "v2.4.1" }
 
+  s.source       = { :git => "https://github.com/mobfox/MobFox-iOS-SDK-Core-Lib",
+                   :tag => s.version.to_s }
+
 
   # ――― Source Code ―――――――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
   #
