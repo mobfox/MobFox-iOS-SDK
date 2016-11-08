@@ -20,7 +20,9 @@ Pod::Spec.new do |s|
   s.preserve_paths = "MobFoxSDKCore.embeddedframework/MobFoxSDKCore.framework"
 
   s.source_files = "MobFoxSDKCore.embeddedframework/MobFoxSDKCore.bundle", "MobFoxSDKCore.embeddedframework/MobFoxSDKCore.framework"
-
+  
+  s.frameworks = "MobFoxSDKCoreLib"
+ 
   s.requires_arc = true
 
   s.pod_target_xcconfig = { 'SWIFT_VERSION' => '3' }
