@@ -140,5 +140,8 @@ Pod::Spec.new do |s|
 
   #s.xcconfig = { "HEADER_SEARCH_PATHS" => "$(PODS_ROOT)/MobFoxSDKCoreLib/**\" }
 
+  s.pod_target_xcconfig = { 'SWIFT_VERSION' => '3' }
+
+
 
 end
