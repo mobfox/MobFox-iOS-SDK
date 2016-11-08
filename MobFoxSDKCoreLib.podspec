@@ -21,7 +21,7 @@ Pod::Spec.new do |s|
 
   s.source_files = "MobFoxSDKCore.embeddedframework/MobFoxSDKCore.bundle", "MobFoxSDKCore.embeddedframework/MobFoxSDKCore.framework"
   
-  s.frameworks = "MobFoxSDKCoreLib"
+  s.frameworks = "MobFoxSDKCore"
  
   s.requires_arc = true
 
