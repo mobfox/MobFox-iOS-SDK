@@ -19,6 +19,7 @@ Pod::Spec.new do |s|
   s.resources = "MobFoxSDKCore.embeddedframework/MobFoxSDKCore.bundle"
   s.preserve_paths = "MobFoxSDKCore.embeddedframework/MobFoxSDKCore.framework"
 
+  s.source_files = "MobFoxSDKCore.embeddedframework/MobFoxSDKCore.framework/Headers/*.h"
 
   s.requires_arc = true
 
