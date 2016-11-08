@@ -81,7 +81,7 @@ Pod::Spec.new do |s|
   #  Supports git, hg, bzr, svn and HTTP.
   #
 
-  s.source       = { :git => "https://github.com/mobfox/MobFox-iOS-SDK-Core-Lib", :tag => "v2.4.1" }
+  # s.source       = { :git => "https://github.com/mobfox/MobFox-iOS-SDK-Core-Lib", :tag => "v2.4.1" }
 
   s.source       = { :git => "https://github.com/mobfox/MobFox-iOS-SDK-Core-Lib",
                    :tag => s.version.to_s }
@@ -136,7 +136,8 @@ Pod::Spec.new do |s|
 
   s.requires_arc = true
 
-  s.xcconfig = { "HEADER_SEARCH_PATHS" => "$(PODS_ROOT)/MobFoxSDKCoreLib/**\" }
+  #s.xcconfig = { "HEADER_SEARCH_PATHS" => "$(PODS_ROOT)/MobFoxSDKCoreLib/**\" }
+
   # s.dependency "JSONKit", "~> 1.4"
 
 end
