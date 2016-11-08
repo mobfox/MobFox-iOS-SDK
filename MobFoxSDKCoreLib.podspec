@@ -15,9 +15,9 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = "7.0"
 
   s.source       = { :git => "https://github.com/mobfox/MobFox-iOS-SDK-Core-Lib", :tag => "v2.4.1" }
-  #s.public_header_files = "MobFoxSDKCore.embeddedframework/MobFoxSDKCore.framework/Headers/*.h"
-  #s.resources = "MobFoxSDKCore.embeddedframework/MobFoxSDKCore.framework", "MobFoxSDKCore.embeddedframework/MobFoxSDKCore.bundle"
-  #s.preserve_paths = "MobFoxSDKCore.embeddedframework/MobFoxSDKCore.framework"
+  s.public_header_files = "MobFoxSDKCore.embeddedframework/MobFoxSDKCore.framework/Headers/*.h"
+  s.resources = "MobFoxSDKCore.embeddedframework/MobFoxSDKCore.framework", "MobFoxSDKCore.embeddedframework/MobFoxSDKCore.bundle"
+  s.preserve_paths = "MobFoxSDKCore.embeddedframework/MobFoxSDKCore.framework"
 
   s.source_files = "MobFoxSDKCore.embeddedframework/MobFoxSDKCore.bundle", "MobFoxSDKCore.embeddedframework/MobFoxSDKCore.framework"
 
