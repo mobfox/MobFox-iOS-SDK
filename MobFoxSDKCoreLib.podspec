@@ -138,6 +138,5 @@ Pod::Spec.new do |s|
 
   #s.xcconfig = { "HEADER_SEARCH_PATHS" => "$(PODS_ROOT)/MobFoxSDKCoreLib/**\" }
 
-  # s.dependency "JSONKit", "~> 1.4"
 
 end
