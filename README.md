@@ -39,7 +39,7 @@ Set ```Embedded Content Contains Swift Code``` to Yes.
 Add to your Podfile:
 
 ```
-pod 'MobFoxSDKCoreLib', :git => 'https://github.com/mobfox/MobFox-iOS-SDK-Core-Lib.git'
+pod 'MobFoxSDK', :git => 'https://github.com/mobfox/MobFox-iOS-SDK.git'
 ```
 ## Manual Installation
 
