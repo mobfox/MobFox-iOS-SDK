@@ -69,7 +69,7 @@ For further questions about iOS9 and ATS, please create a ticket at https://acco
 
 # Beta Version
 
-There's a new advanced beta version available (version 3.0.0). you can integrate it manauly (from beta directory), using the same steps as appear before:
+There's a new advanced beta version available (version 3.0.0). you can integrate it manually (from beta directory), using the same steps as before:
 For integrating static lib: Drag ```MobFoxSDKCoreBeta.embeddedframework``` from the Finder into your project, or ```MobFoxSDKCoreBitCodeBeta.embeddedframework```to enabling Bitcode.
 For dynamic lib: Drag ```MobFoxSDKCoreDynamicBeta.embeddedframework``` from the Finder into your project, or ```MobFoxSDKCoreDynamicBitCodeBeta.embeddedframework```to enabling Bitcode.
 
@@ -81,7 +81,7 @@ For dynamic lib: Drag ```MobFoxSDKCoreDynamicBeta.embeddedframework``` from the 
 
 ## Banner Ad
 
-In order to insure the best ad is ready when you wish to display it, please init the MobFox ad as soon as possible in your code:
+In order to ensure the best ad is ready when you wish to display it, please init the MobFox ad as soon as possible in your code:
 ```objective-c
 
 //define the position and dimensions of your ad
