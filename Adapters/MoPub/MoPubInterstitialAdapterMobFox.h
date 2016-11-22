@@ -13,7 +13,9 @@
 
 @interface MoPubInterstitialAdapterMobFox : MPInterstitialCustomEvent<MobFoxInterstitialAdDelegate>
 
-@property MobFoxInterstitialAd* mobFoxInterAd;
+@property (strong, nonatomic) MobFoxInterstitialAd* mobFoxInterAd;
+
+- (id)init;
 
 - (void)requestInterstitialWithCustomEventInfo:(NSDictionary *)info;
 

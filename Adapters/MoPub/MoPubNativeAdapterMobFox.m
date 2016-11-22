@@ -12,6 +12,7 @@
 @implementation MoPubNativeAdapterMobFox
 
 - (void)requestAdWithCustomEventInfo:(NSDictionary *)info{
+    
     NSLog(@"dict %@",[info description]);
     dispatch_async(dispatch_get_main_queue(), ^{
         self.ad = [[MobFoxNativeAd alloc] init:[info valueForKey:@"invh"]];
@@ -19,6 +20,9 @@
     self.ad.delegate = self;
     [self.ad loadAd];
 }
+
+#pragma mark -
+#pragma mark MobFoxNativeAdDelegate methods
 
 - (void)MobFoxNativeAdDidLoad:(MobFoxNativeAd*)ad withAdData:(MobFoxNativeData *)adData {
     
@@ -50,9 +54,11 @@
 }
 
 - (void)MobFoxNativeAdDidFailToReceiveAdWithError:(NSError *)error{
+    
     NSLog(@"MoPub >> MobFox >> Native ad >> error: %@",[error description]);
     [self.delegate nativeCustomEvent:self didFailToLoadAdWithError:error];
 }
+
 
 
 @end

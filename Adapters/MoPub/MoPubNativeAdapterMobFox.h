@@ -9,7 +9,7 @@
 
 #import <MobFoxSDKCore/MobFoxSDKCore.h>
 
-@interface MoPubNativeAdapterMobFox : MPNativeCustomEvent<MobFoxNativeAdDelegate>
+@interface MoPubNativeAdapterMobFox : MPNativeCustomEvent <MobFoxNativeAdDelegate>
 
 - (void)requestAdWithCustomEventInfo:(NSDictionary *)info;
 

@@ -24,6 +24,10 @@
     
 }
 
+- (void)registerViewForUserInteraction:(UIView*)view withRootViewController:(UIViewController*)rootViewController {
+}
+
+
 #pragma mark MobFox Native Ad Delegate
 
 //called when ad response is returned
@@ -52,7 +56,6 @@
         }
         
     }
-    //[ad registerViewWithInteraction:self.nativeAdView withViewController:self];
     
     SOMANativeAdDTO* dto = [SOMANativeAdDTO new];
     dto.iconImageURL = adData.icon.url;
