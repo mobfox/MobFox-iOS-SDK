@@ -250,7 +250,7 @@ Later when you wish to display the ad:
 ```
 #### Dismiss Interstitial Ad
 
-when you wish to dismiss the ad:
+When you wish to dismiss the ad:
 ```objective-c
 
 - (void)dismissAd;
