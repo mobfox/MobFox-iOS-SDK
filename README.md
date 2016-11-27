@@ -10,7 +10,6 @@ Supports **iOS 8.0+**
   * [CocoaPods](#cocoapods)
   * [Manual Installation](#manual-installation)
   * [iOS 9+ Specific](#ios-9-specific)
-  * [Beta Version](#beta-version)
 * [Usage](#usage)
   * [Banner Ad](#banner-ad)
   * [Interstitial Ad](#interstitial-ad)
@@ -67,11 +66,6 @@ More information about this change can be found on Apple's website: https://deve
 
 For further questions about iOS9 and ATS, please create a ticket at https://account.mobfox.com/www/cp/create_ticket.php
 
-# Beta Version
-
-There's a new advanced beta version available (version 3.0.0). you can integrate it manually (from beta directory), using the same steps as before:
-For integrating static lib: Drag ```MobFoxSDKCoreBeta.embeddedframework``` from the Finder into your project, or ```MobFoxSDKCoreBitCodeBeta.embeddedframework```to enabling Bitcode.
-For dynamic lib: Drag ```MobFoxSDKCoreDynamicBeta.embeddedframework``` from the Finder into your project, or ```MobFoxSDKCoreDynamicBitCodeBeta.embeddedframework```to enabling Bitcode.
 
 # Usage
 
@@ -254,6 +248,15 @@ Later when you wish to display the ad:
 }
 
 ```
+#### Dismiss Interstitial Ad
+
+When you wish to dismiss the ad:
+```objective-c
+
+- (void)dismissAd;
+
+```
+
 ---
 
 ## Native Ad
