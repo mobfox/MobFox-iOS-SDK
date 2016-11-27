@@ -171,7 +171,7 @@ MobFoxInterstitialAd* mobfoxInterAd = [[MobFoxInterstitialAd alloc] init:@"your-
 Setting additional parameters on the internal ad object that can help you get better targeted ads or help you with reporting:
 For example:
 ```objective-c
-mobfoxInterAd.ad.demo_gender = @"f";
+mobfoxInterAd.demo_gender = @"f";
 ```
 The available properties are:
 ```objective-c
