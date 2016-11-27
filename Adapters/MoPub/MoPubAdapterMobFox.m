@@ -9,10 +9,7 @@
 
     self = [super init];
     if (self)
-    {
-        //self.ad = [[MobFoxAd alloc] initWithFrame:CGRectMake(0, 0, 320, 50)];
-        //self.ad.delegate = self;
-    }
+    {}
     return self;
 }
 
@@ -22,9 +19,6 @@
     
     self.ad = [[MobFoxAd alloc] init:[info valueForKey:@"invh"] withFrame:CGRectMake(0, 0, size.width, size.height)];
     self.ad.delegate = self;
-    //[self.ad _setSize:size withContainer:size];
-    self.ad.invh = @"fe96717d9875b9da4339ea5367eff1ec"; //[info valueForKey:@"invh"];
-    NSLog(@"MoPub >> MobFox >> invh: %@",@"fe96717d9875b9da4339ea5367eff1ec" );
     [self.ad loadAd];
     
 }

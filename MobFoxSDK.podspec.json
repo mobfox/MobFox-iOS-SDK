@@ -1,6 +1,6 @@
 {
   "name": "MobFoxSDK",
-  "version": "3.0.1",
+  "version": "3.0.6",
   "homepage": "http://mobfox.com",
   "license": "MIT",
   "authors": {
@@ -9,7 +9,7 @@
   "summary": "The MobFox iOS SDK.",
   "description": "MobFox's iOS SDK Used To Get Ads From The MobFox SSP",
   "platforms": {
-    "ios": "7.0"
+    "ios": "8.0"
   },
   "source": {
     "git": "https://github.com/mobfox/MobFox-iOS-SDK.git"
