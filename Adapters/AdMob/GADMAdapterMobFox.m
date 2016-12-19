@@ -14,7 +14,7 @@
 
 @implementation GADMAdapterMobFox
 
-#pragma mark GADMAdapterMobFox Delegate
+#pragma mark GADMAdNetworkAdapter Delegate
 
 + (NSString *)adapterVersion {
     
@@ -53,7 +53,6 @@
         return;
     }
     
-   
     
     UIInterfaceOrientation interfaceOrientation = [[UIApplication sharedApplication] statusBarOrientation];
     if(GADAdSizeEqualToSize(adSize, kGADAdSizeSmartBannerPortrait) && UIInterfaceOrientationIsPortrait(interfaceOrientation)){
@@ -86,12 +85,13 @@
 
 - (void)getInterstitial {
     
-    NSLog(@"MobFox >> GADMAdapterMobFox >> Got Ad Request");
+    NSLog(@"MobFox >> GADMAdapterMobFox >> Got Interstitial Ad Request");
 
     NSString *invh = [[self.connector credentials] objectForKey:@"pubid"];
     self.interstitial = [[MobFoxInterstitialAd alloc] init:invh];
     self.interstitial.delegate = self;
     [self.interstitial loadAd];
+    
 }
 
 - (void)presentInterstitialFromRootViewController:
@@ -105,11 +105,9 @@
     }
 }
 
-
 - (void)stopBeingDelegate {
 
 }
-
 
 - (BOOL)isBannerAnimationOK:(GADMBannerAnimationType)animType {
     
@@ -157,7 +155,7 @@
     NSLog(@"MobFox >> GADMAdapterMobFox >> Interstitial Ad Loaded");
     
     [self.connector adapterDidReceiveInterstitial:self];
-
+    
 }
 
 - (void)MobFoxInterstitialAdDidFailToReceiveAdWithError:(NSError *)error{
@@ -188,6 +186,8 @@
 //called when if the ad is a video ad and it has finished playing
 - (void)MobFoxInterstitialAdFinished{
 }
+
+
 
 - (void) dealloc{
     
