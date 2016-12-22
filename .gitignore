@@ -1,3 +1,5 @@
 .DS_Store
 *.swp
+DemoApp/DemoApp.xcodeproj/xcuserdata/*
+DemoAppSwift/DemoAppSwift.xcodeproj/xcuserdata/*
 
