@@ -18,11 +18,7 @@
     NSLog(@"MoPub inter >> MobFox >> init");
     NSLog(@"MoPub inter >> MobFox >> data: %@",[info description]);
 
-<<<<<<< HEAD
     self.mobFoxInterAd.invh = [info valueForKey:@"invh"];
-=======
-    self.mobFoxInterAd.ad.invh = [info valueForKey:@"invh"];
->>>>>>> 1642ac122878257e14b8580cdf8aeb3ae255689b
     [self.mobFoxInterAd loadAd];
         
 }
@@ -75,13 +71,8 @@
 
 - (void)dealloc {
     
-<<<<<<< HEAD
     //self.mobFoxInterAd.ad.bridge = nil;
     //self.mobFoxInterAd.ad        = nil;
-=======
-    self.mobFoxInterAd.ad.bridge = nil;
-    self.mobFoxInterAd.ad        = nil;
->>>>>>> 1642ac122878257e14b8580cdf8aeb3ae255689b
     self.mobFoxInterAd           = nil;
 
 }
