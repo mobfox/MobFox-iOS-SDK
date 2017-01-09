@@ -1,23 +1,27 @@
 #import "MPMobFoxNativeAdAdapter.h"
+#import "MPNativeAdConstants.h"
 
 @implementation MPMobFoxNativeAdAdapter
 
 - (instancetype)initWithMobFoxNativeAd:(MobFoxNativeData *)ad{
+    
+    if (ad == nil) {
+        return nil;
+    }
+    
     self = [super init];
     
     NSLog(@"MoPub >> Adapter >> MobFox >> init");
-    
     NSMutableDictionary *properties = @{}.mutableCopy;
-    
     NSLog(@"ad.callToActionText %@", ad.callToActionText);
     
-    if (ad.assetHeadline) [properties setObject:ad.assetHeadline forKey:@"title"];
-    if (ad.assetDescription) [properties setObject:ad.assetDescription forKey:@"text"];
-    if (ad.callToActionText) [properties setObject:ad.callToActionText forKey:@"ctatext"];
-    if (ad.rating) [properties setObject:ad.rating forKey:@"starrating"];
-    if (ad.icon.url.absoluteString) [properties setObject:ad.icon.url.absoluteString forKey:@"iconimage"];
-    if (ad.main.url.absoluteString) [properties setObject:ad.main.url.absoluteString forKey:@"mainimage"];
-    if (ad.clickURL.absoluteString) [properties setObject:ad.clickURL.absoluteString forKey:@"clk"];
+    if (ad.assetHeadline) [properties setObject:ad.assetHeadline forKey:kAdTitleKey];
+    if (ad.assetDescription) [properties setObject:ad.assetDescription forKey:kAdTextKey];
+    if (ad.callToActionText) [properties setObject:ad.callToActionText forKey:kAdCTATextKey];
+    if (ad.rating) [properties setObject:ad.rating forKey:kAdStarRatingKey];
+    if (ad.icon.url.absoluteString) [properties setObject:ad.icon.url.absoluteString forKey:kAdIconImageKey];
+    if (ad.main.url.absoluteString) [properties setObject:ad.main.url.absoluteString forKey:kAdMainImageKey];
+    if (ad.clickURL.absoluteString) [properties setObject:ad.clickURL.absoluteString forKey:kDefaultActionURLKey];
     
     NSMutableArray *impressionURLs = [NSMutableArray array];
     
@@ -29,7 +33,7 @@
     NSLog(@"impressionURLs %@", impressionURLs);
     
     if (impressionURLs.count) {
-        [properties setValue:impressionURLs forKey:@"imptracker"];
+        [properties setValue:impressionURLs forKey:kImpressionTrackerURLsKey];
     }
     
     _properties = properties;

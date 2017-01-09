@@ -11,9 +11,10 @@
 
 @interface MoPubAdapterMobFox : MPBannerCustomEvent <MobFoxAdDelegate>
 
-@property(strong, nonatomic) MobFoxAd* ad;
+@property (strong, nonatomic) MobFoxAd* ad;
 
-- (id)init;
+- (id) init;
+
 - (void)requestAdWithSize:(CGSize)size customEventInfo:(NSDictionary *)info;
 
 @end

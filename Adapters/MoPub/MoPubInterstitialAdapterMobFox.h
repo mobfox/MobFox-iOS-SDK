@@ -15,8 +15,6 @@
 
 @property (strong, nonatomic) MobFoxInterstitialAd* mobFoxInterAd;
 
-- (id)init;
-
 - (void)requestInterstitialWithCustomEventInfo:(NSDictionary *)info;
 
 - (void)showInterstitialFromRootViewController:(UIViewController *)rootViewController;
