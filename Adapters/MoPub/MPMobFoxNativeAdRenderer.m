@@ -15,8 +15,10 @@
         [arr addObject:e];
     }
     [arr addObject:@"MoPubNativeAdapterMobFox"];
+    /*** please add to arr array your mediation class names (as 'MoPubNativeAdapterMobFox') ***/
     config.supportedCustomEvents = arr;
     return config;
+    
 }
 
 @end

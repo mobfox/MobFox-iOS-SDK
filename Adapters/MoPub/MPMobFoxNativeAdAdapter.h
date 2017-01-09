@@ -9,7 +9,7 @@
 #import "MPNativeAdAdapter.h"
 #endif
 
-@interface MPMobFoxNativeAdAdapter : NSObject<MPNativeAdAdapter>
+@interface MPMobFoxNativeAdAdapter : NSObject <MPNativeAdAdapter>
 
 @property (nonatomic, readonly) NSDictionary *properties;
 

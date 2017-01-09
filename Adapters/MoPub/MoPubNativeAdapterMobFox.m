@@ -24,7 +24,7 @@
     NSLog(@"adData ---> %@", adData);
     NSLog(@"MoPub >> MobFox >> Native ad >> response: %@",[ad description]);
     
-    if (adData.icon.url==nil || adData.main.url==nil) {
+    if (adData.icon.url == nil || adData.main.url == nil) {
         
         NSError *error = [NSError errorWithDomain:@"Empty data return from custom event" code:200 userInfo:nil];
         [self.delegate nativeCustomEvent:self didFailToLoadAdWithError:error];
@@ -59,8 +59,6 @@
     NSLog(@"MoPub >> MobFox >> Native ad >> error: %@",[error description]);
     [self.delegate nativeCustomEvent:self didFailToLoadAdWithError:error];
 }
-
-
 
 
 
