@@ -385,7 +385,7 @@ Adapters are the opposite of Custom Events, they let you use MobFox as a Custom 
 [Adapters](https://github.com/mobfox/MobFox-iOS-SDK-Core-Lib/wiki/Adapters)
 
 ## Plugins
-[Plugins](https://github.com/mobfox/MobFox-iOS-SDK-Core-Lib/wiki/Plugins)
+[Plugins](https://github.com/mobfox/SDK-Plugins)
 
 
 ## Demo App Swift
