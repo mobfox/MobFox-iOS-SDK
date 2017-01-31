@@ -16,7 +16,7 @@
     
     NSLog(@"dbg: ### AdMob: >>> BANNER: loadAd <<<");
 
-    CGRect rect =CGRectMake(0,0,size.width,size.height);
+    CGRect rect = CGRectMake(0,0,size.width,size.height);
     self.bannerView = [[GADBannerView alloc] initWithFrame:rect];
     self.bannerView.delegate = self;
     
@@ -26,7 +26,7 @@
     self.bannerView.adUnitID = nid;
     
     GADRequest* request = [GADRequest request];
-    //request.testDevices = @[TEST_DEVICES];
+    //request.testDevices = @[ kGADSimulatorID ];
 
     
     if([info valueForKey:@"accuracy"] && [info valueForKey:@"latitude"] && [info valueForKey:@"longitude"]) {
