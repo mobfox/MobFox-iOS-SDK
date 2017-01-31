@@ -8,7 +8,7 @@
 
 #import "MobFoxInterstitialCustomEventAdMob.h"
 
-#define TEST_DEVICES @""
+#define TEST_DEVICES ""
 
 @interface MobFoxInterstitialCustomEventAdMob()
 @end
@@ -19,11 +19,12 @@
 -(void)requestInterstitialWithNetworkId:(NSString*)networkId customEventInfo:(NSDictionary *)info {
 
     NSLog(@"dbg: ### AdMob: >>> INTERSTITIAL: loadAd <<<");
+    NSLog(@"dbg: ### AdMob: networkID: %@",networkId);
     
     self.interstitial = [[GADInterstitial alloc] initWithAdUnitID:networkId];
     self.interstitial.delegate = self;
     GADRequest* request = [GADRequest request];
-    //request.testDevices = @[TEST_DEVICES];
+    //request.testDevices = @[ kGADSimulatorID ];
     
     
     if([info valueForKey:@"accuracy"] && [info valueForKey:@"latitude"] && [info valueForKey:@"longitude"]) {
