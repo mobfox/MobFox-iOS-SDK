@@ -7,6 +7,13 @@
 //
 
 #import "SmaatoAdapterMobFox.h"
+#import "MFEventsHandler.h"
+
+@interface SmaatoAdapterMobFox()
+
+@property (nonatomic, strong) MFEventsHandler *eventsHandler;
+
+@end
 
 @implementation SmaatoAdapterMobFox
 
@@ -14,6 +21,9 @@
 - (void)loadBanner {
     
     NSLog(@"MobFox >> Smaato banner >> loadBanner");
+    
+    _eventsHandler = [[MFEventsHandler alloc] init];
+    [_eventsHandler resetAdEventBlocker];
     
     NSData *data = [self.network.customClassData dataUsingEncoding:NSUTF8StringEncoding];
     id json = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
@@ -40,6 +50,9 @@
 - (void)loadInterstitial {
     
     NSLog(@"MobFox >> Smaato interstitial >> loadInterstitial");
+    
+    _eventsHandler = [[MFEventsHandler alloc] init];
+    [_eventsHandler resetInterstitialEventBlocker];
     
     NSData *data = [self.network.customClassData dataUsingEncoding:NSUTF8StringEncoding];
     id json = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
@@ -70,25 +83,67 @@
 
 - (void)MobFoxAdDidLoad:(MobFoxAd *)banner{
     NSLog(@"MobFox >> SmaatoAdapterMobFox >> Got Ad");
-    [self adLoadedWithView:banner];
+    
+    [_eventsHandler invokeAdEventBlocker:^(BOOL isReported) {
+
+        if (isReported) {
+            return;
+            
+        } else {
+            
+            [self adLoadedWithView:banner];
+        }
+    }];
+
     
 }
 
 - (void)MobFoxAdDidFailToReceiveAdWithError:(NSError *)error{
     NSLog(@"MobFox >> SmaatoAdapterMobFox >> Error: %@",[error description]);
-    [self adLoadFailedWithError:error];
+    
+    [_eventsHandler invokeAdEventBlocker:^(BOOL isReported) {
+        
+        if (isReported) {
+            return;
+            
+        } else {
+            
+            [self adLoadFailedWithError:error];
+        }
+    }];
     
 }
 
 - (void)MobFoxAdClicked {
     NSLog(@"MobFox >> SmaatoAdapterMobFox >> MobFoxAdClicked");
-    [self adWillLeaveApplication];
+    
+    [_eventsHandler invokeAdEventBlocker:^(BOOL isReported) {
+        
+        if (isReported) {
+            return;
+            
+        } else {
+            
+            [self adWillLeaveApplication];
+        }
+    }];
     
 }
 
 - (void)MobFoxAdClosed {
     NSLog(@"MobFox >> SmaatoAdapterMobFox >> MobFoxAdClosed");
-    [self adDidDismissFullscreen];
+    
+    [_eventsHandler invokeAdEventBlocker:^(BOOL isReported) {
+        
+        if (isReported) {
+            return;
+            
+        } else {
+            
+            [self adDidDismissFullscreen];
+        }
+    }];
+    
     
 }
 
@@ -100,19 +155,41 @@
 //called when ad is displayed
 - (void)MobFoxInterstitialAdDidLoad:(MobFoxInterstitialAd *)interstitial {
     NSLog(@"MobFox Interstitial >> SmaatoAdapterMobFox >> Got Ad");
-    [self adLoadedWithView:nil];
+    
+    [_eventsHandler invokeInterstitialAdEventBlocker:^(BOOL isReported) {
+        
+        if (isReported) {
+            return;
+            
+        } else {
+            
+            [self adLoadedWithView:nil];
+        }
+    }];
+    
 }
 
 //called when an ad cannot be displayed
 - (void)MobFoxInterstitialAdDidFailToReceiveAdWithError:(NSError *)error {
     NSLog(@"MobFox Interstitial >> SmaatoAdapterMobFox >> Error: %@",[error description]);
-    [self adLoadFailedWithError:error];
+    
+    [_eventsHandler invokeInterstitialAdEventBlocker:^(BOOL isReported) {
+        
+        if (isReported) {
+            return;
+            
+        } else {
+            
+            [self adLoadFailedWithError:error];
+        }
+    }];
     
 }
 
 //called when ad is closed/skipped
 - (void)MobFoxInterstitialAdClosed {
     NSLog(@"MobFox Interstitial >> SmaatoAdapterMobFox >> MobFoxAdClosed");
+    
     [self adDidDismissFullscreen];
     
 }
@@ -120,8 +197,12 @@
 //called w mobfoxInterAd.delegate = self;hen ad is clicked
 - (void)MobFoxInterstitialAdClicked {
     NSLog(@"MobFox Interstitial >> SmaatoAdapterMobFox >> MobFoxAdClicked");
+    
+
     [self.delegate mediationPluginClicked:self];
     [self adWillLeaveApplication];
+
+
 }
 
 //called when if the ad is a video ad and it has finished playing

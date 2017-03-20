@@ -19,6 +19,9 @@
 
 - (void)showInterstitialFromRootViewController:(UIViewController *)rootViewController;
 
+- (BOOL)enableAutomaticImpressionAndClickTracking;
+
+
 @end
 
 #endif
