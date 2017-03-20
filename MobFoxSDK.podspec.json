@@ -12,11 +12,12 @@
     "ios": "8.0"
   },
   "source": {
-    "git": "https://github.com/mobfox/MobFox-iOS-SDK.git"
+    "git":"https://github.com/mobfox/MobFox-iOS-SDK.git",
+    "tag":"v3.1.5b"
   },
   "preserve_paths": "MobFoxSDKCore.embeddedframework/MobFoxSDKCore.framework",
   "public_header_files": "MobFoxSDKCore.embeddedframework/MobFoxSDKCore.framework/Headers/*.h",
-  "resources": "MobFoxSDKCore.embeddedframework/MobFoxSDKCore.bundle",
+  "source_files" : "MobFoxSDKCore.embeddedframework/MobFoxSDKCore.framework/Headers/*.h",
   "vendored_frameworks": "MobFoxSDKCore.embeddedframework/MobFoxSDKCore.framework",
   "libraries": [
   ],
@@ -24,6 +25,7 @@
     "FRAMEWORK_SEARCH_PATHS": "\"$(PODS_ROOT)/MobFoxSDK/**\""
   },
   "frameworks": [
+    "AdSupport"
   ],
   "requires_arc": true
 }
