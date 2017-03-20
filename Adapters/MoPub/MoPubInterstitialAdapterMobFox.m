@@ -47,7 +47,7 @@
     __weak id weakself = self;
     
     
-     [_eventsHandler invokeInterstitialAdEventBlocker:^(BOOL isReported) {
+     [_eventsHandler invokeInterstitialEventBlocker:^(BOOL isReported) {
 
         if (isReported) return;
             
@@ -70,7 +70,7 @@
     
     __weak id weakself = self;
 
-    [_eventsHandler invokeInterstitialAdEventBlocker:^(BOOL isReported) {
+    [_eventsHandler invokeInterstitialEventBlocker:^(BOOL isReported) {
 
         if (isReported) return;
         
