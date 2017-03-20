@@ -13,9 +13,9 @@
 
 @property (strong, nonatomic) MobFoxAd* ad;
 
-- (id) init;
-
 - (void)requestAdWithSize:(CGSize)size customEventInfo:(NSDictionary *)info;
+
+- (BOOL)enableAutomaticImpressionAndClickTracking;
 
 @end
 

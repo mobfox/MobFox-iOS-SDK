@@ -12,8 +12,9 @@
 @implementation MoPubNativeAdapterMobFox
 
 - (void)requestAdWithCustomEventInfo:(NSDictionary *)info {
+    
+    [MFReport log:@"mopub" withInventoryHash:[info valueForKey:@"invh"] andWithMessage:@"request"];
 
-    NSLog(@"MoPub >> MobFox >> Native ad request: %@",[info description]);
 
     self.ad = [[MobFoxNativeAd alloc] init:[info valueForKey:@"invh"]];
     self.ad.delegate = self;
@@ -25,13 +26,19 @@
         self.ad.latitude = [info objectForKey:@"latitude"];
         self.ad.accuracy = [info objectForKey:@"accuracy"];
     }
+    
+    NSLog(@"MoPub >> MobFox >> request: %@",[info description]);
 
     [self.ad loadAd];
 }
 
 - (void)MobFoxNativeAdDidLoad:(MobFoxNativeAd*)ad withAdData:(MobFoxNativeData *)adData {
     
+    NSLog(@"adData ---> %@", adData);
     NSLog(@"MoPub >> MobFox >> Native ad >> response: %@", [ad description]);
+    
+    [MFReport log:@"mopub" withInventoryHash:ad.invh andWithMessage:@"impression"];
+
     
     if (adData.icon.url == nil || adData.main.url == nil) {
         
@@ -61,6 +68,7 @@
             
         }
     }
+
     
     MPMobFoxNativeAdAdapter *adAdapter = [[MPMobFoxNativeAdAdapter alloc] initWithMobFoxNativeAd:adData];
     MPNativeAd *interfaceAd = [[MPNativeAd alloc] initWithAdAdapter:adAdapter];
@@ -71,8 +79,12 @@
     [imageURLs addObject:adData.main.url];
     
     
+    NSLog(@">> got image assets: %@",[imageURLs description]);
+    
     [super precacheImagesWithURLs:imageURLs completionBlock:^(NSArray *errors) {
-                
+        
+        NSLog(@"MoPub >> MobFox >> Native ad >> cached images");
+        
         if (errors) {
             NSLog(@"MoPub >> MobFox >> pre cache images errors: %@", errors);
             [self.delegate nativeCustomEvent:self didFailToLoadAdWithError:MPNativeAdNSErrorForImageDownloadFailure()];

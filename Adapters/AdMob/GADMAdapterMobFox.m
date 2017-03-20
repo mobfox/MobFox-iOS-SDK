@@ -7,9 +7,14 @@
 //
 
 #import "GADMAdapterMobFox.h"
+#import "MFEventsHandler.h"
+
 
 @interface GADMAdapterMobFox()
-@property (nonatomic, assign) BOOL smart;
+@property (nonatomic, assign, getter=isSmart) BOOL smart;
+@property (nonatomic, strong) MFEventsHandler *eventsHandler;
+
+
 @end
 
 @implementation GADMAdapterMobFox
@@ -29,14 +34,17 @@
 - (id)initWithGADMAdNetworkConnector:(id<GADMAdNetworkConnector>)c {
     if ((self = [super init])) {
         _connector = c;
+        _eventsHandler = [[MFEventsHandler alloc] init];
     }
     return self;
 }
 
 - (void)getBannerWithSize:(GADAdSize)adSize {
     
+    
+    [_eventsHandler resetAdEventBlocker];
     self.smart = NO;
-    NSLog(@"MobFox >> GADMAdapterMobFox >> Got Ad Request");
+    NSLog(@"MobFox >> GADMAdapterMobFox >> Ad Request");
 
     NSString *invh = [[self.connector credentials] objectForKey:@"pubid"];
     
@@ -45,11 +53,13 @@
         GADAdSizeEqualToSize(adSize, kGADAdSizeMediumRectangle) ||
         GADAdSizeEqualToSize(adSize, kGADAdSizeFullBanner) ||
         GADAdSizeEqualToSize(adSize, kGADAdSizeLeaderboard)) {
-        /**/
         
         self.banner = [[MobFoxAd alloc] init:invh withFrame:CGRectMake(0, 0, adSize.size.width, adSize.size.height)];
         self.banner.delegate = self;
         [self.banner loadAd];
+        
+        [MFReport log:@"admob" withInventoryHash:invh andWithMessage:@"request"];
+
         return;
     }
     
@@ -66,6 +76,9 @@
         self.banner = [[MobFoxAd alloc] init:invh withFrame:CGRectMake(0, 0, width, height)];
         self.banner.delegate = self;
         [self.banner loadAd];
+        
+        [MFReport log:@"admob" withInventoryHash:invh andWithMessage:@"request"];
+
         self.smart = YES;
         return;
     }
@@ -86,11 +99,17 @@
 - (void)getInterstitial {
     
     NSLog(@"MobFox >> GADMAdapterMobFox >> Got Interstitial Ad Request");
+    
+    [_eventsHandler resetInterstitialEventBlocker];
+
 
     NSString *invh = [[self.connector credentials] objectForKey:@"pubid"];
     self.interstitial = [[MobFoxInterstitialAd alloc] init:invh];
     self.interstitial.delegate = self;
     [self.interstitial loadAd];
+    
+    [MFReport log:@"admob" withInventoryHash:invh andWithMessage:@"request"];
+        
     
 }
 
@@ -117,28 +136,57 @@
 
 #pragma mark MobFox Ad Delegate
 
-- (void)MobFoxAdDidLoad:(MobFoxAd *)banner{
-    NSLog(@"MobFox >> GADMAdapterMobFox >> Got Ad");
+- (void)MobFoxAdDidLoad:(MobFoxAd *)banner {
     
-    if(self.smart){
-        [banner _changeWidth:[[UIScreen mainScreen] bounds].size.width];
-    }
-  
-    [self.connector adapter:self didReceiveAdView:banner];
+    __weak id weakself = self;
     
+    [_eventsHandler invokeAdEventBlocker:^(BOOL isReported) {
+
+        if (isReported) return;
+        
+        GADMAdapterMobFox *strongself = weakself;
+
+        if(self.smart){
+            [banner _changeWidth:[[UIScreen mainScreen] bounds].size.width];
+        }
+        if(strongself) {
+            [strongself.connector adapter:self didReceiveAdView:banner];
+        }
+        
+        [MFReport log:@"admob" withInventoryHash:banner.invh andWithMessage:@"impression"];
+
+    }];
+    
+
+       
 }
 
-- (void)MobFoxAdDidFailToReceiveAdWithError:(NSError *)error{
-    NSLog(@"MobFox >> GADMAdapterMobFox >> Error: %@",[error description]);
+- (void)MobFoxAdDidFailToReceiveAdWithError:(NSError *)error {
     
-    [self.connector adapter:self didFailAd:error];
+    __weak id weakself = self;
+    
+    [_eventsHandler invokeAdEventBlocker:^(BOOL isReported) {
+ 
+        if (isReported) return;
+            
+        GADMAdapterMobFox *strongself = weakself;
+        
+        if(strongself) {
+            [strongself.connector adapter:self didFailAd:error];
+        }
+
+        
+    }];
+    
     
 }
 
 - (void)MobFoxAdClicked {
     
-    [self.connector adapterDidGetAdClick:self];
-    [self.connector adapterWillLeaveApplication:self];
+    
+   [self.connector adapterDidGetAdClick:self];
+   [self.connector adapterWillLeaveApplication:self];
+    
 }
 
 - (void)MobFoxAdClosed {
@@ -152,35 +200,60 @@
 
 - (void)MobFoxInterstitialAdDidLoad:(MobFoxInterstitialAd *)interstitial{
     
-    NSLog(@"MobFox >> GADMAdapterMobFox >> Interstitial Ad Loaded");
+    __weak id weakself = self;
     
-    [self.connector adapterDidReceiveInterstitial:self];
-    
+    [_eventsHandler invokeInterstitialAdEventBlocker:^(BOOL isReported) {
+
+        if (isReported) return;
+            
+        GADMAdapterMobFox *strongself = weakself;
+        if(strongself) {
+            [strongself.connector adapterDidReceiveInterstitial:self];
+        }
+
+        [MFReport log:@"admob" withInventoryHash:interstitial.invh andWithMessage:@"impression"];
+
+    }];
+
 }
 
 - (void)MobFoxInterstitialAdDidFailToReceiveAdWithError:(NSError *)error{
-    NSLog(@"MobFox >> GADMAdapterMobFox >> Interstitial Ad Load Error: %@",[error description]);
     
-    [self.connector adapter:self didFailAd:error];
+    __weak id weakself = self;
+
+    [_eventsHandler invokeInterstitialAdEventBlocker:^(BOOL isReported) {
+
+        if (isReported) return;
+        
+        GADMAdapterMobFox *strongself = weakself;
+
+        if(strongself) {
+            [self.connector adapter:self didFailAd:error];
+        }
+        
+    }];
+    
 
 }
 
 - (void)MobFoxInterstitialAdWillShow:(MobFoxInterstitialAd *)interstitial{
-    NSLog(@"MobFox >> GADMAdapterMobFox >> Interstitial Ad will show");
+    
     [self.connector adapterWillPresentInterstitial:self];
 }
 
 //called when ad is closed/skipped
 - (void)MobFoxInterstitialAdClosed{
-    NSLog(@"MobFox >> GADMAdapterMobFox >> Interstitial Ad Closed");
+    
     [self.connector adapterDidDismissInterstitial:self];
+            
 }
 
 //called when ad is clicked
 - (void)MobFoxInterstitialAdClicked {
-    NSLog(@"MobFox >> GADMAdapterMobFox >> Interstitial Ad Clicked");
+    
     [self.connector adapterDidGetAdClick:self];
     [self.connector adapterWillLeaveApplication:self];
+    
 }
 
 //called when if the ad is a video ad and it has finished playing
@@ -191,6 +264,7 @@
 
 - (void) dealloc{
     
+    self.eventsHandler          = nil;
     self.banner.delegate        = nil;
     self.banner                 = nil;
     self.interstitial.delegate  = nil;
