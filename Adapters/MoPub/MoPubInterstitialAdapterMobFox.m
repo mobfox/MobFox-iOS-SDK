@@ -1,5 +1,4 @@
 #import "MoPubInterstitialAdapterMobFox.h"
-#import "MFEventsHandler.h"
 
 
 @interface MoPubInterstitialAdapterMobFox()
@@ -47,7 +46,7 @@
     __weak id weakself = self;
     
     
-     [_eventsHandler invokeInterstitialEventBlocker:^(BOOL isReported) {
+     [_eventsHandler invokeInterstitialAdEventBlocker:^(BOOL isReported) {
 
         if (isReported) return;
             
@@ -69,8 +68,8 @@
     NSLog(@"MoPub inter >> MobFox >> ad error: %@",[error description]);
     
     __weak id weakself = self;
-
-    [_eventsHandler invokeInterstitialEventBlocker:^(BOOL isReported) {
+    
+    [_eventsHandler invokeInterstitialAdEventBlocker:^(BOOL isReported) {
 
         if (isReported) return;
         

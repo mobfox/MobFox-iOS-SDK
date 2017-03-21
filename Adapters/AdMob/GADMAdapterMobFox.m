@@ -7,8 +7,6 @@
 //
 
 #import "GADMAdapterMobFox.h"
-#import "MFEventsHandler.h"
-
 
 @interface GADMAdapterMobFox()
 @property (nonatomic, assign, getter=isSmart) BOOL smart;
@@ -202,7 +200,7 @@
     
     __weak id weakself = self;
     
-    [_eventsHandler invokeInterstitialEventBlocker:^(BOOL isReported) {
+    [_eventsHandler invokeInterstitialAdEventBlocker:^(BOOL isReported) {
 
         if (isReported) return;
             
@@ -221,7 +219,7 @@
     
     __weak id weakself = self;
 
-    [_eventsHandler invokeInterstitialEventBlocker:^(BOOL isReported) {
+    [_eventsHandler invokeInterstitialAdEventBlocker:^(BOOL isReported) {
 
         if (isReported) return;
         

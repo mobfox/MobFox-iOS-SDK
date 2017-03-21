@@ -1,5 +1,4 @@
 #import "MoPubAdapterMobFox.h"
-#import "MFEventsHandler.h"
 
 
 @interface MoPubAdapterMobFox()
