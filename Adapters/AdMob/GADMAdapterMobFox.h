@@ -8,7 +8,6 @@
 
 #import <MobFoxSDKCore/MobFoxSDKCore.h>
 #import <GoogleMobileAds/GoogleMobileAds.h>
-//#import "GADMAdNetworkAdapterProtocol.h"
 
 @interface GADMAdapterMobFox : NSObject <GADMAdNetworkAdapter, MobFoxAdDelegate, MobFoxInterstitialAdDelegate>
 

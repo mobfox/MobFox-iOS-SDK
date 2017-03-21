@@ -7,7 +7,7 @@
 //
 
 #import "SmaatoAdapterMobFox.h"
-#import "MFEventsHandler.h"
+
 
 @interface SmaatoAdapterMobFox()
 
@@ -156,7 +156,7 @@
 - (void)MobFoxInterstitialAdDidLoad:(MobFoxInterstitialAd *)interstitial {
     NSLog(@"MobFox Interstitial >> SmaatoAdapterMobFox >> Got Ad");
     
-    [_eventsHandler invokeInterstitialEventBlocker:^(BOOL isReported) {
+    [_eventsHandler invokeInterstitialAdEventBlocker:^(BOOL isReported) {
         
         if (isReported) {
             return;
@@ -173,7 +173,7 @@
 - (void)MobFoxInterstitialAdDidFailToReceiveAdWithError:(NSError *)error {
     NSLog(@"MobFox Interstitial >> SmaatoAdapterMobFox >> Error: %@",[error description]);
     
-    [_eventsHandler invokeInterstitialEventBlocker:^(BOOL isReported) {
+    [_eventsHandler invokeInterstitialAdEventBlocker:^(BOOL isReported) {
         
         if (isReported) {
             return;
