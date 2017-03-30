@@ -23,8 +23,7 @@ Supports **iOS 8.0+**
 <!-- toc stop -->
 
 
-
-#Prerequisites
+# Prerequisites
 
 You will need a [MobFox](http://www.mobfox.com/) account.
 
