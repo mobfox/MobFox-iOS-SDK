@@ -396,6 +396,8 @@ Adapters are the opposite of Custom Events, they let you use MobFox as a Custom 
 
 This feature finds the current loction and sets the parameters longitude and latitude. Alternatively, location services can be disabled by calling the function ```+ (void)locationServicesDisabled:(BOOL)disabled``` with a ```true``` value (Before ad declaration) using one of ad class name.
 
+NSLocationAlwaysUsageDescription or NSLocationWhenInUseUsageDescription key should be defined in Info.plist with a description to be displayed in the prompt.
+
 ## Bitcode Enabled
 
 Including bitcode will allow Apple to re-optimize your app binary without the need to submit a new version of your app to the store. For using Bitcode declare the parameter ```Enable Bitcode``` to ```YES``` in project settings.
