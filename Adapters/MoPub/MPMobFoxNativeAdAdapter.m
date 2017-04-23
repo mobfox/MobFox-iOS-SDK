@@ -13,7 +13,7 @@
     
     NSLog(@"MoPub >> Adapter >> MobFox >> init");
     NSMutableDictionary *properties = @{}.mutableCopy;
-    NSLog(@"ad.callToActionText %@", ad.callToActionText);
+    //NSLog(@"clickURL: %@", ad.clickURL);
     
     if (ad.assetHeadline) [properties setObject:ad.assetHeadline forKey:kAdTitleKey];
     if (ad.assetDescription) [properties setObject:ad.assetDescription forKey:kAdTextKey];
@@ -30,7 +30,7 @@
             [impressionURLs addObject:tracker.url];
     }
     
-    NSLog(@"impressionURLs %@", impressionURLs);
+    //NSLog(@"impressionURLs %@", impressionURLs);
     
     if (impressionURLs.count) {
         [properties setValue:impressionURLs forKey:kImpressionTrackerURLsKey];
@@ -51,8 +51,13 @@
  * third-party ad object (if it has built-in support for handling ad interactions), or open an
  * in-application modal web browser or a modal App Store controller.
  */
-- (void)displayContentForURL:(NSURL *)URL rootViewController:(UIViewController *)controller{
-    [[UIApplication sharedApplication] openURL:URL];
+- (void)displayContentForURL:(NSURL *)URL rootViewController:(UIViewController *)controller {
+    
+    //NSLog(@"-- displayContentForURL -- URL: %@", URL);
+    NSLog(@"-- displayContentForURL -- kDefaultActionURLKey: %@", [_properties objectForKey:kDefaultActionURLKey]);
+
+    
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[_properties objectForKey:kDefaultActionURLKey]]];
 }
 
 /**
@@ -62,7 +67,13 @@
  * If this returns YES, then MPNativeAd will defer to the MPNativeAdAdapterDelegate callbacks to
  * track clicks.
  */
-/*- (BOOL)enableThirdPartyClickTracking{
+/*
+- (BOOL)enableThirdPartyClickTracking {
+    
+    NSLog(@"-- enableThirdPartyClickTracking --");
+    
+    return true;
+
 
 }*/
 
@@ -72,7 +83,12 @@
  * To avoid reporting discrepancies, you should only implement this method if the third-party ad
  * network requires clicks to be reported manually.
  */
-//- (void)trackClick;
+/*
+- (void)trackClick {
+    
+    NSLog(@"-- trackClick --");
+
+}*/
 
 
 /** @name Responding to an Ad Being Attached to a View */

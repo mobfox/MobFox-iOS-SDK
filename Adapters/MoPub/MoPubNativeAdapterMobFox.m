@@ -3,6 +3,9 @@
 #import "MPNativeAd.h"
 #import "MPNativeAdError.h"
 
+
+
+
 @interface MoPubNativeAdapterMobFox()
 
 @property(nonatomic,strong) MobFoxNativeAd* ad;
@@ -13,8 +16,9 @@
 
 - (void)requestAdWithCustomEventInfo:(NSDictionary *)info {
     
+    
     [MFReport log:@"mopub" withInventoryHash:[info valueForKey:@"invh"] andWithMessage:@"request"];
-
+    
 
     self.ad = [[MobFoxNativeAd alloc] init:[info valueForKey:@"invh"]];
     self.ad.delegate = self;
@@ -34,7 +38,7 @@
 
 - (void)MobFoxNativeAdDidLoad:(MobFoxNativeAd*)ad withAdData:(MobFoxNativeData *)adData {
     
-    NSLog(@"adData ---> %@", adData);
+    //NSLog(@"adData ---> %@", adData);
     NSLog(@"MoPub >> MobFox >> Native ad >> response: %@", [ad description]);
     
     [MFReport log:@"mopub" withInventoryHash:ad.invh andWithMessage:@"impression"];
@@ -79,7 +83,7 @@
     [imageURLs addObject:adData.main.url];
     
     
-    NSLog(@">> got image assets: %@",[imageURLs description]);
+    //NSLog(@">> got image assets: %@",[imageURLs description]);
     
     [super precacheImagesWithURLs:imageURLs completionBlock:^(NSArray *errors) {
         
