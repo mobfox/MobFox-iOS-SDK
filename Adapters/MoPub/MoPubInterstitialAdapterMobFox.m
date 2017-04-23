@@ -68,7 +68,7 @@
     NSLog(@"MoPub inter >> MobFox >> ad error: %@",[error description]);
     
     __weak id weakself = self;
-    
+
     [_eventsHandler invokeInterstitialAdEventBlocker:^(BOOL isReported) {
 
         if (isReported) return;
