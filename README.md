@@ -71,6 +71,19 @@ For further questions about iOS9 and ATS, please create a ticket at https://acco
 ```objective-c
 #import <MobFoxSDKCore/MobFoxSDKCore.h>
 ```
+Or if using a different build of the SDK use the corresponding include:
+```objective-c
+//For MobFoxSDKCoreBitCode.embeddedframework use
+#import <MobFoxSDKCoreBitCode/MobFoxSDKCoreBitCode.h>
+```
+```objective-c
+//For MobFoxSDKCoreDynamic.embeddedframework use
+#import <MobFoxSDKCoreDynamic/MobFoxSDKCoreDynamic.h>
+```
+```objective-c
+//For MobFoxSDKCoreDynamicBitCode.embeddedframework use
+#import <MobFoxSDKCoreDynamicBitCode/MobFoxSDKCoreDynamicBitCode.h>
+```
 
 ## Banner Ad
 
