@@ -37,7 +37,7 @@ Set ```Embedded Content Contains Swift Code``` to Yes.
 Add to your Podfile:
 
 ```
-pod 'MobFoxSDK'
+pod 'MobFoxSDK','3.1.6.h'
 ```
 ## Manual Installation
 
