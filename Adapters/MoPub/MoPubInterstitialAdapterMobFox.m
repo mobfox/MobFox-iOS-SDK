@@ -14,7 +14,6 @@
     NSLog(@"MoPub inter >> MobFox >> init");
     NSLog(@"MoPub inter >> MobFox >> data: %@",[info description]);
     
-    [MFReport log:@"mopub" withInventoryHash:[info valueForKey:@"invh"] andWithMessage:@"request"];
     
     _eventsHandler = [[MFEventsHandler alloc] init];
     [_eventsHandler resetInterstitialEventBlocker];
@@ -22,7 +21,10 @@
     self.mobFoxInterAd = [[MobFoxInterstitialAd alloc] init:[info valueForKey:@"invh"]];
     self.mobFoxInterAd.delegate = self;
     [self.mobFoxInterAd loadAd];
-        
+    
+    [MFReport log:@"mopub" withInventoryHash:[info valueForKey:@"invh"] andWithMessage:@"request" requestID:self.mobFoxInterAd.requestID];
+
+    
 }
 
 - (void)showInterstitialFromRootViewController:(UIViewController *)rootViewController{
@@ -57,7 +59,7 @@
              [strongself.delegate interstitialCustomEvent:self didLoadAd:interstitial];
         }
          
-        [MFReport log:@"mopub" withInventoryHash:interstitial.invh andWithMessage:@"impression"];
+        [MFReport log:@"mopub" withInventoryHash:interstitial.invh andWithMessage:@"impression" requestID:interstitial.requestID];
 
     }];
 

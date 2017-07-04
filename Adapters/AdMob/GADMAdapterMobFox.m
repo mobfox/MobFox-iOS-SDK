@@ -8,9 +8,13 @@
 
 #import "GADMAdapterMobFox.h"
 
+
 @interface GADMAdapterMobFox()
-@property (nonatomic, assign, getter=isSmart) BOOL smart;
+
 @property (nonatomic, strong) MFEventsHandler *eventsHandler;
+@property (nonatomic, strong) MobFoxTagAd* banner;
+@property (nonatomic, strong) MobFoxInterstitialAd* interstitial;
+@property (nonatomic, weak) id <GADMAdNetworkConnector> connector;
 
 
 @end
@@ -21,7 +25,7 @@
 
 + (NSString *)adapterVersion {
     
-    return @"1.0";
+    return @"1.1";
 }
 
 + (Class<GADAdNetworkExtras>)networkExtrasClass {
@@ -41,56 +45,44 @@
     
     
     [_eventsHandler resetAdEventBlocker];
-    self.smart = NO;
+   
     NSLog(@"MobFox >> GADMAdapterMobFox >> Ad Request");
 
     NSString *invh = [[self.connector credentials] objectForKey:@"pubid"];
     
-    //The adapter should fail immediately if the adSize is not supported
-    if (GADAdSizeEqualToSize(adSize, kGADAdSizeBanner) ||
-        GADAdSizeEqualToSize(adSize, kGADAdSizeMediumRectangle) ||
-        GADAdSizeEqualToSize(adSize, kGADAdSizeFullBanner) ||
-        GADAdSizeEqualToSize(adSize, kGADAdSizeLeaderboard)) {
+    
+    if (GADAdSizeEqualToSize(adSize, kGADAdSizeSmartBannerPortrait) || GADAdSizeEqualToSize(adSize, kGADAdSizeSmartBannerLandscape)){
         
-        self.banner = [[MobFoxAd alloc] init:invh withFrame:CGRectMake(0, 0, adSize.size.width, adSize.size.height)];
-        self.banner.delegate = self;
-        [self.banner loadAd];
+        CGRect screenRect = [[UIScreen mainScreen] bounds];
+        CGFloat screenWidth = screenRect.size.width;
         
-        [MFReport log:@"admob" withInventoryHash:invh andWithMessage:@"request"];
+        CGFloat bannerHeight;
+        if (GADAdSizeEqualToSize(adSize, kGADAdSizeSmartBannerPortrait)) {
+            bannerHeight = kGADAdSizeSmartBannerPortrait.size.height;
 
-        return;
-    }
-    
-    
-    UIInterfaceOrientation interfaceOrientation = [[UIApplication sharedApplication] statusBarOrientation];
-    if(GADAdSizeEqualToSize(adSize, kGADAdSizeSmartBannerPortrait) && UIInterfaceOrientationIsPortrait(interfaceOrientation)){
-        float width = 320.0f;
-        float height = 50.0f;
-        if([UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad){
-            width = 728.0f;
-            height = 90.0f;
+        } else {
+            bannerHeight = kGADAdSizeSmartBannerLandscape.size.height;
+
         }
         
-        self.banner = [[MobFoxAd alloc] init:invh withFrame:CGRectMake(0, 0, width, height)];
+        self.banner = [[MobFoxTagAd alloc] init:invh withFrame:CGRectMake(0, 0, screenWidth, bannerHeight)];
         self.banner.delegate = self;
         [self.banner loadAd];
         
-        [MFReport log:@"admob" withInventoryHash:invh andWithMessage:@"request"];
-
-        self.smart = YES;
+        [MFReport log:@"admob" withInventoryHash:invh andWithMessage:@"request" requestID:self.banner.requestID];
+        
         return;
+        
+        
     }
-            
-    NSString *errorDesc =
-    [NSString stringWithFormat:@"Invalid ad type %@.",NSStringFromGADAdSize(adSize)];
-    NSLog(@"MobFox >> GADAdapterMobFox: %@",errorDesc);
-            
-    NSDictionary *errorInfo = [NSDictionary dictionaryWithObjectsAndKeys:errorDesc, NSLocalizedDescriptionKey, nil];
-    NSError *error = [NSError errorWithDomain:kGADErrorDomain
-                            code:kGADErrorMediationInvalidAdSize
-                            userInfo:errorInfo];
-    [self.connector adapter:self didFailAd:error];
-            
+    
+    self.banner = [[MobFoxTagAd alloc] init:invh withFrame:CGRectMake(0, 0, adSize.size.width, adSize.size.height)];
+    self.banner.delegate = self;
+    [self.banner loadAd];
+    
+    [MFReport log:@"admob" withInventoryHash:invh andWithMessage:@"request" requestID:self.banner.requestID];
+    
+         
 
 }
 
@@ -106,7 +98,7 @@
     self.interstitial.delegate = self;
     [self.interstitial loadAd];
     
-    [MFReport log:@"admob" withInventoryHash:invh andWithMessage:@"request"];
+    [MFReport log:@"admob" withInventoryHash:invh andWithMessage:@"request" requestID:self.interstitial.requestID];
         
     
 }
@@ -132,54 +124,24 @@
 }
 
 
-#pragma mark MobFox Ad Delegate
+#pragma mark MobFox Tag Ad Delegate
 
-- (void)MobFoxAdDidLoad:(MobFoxAd *)banner {
+- (void)MobFoxTagAdDidLoad:(MobFoxTagAd *)banner {
     
-    __weak id weakself = self;
+    NSLog(@"MobFox >> GADMAdapterMobFox >> Ad Loaded");
+
+    [self.connector adapter:self didReceiveAdView:banner];
     
-    [_eventsHandler invokeAdEventBlocker:^(BOOL isReported) {
+    [MFReport log:@"admob" withInventoryHash:banner.invh andWithMessage:@"impression" requestID:banner.requestID];
 
-        if (isReported) return;
-        
-        GADMAdapterMobFox *strongself = weakself;
-
-        if(self.smart){
-            [banner _changeWidth:[[UIScreen mainScreen] bounds].size.width];
-        }
-        if(strongself) {
-            [strongself.connector adapter:self didReceiveAdView:banner];
-        }
-        
-        [MFReport log:@"admob" withInventoryHash:banner.invh andWithMessage:@"impression"];
-
-    }];
-    
-
-       
 }
 
-- (void)MobFoxAdDidFailToReceiveAdWithError:(NSError *)error {
+- (void)MobFoxTagAdDidFailToReceiveAdWithError:(NSError *)error {
     
-    __weak id weakself = self;
-    
-    [_eventsHandler invokeAdEventBlocker:^(BOOL isReported) {
- 
-        if (isReported) return;
-            
-        GADMAdapterMobFox *strongself = weakself;
-        
-        if(strongself) {
-            [strongself.connector adapter:self didFailAd:error];
-        }
-
-        
-    }];
-    
-    
+    [self.connector adapter:self didFailAd:error];
 }
 
-- (void)MobFoxAdClicked {
+- (void)MobFoxTagAdClicked {
     
     
    [self.connector adapterDidGetAdClick:self];
@@ -187,10 +149,10 @@
     
 }
 
-- (void)MobFoxAdClosed {
+- (void)MobFoxTagAdClosed {
 }
 
-- (void)MobFoxAdFinished {
+- (void)MobFoxTagAdFinished {
 }
 
 
@@ -209,7 +171,7 @@
             [strongself.connector adapterDidReceiveInterstitial:self];
         }
 
-        [MFReport log:@"admob" withInventoryHash:interstitial.invh andWithMessage:@"impression"];
+        [MFReport log:@"admob" withInventoryHash:interstitial.invh andWithMessage:@"impression" requestID:interstitial.requestID];
 
     }];
 

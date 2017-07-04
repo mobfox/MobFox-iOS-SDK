@@ -8,11 +8,12 @@
 
 #import <MobFoxSDKCore/MobFoxSDKCore.h>
 #import <GoogleMobileAds/GoogleMobileAds.h>
+//#import "GADMAdNetworkAdapterProtocol.h"
 
-@interface GADMAdapterMobFox : NSObject <GADMAdNetworkAdapter, MobFoxAdDelegate, MobFoxInterstitialAdDelegate>
 
-@property (nonatomic, strong) MobFoxAd* banner;
-@property (nonatomic, strong) MobFoxInterstitialAd* interstitial;
-@property (nonatomic, weak) id <GADMAdNetworkConnector> connector;
+
+@interface GADMAdapterMobFox : NSObject <GADMAdNetworkAdapter, MobFoxAdTagDelegate, MobFoxInterstitialAdDelegate>
+
+
 
 @end

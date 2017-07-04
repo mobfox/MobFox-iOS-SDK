@@ -16,9 +16,6 @@
 
 - (void)requestAdWithCustomEventInfo:(NSDictionary *)info {
     
-    
-    [MFReport log:@"mopub" withInventoryHash:[info valueForKey:@"invh"] andWithMessage:@"request"];
-    
 
     self.ad = [[MobFoxNativeAd alloc] init:[info valueForKey:@"invh"]];
     self.ad.delegate = self;
@@ -34,6 +31,9 @@
     NSLog(@"MoPub >> MobFox >> request: %@",[info description]);
 
     [self.ad loadAd];
+    
+    [MFReport log:@"mopub" withInventoryHash:[info valueForKey:@"invh"] andWithMessage:@"request" requestID:nil];
+
 }
 
 - (void)MobFoxNativeAdDidLoad:(MobFoxNativeAd*)ad withAdData:(MobFoxNativeData *)adData {
@@ -41,7 +41,7 @@
     //NSLog(@"adData ---> %@", adData);
     NSLog(@"MoPub >> MobFox >> Native ad >> response: %@", [ad description]);
     
-    [MFReport log:@"mopub" withInventoryHash:ad.invh andWithMessage:@"impression"];
+    [MFReport log:@"mopub" withInventoryHash:ad.invh andWithMessage:@"impression" requestID:nil];
 
     
     if (adData.icon.url == nil || adData.main.url == nil) {

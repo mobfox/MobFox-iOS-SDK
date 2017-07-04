@@ -54,7 +54,7 @@
 - (void)displayContentForURL:(NSURL *)URL rootViewController:(UIViewController *)controller {
     
     //NSLog(@"-- displayContentForURL -- URL: %@", URL);
-    NSLog(@"-- displayContentForURL -- kDefaultActionURLKey: %@", [_properties objectForKey:kDefaultActionURLKey]);
+    //NSLog(@"-- displayContentForURL -- kDefaultActionURLKey: %@", [_properties objectForKey:kDefaultActionURLKey]);
 
     
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[_properties objectForKey:kDefaultActionURLKey]]];

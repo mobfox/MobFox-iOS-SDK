@@ -9,13 +9,12 @@
 #import "MPBannerCustomEvent.h"
 #endif
 
-@interface MoPubAdapterMobFox : MPBannerCustomEvent <MobFoxAdDelegate>
+@interface MoPubAdapterMobFox : MPBannerCustomEvent <MobFoxAdTagDelegate>
 
-@property (strong, nonatomic) MobFoxAd* ad;
 
 - (void)requestAdWithSize:(CGSize)size customEventInfo:(NSDictionary *)info;
 
-- (BOOL)enableAutomaticImpressionAndClickTracking;
+//- (BOOL)enableAutomaticImpressionAndClickTracking;
 
 @end
 
