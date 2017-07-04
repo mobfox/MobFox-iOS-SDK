@@ -24,6 +24,9 @@
   "xcconfig": {
     "FRAMEWORK_SEARCH_PATHS": "\"$(PODS_ROOT)/MobFoxSDK/**\""
   },
+  "libraries":[
+    "z"
+  ],
   "frameworks": [
     "AdSupport"
   ],
