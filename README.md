@@ -29,7 +29,7 @@ You will need a [MobFox](http://www.mobfox.com/) account.
 
 # Installation
 
-Make sure ```AdSupport.framework``` is included in your project's frameworks. 
+Make sure ```AdSupport.framework``` and ```libz.dylib``` are included in your project's frameworks. 
 Set ```Embedded Content Contains Swift Code``` to Yes.
 
 ## CocoaPods
