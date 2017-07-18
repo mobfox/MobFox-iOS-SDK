@@ -406,9 +406,7 @@ Adapters are the opposite of Custom Events, they let you use MobFox as a Custom 
 
 ## Location Services
 
-The SDK will query the current location and set the ```longitude``` and ```latitude``` ad request parameters. Alternatively, location services can be disabled by calling the function ```+ (void)locationServicesDisabled:(BOOL)disabled``` with a ```true``` value (before ad declaration) on each ad type.
-
-```NSLocationAlwaysUsageDescription``` or ```NSLocationWhenInUseUsageDescription``` key should be defined in Info.plist with a description to be displayed in the prompt. 
+The SDK will query the current location and set the ```longitude``` and ```latitude``` ad request parameters, as long as it permitted by the user (in Privacy, Location Services). 
 
 ## Bitcode Enabled
 
