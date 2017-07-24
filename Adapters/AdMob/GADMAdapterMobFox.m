@@ -8,7 +8,6 @@
 
 #import "GADMAdapterMobFox.h"
 
-
 @interface GADMAdapterMobFox()
 
 @property (nonatomic, strong) MFEventsHandler *eventsHandler;
@@ -50,19 +49,18 @@
 
     NSString *invh = [[self.connector credentials] objectForKey:@"pubid"];
     
-    
     if (GADAdSizeEqualToSize(adSize, kGADAdSizeSmartBannerPortrait) || GADAdSizeEqualToSize(adSize, kGADAdSizeSmartBannerLandscape)){
         
         CGRect screenRect = [[UIScreen mainScreen] bounds];
         CGFloat screenWidth = screenRect.size.width;
-        
         CGFloat bannerHeight;
+        
         if (GADAdSizeEqualToSize(adSize, kGADAdSizeSmartBannerPortrait)) {
-            bannerHeight = kGADAdSizeSmartBannerPortrait.size.height;
+            bannerHeight = [UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad ? 90.0 : 50.0;
 
         } else {
-            bannerHeight = kGADAdSizeSmartBannerLandscape.size.height;
-
+            bannerHeight = [UIDevice currentDevice].userInterfaceIdiom == UIUserInterfaceIdiomPad ? 90.0 : 32.0;
+            
         }
         
         self.banner = [[MobFoxTagAd alloc] init:invh withFrame:CGRectMake(0, 0, screenWidth, bannerHeight)];
@@ -73,8 +71,8 @@
         
         return;
         
-        
     }
+    
     
     self.banner = [[MobFoxTagAd alloc] init:invh withFrame:CGRectMake(0, 0, adSize.size.width, adSize.size.height)];
     self.banner.delegate = self;
@@ -137,6 +135,9 @@
 }
 
 - (void)MobFoxTagAdDidFailToReceiveAdWithError:(NSError *)error {
+    
+    NSLog(@"MobFox >> GADMAdapterMobFox >> Ad Loaded Failed: %@", error);
+
     
     [self.connector adapter:self didFailAd:error];
 }
