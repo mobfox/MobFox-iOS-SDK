@@ -400,8 +400,3 @@ Adapters are the opposite of Custom Events, they let you use MobFox as a Custom 
 
 The SDK will query the current location and set the ```longitude``` and ```latitude``` ad request parameters, as long as it permitted by the user (in Privacy, Location Services). 
 
-## Bitcode Enabled
-
-Including bitcode will allow Apple to re-optimize your app binary without the need to submit a new version of your app to the store. For using Bitcode declare the parameter ```Enable Bitcode``` to ```YES``` in project settings.
-
-
