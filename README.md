@@ -41,10 +41,10 @@ pod 'MobFoxSDK','3.1.7b'
 ```
 ## Manual Installation
 
-1. Download and unzip [MobFox-SDK-Core-Lib](https://github.com/mobfox/MobFox-iOS-SDK-Core-Lib/releases/latest) or clone this repository.
+1. Download and unzip [MobFox-SDK](https://github.com/mobfox/MobFox-iOS-SDK-Core-Lib/releases/latest) or clone this repository.
 
-2. For integrating static lib: Drag ```MobFoxSDKCore.embeddedframework``` from the Finder into your project, or ```MobFoxSDKCoreBitCode.embeddedframework```to enabling Bitcode.
-For dynamic lib: Drag ```MobFoxSDKCoreDynamic.embeddedframework``` from the Finder into your project, or ```MobFoxSDKCoreDynamicBitCode.embeddedframework```to enabling Bitcode.
+2. For integrating static lib: Drag ```MobFoxSDKCore.embeddedframework``` from the Finder into your project.
+For dynamic lib: Drag ```MobFoxSDKCoreDynamic.embeddedframework``` from the Finder into your project.
 
 
 
@@ -71,18 +71,10 @@ For further questions about iOS9 and ATS, please create a ticket at https://acco
 ```objective-c
 #import <MobFoxSDKCore/MobFoxSDKCore.h>
 ```
-Or if using a different build of the SDK use the corresponding include:
-```objective-c
-//For MobFoxSDKCoreBitCode.embeddedframework use
-#import <MobFoxSDKCoreBitCode/MobFoxSDKCoreBitCode.h>
-```
+Or
 ```objective-c
 //For MobFoxSDKCoreDynamic.embeddedframework use
 #import <MobFoxSDKCoreDynamic/MobFoxSDKCoreDynamic.h>
-```
-```objective-c
-//For MobFoxSDKCoreDynamicBitCode.embeddedframework use
-#import <MobFoxSDKCoreDynamicBitCode/MobFoxSDKCoreDynamicBitCode.h>
 ```
 
 ## Banner Ad
@@ -407,9 +399,4 @@ Adapters are the opposite of Custom Events, they let you use MobFox as a Custom 
 ## Location Services
 
 The SDK will query the current location and set the ```longitude``` and ```latitude``` ad request parameters, as long as it permitted by the user (in Privacy, Location Services). 
-
-## Bitcode Enabled
-
-Including bitcode will allow Apple to re-optimize your app binary without the need to submit a new version of your app to the store. For using Bitcode declare the parameter ```Enable Bitcode``` to ```YES``` in project settings.
-
 
