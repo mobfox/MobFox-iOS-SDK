@@ -47,6 +47,8 @@ Add to your Cartfile:
 github "mobfox/MobFox-iOS-SDK" "v3.1.7b"
 ```
 
+Carthage only supports dynamic frameworks. MobFoxSDKCoreDynamic.framework must be under 'Embedded Binaries' and 'Linked Frameworks and Libraries'. 
+
 ## Manual Installation
 
 1. Download and unzip [MobFox-SDK-Core-Lib](https://github.com/mobfox/MobFox-iOS-SDK-Core-Lib/releases/latest) or clone this repository.
