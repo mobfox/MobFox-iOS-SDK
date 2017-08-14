@@ -44,7 +44,7 @@ pod 'MobFoxSDK','3.1.7b'
 Add to your Cartfile:
 
 ```
-github “mobfox/MobFox-iOS-SDK"
+github "mobfox/MobFox-iOS-SDK" "v3.1.7b"
 ```
 
 ## Manual Installation
