@@ -61,7 +61,7 @@ For dynamic lib: Drag ```MobFoxSDKCoreDynamic.embeddedframework``` from the Find
 
 
 ## iOS 9+ Specific
-One of the changes in iOS9 is a default setting that requires apps to make network connections only over SSL, this is known as App Transport Security. MobFox is facilitating the transition to support this change for each of our demand partners in order to ensure they are compliant. In the meantime, developers who want to release apps that support iOS9, will need to disable ATS in order to ensure MobFox continues to work as expected. To do so, developers should add the following to their plist:
+One of the changes in iOS9 is a default setting that requires apps to make network connections only over SSL, this is known as App Transport Security. MobFox is facilitating the transition to support this change for each of our demand partners in order to ensure they are compliant. In the meantime, developers who want to release apps that support iOS9, will need to disable ATS in order to ensure MobFox continues to work as expected, and in iOS10 and later only disable ATS for Media and Web content. To do so, developers should add the following to their plist:
 ```xml
 <key>NSAppTransportSecurity</key>
 <dict>
