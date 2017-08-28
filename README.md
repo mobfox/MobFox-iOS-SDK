@@ -67,6 +67,10 @@ One of the changes in iOS9 is a default setting that requires apps to make netwo
 <dict>
     <key>NSAllowsArbitraryLoads</key>
     <true/>
+    <key>NSAllowsArbitraryLoadsForMedia</key>
+    <true/>
+    <key>NSAllowsArbitraryLoadsInWebContent</key>
+    <true/>
 </dict>
 ```
 Developers can also edit the plist directly by adding ```NSAppTransportSecurity``` key of dictionary type with a dictionary element of ```NSAllowsArbitraryLoads``` of boolean type set to ```Yes```.
