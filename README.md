@@ -73,7 +73,7 @@ One of the changes in iOS9 is a default setting that requires apps to make netwo
     <true/>
 </dict>
 ```
-Developers can also edit the plist directly by adding ```NSAppTransportSecurity``` key of dictionary type with a dictionary element of ```NSAllowsArbitraryLoads``` of boolean type set to ```Yes```.
+Developers can also edit the plist directly by adding ```NSAppTransportSecurity``` key of dictionary type with the parameters: NSAllowsArbitraryLoads, NSAllowsArbitraryLoadsForMedia and NSAllowsArbitraryLoadsInWebContent set to ```true```.
 
 In the future MobFox will provide an additional parameter for requesting only secure ads. We will inform our publishers via the [Control Panel](https://account.mobfox.com).
 
