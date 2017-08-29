@@ -29,7 +29,10 @@ You will need a [MobFox](http://www.mobfox.com/) account.
 
 # Installation
 
-Make sure ```AdSupport.framework``` and ```libz.dylib``` are included in your project's frameworks. 
+Make sure thw dollowing are included in your project's *frameworks*:
+- ```AdSupport.framework```
+- ```libz.dylib```
+
 Set ```Embedded Content Contains Swift Code``` to Yes.
 
 ## CocoaPods
@@ -73,7 +76,7 @@ One of the changes in iOS9 is a default setting that requires apps to make netwo
     <true/>
 </dict>
 ```
-Developers can also edit the plist directly by adding ```NSAppTransportSecurity``` key of dictionary type with the parameters: NSAllowsArbitraryLoads, NSAllowsArbitraryLoadsForMedia and NSAllowsArbitraryLoadsInWebContent set to ```true```.
+Developers can also edit the plist directly by adding ```NSAppTransportSecurity``` key of dictionary type with the parameters: ```NSAllowsArbitraryLoads```, ```NSAllowsArbitraryLoadsForMedia``` and ```NSAllowsArbitraryLoadsInWebContent``` set to ```true```.
 
 In the future MobFox will provide an additional parameter for requesting only secure ads. We will inform our publishers via the [Control Panel](https://account.mobfox.com).
 
