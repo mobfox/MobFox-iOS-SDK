@@ -59,7 +59,7 @@ Carthage only supports dynamic frameworks. MobFoxSDKCoreDynamic.framework must b
 1. Download and unzip [MobFox-SDK](https://github.com/mobfox/MobFox-iOS-SDK-Core-Lib/releases/latest) or clone this repository.
 
 2. For integrating static lib: Drag ```MobFoxSDKCore.embeddedframework``` from the Finder into your project.
-For dynamic lib: Drag ```MobFoxSDKCoreDynamic.embeddedframework``` from the Finder into your project (MobFoxSDKCoreDynamic.framework must be under 'Embedded Binaries' and 'Linked Frameworks and Libraries').
+For dynamic lib: Drag ```MobFoxSDKCoreDynamic.embeddedframework``` from the Finder into your project. (MobFoxSDKCoreDynamic.framework must be under 'Embedded Binaries' and 'Linked Frameworks and Libraries')
 
 
 
