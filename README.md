@@ -1,5 +1,7 @@
 # MobFox-iOS-SDK
 
+For any problems or questions not covered by the instrunctions below, please contact <sdk_support@mobfox.com> or open an issue.
+
 Supports **iOS 8.0+**
 
 
