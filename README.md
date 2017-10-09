@@ -273,15 +273,6 @@ Later when you wish to display the ad:
 }
 
 ```
-#### Dismiss Interstitial Ad
-
-When you wish to dismiss the ad:
-```objective-c
-
-- (void)dismissAd;
-
-```
-
 ---
 
 ## Native Ad
