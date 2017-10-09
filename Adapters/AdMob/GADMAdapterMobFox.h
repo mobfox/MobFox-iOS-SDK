@@ -12,7 +12,7 @@
 
 
 
-@interface GADMAdapterMobFox : NSObject <GADMAdNetworkAdapter, MobFoxAdTagDelegate, MobFoxInterstitialAdDelegate>
+@interface GADMAdapterMobFox : NSObject <GADMAdNetworkAdapter, MobFoxAdTagDelegate, MobFoxTagInterstitialAdDelegate>
 
 
 

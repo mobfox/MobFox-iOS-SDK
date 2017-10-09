@@ -11,15 +11,15 @@
 #endif
 
 
-@interface MoPubInterstitialAdapterMobFox : MPInterstitialCustomEvent<MobFoxInterstitialAdDelegate>
+@interface MoPubInterstitialAdapterMobFox : MPInterstitialCustomEvent<MobFoxTagInterstitialAdDelegate>
 
-@property (strong, nonatomic) MobFoxInterstitialAd* mobFoxInterAd;
+@property (strong, nonatomic) MobFoxTagInterstitialAd* mobFoxInterAd;
 
 - (void)requestInterstitialWithCustomEventInfo:(NSDictionary *)info;
 
 - (void)showInterstitialFromRootViewController:(UIViewController *)rootViewController;
 
-- (BOOL)enableAutomaticImpressionAndClickTracking;
+//- (BOOL)enableAutomaticImpressionAndClickTracking;
 
 
 @end

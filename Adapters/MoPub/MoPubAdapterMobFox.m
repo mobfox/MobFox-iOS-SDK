@@ -20,9 +20,6 @@
     self.ad = [[MobFoxTagAd alloc] init:[info valueForKey:@"invh"] withFrame:CGRectMake(0, 0, size.width, size.height)];
     self.ad.delegate = self;
     [self.ad loadAd];
-    
-    [MFReport log:@"mopub" withInventoryHash:[info valueForKey:@"invh"] andWithMessage:@"request" requestID:self.ad.requestID];
-
 
 }
 /*
@@ -41,8 +38,6 @@
 
    // [self.delegate trackImpression];
     [self.delegate bannerCustomEvent:self didLoadAd:banner];
-    
-    [MFReport log:@"mopub" withInventoryHash:banner.invh andWithMessage:@"impression" requestID:banner.requestID];
     
 }
 
