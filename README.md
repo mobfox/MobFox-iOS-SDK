@@ -42,7 +42,7 @@ Set ```Embedded Content Contains Swift Code``` to Yes.
 Add to your Podfile:
 
 ```
-pod 'MobFoxSDK','v3.1.9B'
+pod 'MobFoxSDK','v3.1.9bb'
 ```
 
 ## Carthage
