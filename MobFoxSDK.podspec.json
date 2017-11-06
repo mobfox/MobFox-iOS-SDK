@@ -1,6 +1,6 @@
 {
   "name": "MobFoxSDK",
-  "version": "3.1.9b",
+  "version": "3.1.9bb",
   "homepage": "http://mobfox.com",
   "license": "MIT",
   "authors": {
@@ -13,7 +13,7 @@
   },
   "source": {
     "git":"https://github.com/mobfox/MobFox-iOS-SDK.git",
-    "tag":"v3.1.9b"
+    "tag":"v3.1.9bb"
   },
   "preserve_paths": "MobFoxSDKCore.embeddedframework/MobFoxSDKCore.framework",
   "public_header_files": "MobFoxSDKCore.embeddedframework/MobFoxSDKCore.framework/Headers/*.h",
