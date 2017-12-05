@@ -42,7 +42,7 @@ Set ```Embedded Content Contains Swift Code``` to Yes.
 Add to your Podfile:
 
 ```
-pod 'MobFoxSDK','3.1.9c'
+pod 'MobFoxSDK','3.2.0'
 ```
 
 ## Carthage
@@ -50,7 +50,7 @@ pod 'MobFoxSDK','3.1.9c'
 Add to your Cartfile:
 
 ```
-github "mobfox/MobFox-iOS-SDK" "v3.1.9c"
+github "mobfox/MobFox-iOS-SDK" "v3.2.0"
 ```
 
 Carthage only supports dynamic frameworks. MobFoxSDKCoreDynamic.framework must be under 'Embedded Binaries' and 'Linked Frameworks and Libraries'.
