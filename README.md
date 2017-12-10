@@ -11,7 +11,7 @@ Supports **iOS 9.0+**
 * [Installation](#installation)
   * [CocoaPods](#cocoapods)
   * [Manual Installation](#manual-installation)
-  * [iOS 9+ Specific](#ios-9-specific)
+  * [ATS](#ats)
 * [Usage](#usage)
   * [Banner Ad](#banner-ad)
   * [Interstitial Ad](#interstitial-ad)
@@ -50,7 +50,7 @@ pod 'MobFoxSDK','3.3.0'
 Add to your Cartfile:
 
 ```
-github "mobfox/MobFox-iOS-SDK" "v3.3.0"
+github "mobfox/MobFox-iOS-SDK" "3.3.0"
 ```
 
 Carthage only supports dynamic frameworks. MobFoxSDKCoreDynamic.framework must be under 'Embedded Binaries' and 'Linked Frameworks and Libraries'.
@@ -65,7 +65,9 @@ For dynamic lib: Drag ```MobFoxSDKCoreDynamic.embeddedframework``` from the Find
 
 3. Drag ```MATMoatMobileAppKit.framework``` from the Finder into your project.
 
-One of the changes in iOS9 is a default setting that requires apps to make network connections only over SSL, this is known as App Transport Security. MobFox is facilitating the transition to support this change for each of our demand partners in order to ensure they are compliant. In the meantime, developers who want to release apps that support iOS9, will need to disable ATS in order to ensure MobFox continues to work as expected, and in iOS10 and later only disable ATS for Media and Web content. To do so, developers should add the following to their plist:
+## ATS
+
+One of the changes in iOS9 is a default setting that requires apps to make network connections only over SSL, this is known as App Transport Security. MobFox is facilitating the transition to support this change for each of our demand partners in order to ensure they are compliant. In the meantime, developers who want to release apps that support iOS9, will need to disable ATS in order to ensure MobFox continues to work as expected, and in iOS10 and later only disable ATS for Media and Web content. To do so, developers should add the following to their ```plist```:
 ```xml
 <key>NSAppTransportSecurity</key>
 <dict>
@@ -76,6 +78,7 @@ One of the changes in iOS9 is a default setting that requires apps to make netwo
     <key>NSAllowsArbitraryLoadsInWebContent</key>
     <true/>
 </dict>
+
 ```
 Developers can also edit the plist directly by adding ```NSAppTransportSecurity``` key of dictionary type with the parameters: ```NSAllowsArbitraryLoads```, ```NSAllowsArbitraryLoadsForMedia``` and ```NSAllowsArbitraryLoadsInWebContent``` set to ```true```.
 
@@ -84,6 +87,8 @@ In the future MobFox will provide an additional parameter for requesting only se
 More information about this change can be found on Apple's website: https://developer.apple.com/library/prerelease/ios/technotes/App-Transport-Security-Technote/index.html#//apple_ref/doc/uid/TP40016240
 
 For further questions about iOS9 and ATS, please create a ticket at https://account.mobfox.com/www/cp/create_ticket.php
+
+**If your app already relies on ```NSAllowsArbitraryLoads``` for some http request/s please do not modify your ```plist```.**
 
 
 # Usage
