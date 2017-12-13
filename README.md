@@ -4,7 +4,6 @@ For any problems or questions not covered by the instructions below, please cont
 
 Supports **iOS 9.0+**
 
-
 <!-- toc -->
 
 * [Prerequisites](#prerequisites)
@@ -21,6 +20,7 @@ Supports **iOS 9.0+**
   * [Plugins](#plugins)
   * [Demo App Swift](#demo-app-swift)
   * [Location Services](#location-services)
+* [MOAT](#built-in-moat-viewability-measurement)
 
 <!-- toc stop -->
 
@@ -415,4 +415,9 @@ Adapters are the opposite of Custom Events, they let you use MobFox as a Custom 
 ## Location Services
 
 The SDK will query the current location and set the ```longitude``` and ```latitude``` ad request parameters, as long as it permitted by the user (in Privacy, Location Services). 
+
+# Built-in MOAT Viewability Measurement
+ 
+This enables publishers to measure their in-app inventory according to Moat’s viewability metrics, and make their inventory more available to advertisers who are only interested in ‘viewability-monitored’ traffic.
+
 
