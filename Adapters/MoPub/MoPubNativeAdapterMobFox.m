@@ -31,8 +31,6 @@
     NSLog(@"MoPub >> MobFox >> request: %@",[info description]);
 
     [self.ad loadAd];
-    
-    [MFReport log:@"mopub" withInventoryHash:[info valueForKey:@"invh"] andWithMessage:@"request" requestID:nil];
 
 }
 
@@ -40,9 +38,6 @@
     
     //NSLog(@"adData ---> %@", adData);
     NSLog(@"MoPub >> MobFox >> Native ad >> response: %@", [ad description]);
-    
-    [MFReport log:@"mopub" withInventoryHash:ad.invh andWithMessage:@"impression" requestID:nil];
-
     
     if (adData.icon.url == nil || adData.main.url == nil) {
         
