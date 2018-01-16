@@ -31,7 +31,7 @@ You will need a [MobFox](http://www.mobfox.com/) account.
 
 # Installation
 
-Make sure thw dollowing are included in your project's *frameworks*:
+Make sure the following are included in your project's *frameworks*:
 - ```AdSupport.framework```
 - ```libz.dylib```
 
