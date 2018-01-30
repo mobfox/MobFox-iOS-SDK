@@ -9,7 +9,11 @@
 #import <Foundation/Foundation.h>
 #import <iSoma/iSoma.h>
 #import <iAd/iAd.h>
+#ifdef  DemoAppDynamicTarget
+#import <MobFoxSDKCoreDynamic/MobFoxSDKCoreDynamic.h>
+#else
 #import <MobFoxSDKCore/MobFoxSDKCore.h>
+#endif
 
 
 @interface SmaatoAdapterMobFox : SOMAMediationPlugin <MobFoxAdDelegate, MobFoxInterstitialAdDelegate>

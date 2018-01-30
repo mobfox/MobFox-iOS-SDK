@@ -8,7 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import <iSoma/iSoma.h>
+#ifdef  DemoAppDynamicTarget
+#import <MobFoxSDKCoreDynamic/MobFoxSDKCoreDynamic.h>
+#else
 #import <MobFoxSDKCore/MobFoxSDKCore.h>
+#endif
 
 @interface SmaatoNativeAdapterMobFox : SOMANativeCSMPlugin <MobFoxNativeAdDelegate>
 @property (nonatomic, strong) MobFoxNativeAd* native;

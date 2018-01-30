@@ -7,7 +7,11 @@
 #import "MPNativeCustomEvent.h"
 #endif
 
+#ifdef  DemoAppDynamicTarget
+#import <MobFoxSDKCoreDynamic/MobFoxSDKCoreDynamic.h>
+#else
 #import <MobFoxSDKCore/MobFoxSDKCore.h>
+#endif
 
 @interface MoPubNativeAdapterMobFox : MPNativeCustomEvent <MobFoxNativeAdDelegate>
 
