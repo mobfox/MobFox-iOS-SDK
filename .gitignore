@@ -3,4 +3,11 @@
 DemoApp/DemoApp.xcodeproj/xcuserdata/*
 DemoApp/DemoApp.xcodeproj/project.xcworkspace/xcuserdata/*
 DemoAppSwift/DemoAppSwift.xcodeproj/xcuserdata/*
+DemoApp/DemoApp/en.xliff
+DemoApp/DerivedData
+DemoApp/Gemfile
+DemoApp/Gemfile.lock
+DemoApp/Index/
+DemoApp/build/
+DemoApp/fastlane/
 
