@@ -125,10 +125,6 @@ Setting additional parameters on the ad object that can help you get better targ
 @property (nonatomic, copy) NSString* latitude;
 @property (nonatomic, copy) NSString* demo_gender; //"m/f"
 @property (nonatomic, copy) NSString* demo_age;
-@property (nonatomic, copy) NSString* s_subid;
-@property (nonatomic, copy) NSString* sub_name;
-@property (nonatomic, copy) NSString* sub_domain;
-@property (nonatomic, copy) NSString* sub_storeurl;
 @property (nonatomic, copy) NSString* v_dur_min;
 @property (nonatomic, copy) NSString* v_dur_max;
 @property (nonatomic, copy) NSString* r_floor;
