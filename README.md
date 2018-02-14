@@ -1,3 +1,5 @@
+
+
 # MobFox-iOS-SDK
 
 For any problems or questions not covered by the instructions below, please contact <sdk_support@mobfox.com> or open an issue.
@@ -8,18 +10,18 @@ Supports **iOS 9.0+**
 
 * [Prerequisites](#prerequisites)
 * [Installation](#installation)
-  * [CocoaPods](#cocoapods)
-  * [Manual Installation](#manual-installation)
-  * [ATS](#ats)
+* [CocoaPods](#cocoapods)
+* [Manual Installation](#manual-installation)
+* [ATS](#ats)
 * [Usage](#usage)
-  * [Banner Ad](#banner-ad)
-  * [Interstitial Ad](#interstitial-ad)
-  * [Native Ad](#native-ad)
-  * [Custom Events](#custom-events)
-  * [Adapters](#adapters)
-  * [Plugins](#plugins)
-  * [Demo App Swift](#demo-app-swift)
-  * [Location Services](#location-services)
+* [Banner Ad](#banner-ad)
+* [Interstitial Ad](#interstitial-ad)
+* [Native Ad](#native-ad)
+* [Custom Events](#custom-events)
+* [Adapters](#adapters)
+* [Plugins](#plugins)
+* [Demo App Swift](#demo-app-swift)
+* [Location Services](#location-services)
 * [MOAT](#built-in-moat-viewability-measurement)
 
 <!-- toc stop -->
@@ -35,7 +37,7 @@ Make sure the following are included in your project's *frameworks*:
 - ```AdSupport.framework```
 - ```libz.dylib```
 
-Set ```Embedded Content Contains Swift Code``` to Yes.
+Set ```Always Embed Swift Standard Libraries``` to Yes.
 
 ## CocoaPods
 
@@ -71,12 +73,12 @@ One of the changes in iOS9 is a default setting that requires apps to make netwo
 ```xml
 <key>NSAppTransportSecurity</key>
 <dict>
-    <key>NSAllowsArbitraryLoads</key>
-    <true/>
-    <key>NSAllowsArbitraryLoadsForMedia</key>
-    <true/>
-    <key>NSAllowsArbitraryLoadsInWebContent</key>
-    <true/>
+<key>NSAllowsArbitraryLoads</key>
+<true/>
+<key>NSAllowsArbitraryLoadsForMedia</key>
+<true/>
+<key>NSAllowsArbitraryLoadsInWebContent</key>
+<true/>
 </dict>
 
 ```
@@ -134,7 +136,7 @@ Setting additional parameters on the ad object that can help you get better targ
 //set this (in seconds) to make the ad refresh
 @property (nonatomic, assign) NSNumber* refresh;
 ```
-More information can be found here: http://dev.mobfox.com/index.php?title=Ad_Request_API#Request_Parameters 
+More information can be found here: http://dev.mobfox.com/index.php?title=Ad_Request_API#Request_Parameters
 
 #### Ad Delegate
 In order to be notified when certain ad events occur you can register a delegate:
@@ -185,7 +187,7 @@ In order to insure the best ad is ready when you wish to display it, please init
 
 //init the interstitial ad giving it your main/root controller
 MobFoxInterstitialAd* mobfoxInterAd = [[MobFoxInterstitialAd alloc] init:@"your-publication-hash" withRootViewController:self];
-```    
+```
 ### Setting Additional Parameters
 Setting additional parameters on the internal ad object that can help you get better targeted ads or help you with reporting:
 For example:
@@ -209,7 +211,7 @@ The available properties are:
 @property (nonatomic, copy) NSNumber* v_dur_min;
 @property (nonatomic, copy) NSNumber* v_dur_max;
 ```
-More information can be found here: http://dev.mobfox.com/index.php?title=Ad_Request_API#Request_Parameters 
+More information can be found here: http://dev.mobfox.com/index.php?title=Ad_Request_API#Request_Parameters
 
 
 
@@ -259,7 +261,7 @@ Setting additional parametes on the ad object that can help you get better targe
 @property (nonatomic, copy) NSString* v_dur_max;
 @property (nonatomic, copy) NSString* r_floor;
 ```
-More information can be found here: http://dev.mobfox.com/index.php?title=Ad_Request_API#Request_Parameters 
+More information can be found here: http://dev.mobfox.com/index.php?title=Ad_Request_API#Request_Parameters
 
 #### Show Interstitial Ad
 Later when you wish to display the ad:
@@ -267,9 +269,9 @@ Later when you wish to display the ad:
 
 //best to show after delegate informs an ad was loaded
 - (void)MobFoxInterstitialAdDidLoad:(MobFoxInterstitialAd *)interstitial{
-    if(mobfoxInterAd.ready){
-        [mobfoxInterAd show];
-    }
+if(mobfoxInterAd.ready){
+[mobfoxInterAd show];
+}
 }
 
 ```
@@ -279,9 +281,32 @@ Later when you wish to display the ad:
 
 This is a special type of ad as it returns a JSON object containing the ad data and it's the publisher's responsibility to display the ad assets, call the impression pixels and the click URL if clicked.
 
-```objective-c
+### ATS
 
-MobFoxNativeAd* nativeAd = [[MobFoxNativeAd alloc] init:@"your-publication-hash"];
+Note that for native ads ```plist``` file should **not** include the following keys or set to false:
+
+- ```NSAllowsArbitraryLoadsForMedia```
+- ```NSAllowsArbitraryLoadsInWebContent```
+
+```xml
+<key>NSAppTransportSecurity</key>
+<dict>
+<key>NSAllowsArbitraryLoads</key>
+<true/>
+<!--      <key>NSAllowsArbitraryLoadsForMedia</key>-->
+<!--        <false/>-->
+<!--        <key>NSAllowsArbitraryLoadsInWebContent</key>-->
+<!--         <false/>-->
+</dict>
+
+```
+### Initiate MobFox Native Ad
+```objective-c
+- (void)viewDidLoad {
+[super viewDidLoad];
+
+self.nativeAd = [[MobFoxNativeAd alloc] init:@"your-publication-hash" nativeView:self.nativeAdView];
+}
 ```
 
 #### Native Ad Delegate
@@ -316,7 +341,7 @@ Setting additional parameters on the ad object that can help you get better targ
 @property (nonatomic, copy) NSString* v_dur_max;
 @property (nonatomic, copy) NSString* r_floor;
 ```
-More information can be found here: http://dev.mobfox.com/index.php?title=Ad_Request_API_-_Native 
+More information can be found here: http://dev.mobfox.com/index.php?title=Ad_Request_API_-_Native
 
 The response ```MobFoxNativeData*``` :
 ```objective-c
@@ -351,38 +376,19 @@ Please refer to [MobFox Native API](http://dev.mobfox.com/index.php?title=Ad_Req
 
 ```
 
-#### Register Interaction and Fire Tracking Pixel
-When the native ad loads you must register the ad for interaction:
+#### Display Ad Assets & Fire Tracking Pixel
+When the native ad loads you must fire tracking pixel:
 ```objective-c
 - (void)MobFoxNativeAdDidLoad:(MobFoxNativeAd*)ad withAdData:(MobFoxNativeData *)adData {
+withAdData:(MobFoxNativeData *)adData {
 
-       // Register interaction
-       [ad registerViewWithInteraction:view withViewController:viewController]; 
-   
-       for (MobFoxNativeTracker *tracker in adData.trackersArray) {
+self.nativeAdTitle.text = adData.assetHeadline;
+self.nativeAdDescription.text = adData.assetDescription;
+self.nativeAdIcon.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:adData.main.url]];
+self.clickURL = [adData.clickURL absoluteURL];
+self.mobFoxNativeData = adData;
 
-        if ([tracker.url absoluteString].length > 0)
-        {
-            
-            // Fire tracking pixel
-            UIWebView* wv = [[UIWebView alloc] initWithFrame:CGRectZero];
-            NSString* userAgent = [wv stringByEvaluatingJavaScriptFromString:@"navigator.userAgent"];
-            NSLog(@"userAgent: %@", userAgent);
-            NSURLSessionConfiguration* conf = [NSURLSessionConfiguration defaultSessionConfiguration];
-            conf.HTTPAdditionalHeaders = @{ @"User-Agent" : userAgent };
-            NSURLSession* session = [NSURLSession sessionWithConfiguration:conf];
-            NSURLSessionDataTask* task = [session dataTaskWithURL:tracker.url completionHandler:
-                                          ^(NSData *data,NSURLResponse *response, NSError *error){
-                                          
-                                              if(error) NSLog(@"err %@",[error description]);
-
-                                          }];
-            [task resume];
-            
-        }
-        
-    }
-
+[ad fireTrackers];
 }
 ```
 
@@ -410,10 +416,10 @@ Adapters are the opposite of Custom Events, they let you use MobFox as a Custom 
 
 ## Location Services
 
-The SDK will query the current location and set the ```longitude``` and ```latitude``` ad request parameters, as long as it permitted by the user (in Privacy, Location Services). 
+The SDK will query the current location and set the ```longitude``` and ```latitude``` ad request parameters, as long as it permitted by the user (in Privacy, Location Services).
 
 # Built-in MOAT Viewability Measurement
- 
+
 This enables publishers to measure their in-app inventory according to [Moat](https://moat.com/)’s viewability metrics, and make their inventory more available to advertisers who are only interested in ‘viewability-monitored’ traffic.
 
 
