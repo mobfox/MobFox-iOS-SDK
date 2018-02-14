@@ -44,7 +44,7 @@ Set ```Always Embed Swift Standard Libraries``` to Yes.
 Add to your Podfile:
 
 ```
-pod 'MobFoxSDK','3.3.2'
+pod 'MobFoxSDK','3.3.3'
 ```
 
 ## Carthage
@@ -52,7 +52,7 @@ pod 'MobFoxSDK','3.3.2'
 Add to your Cartfile:
 
 ```
-github "mobfox/MobFox-iOS-SDK" "3.3.2"
+github "mobfox/MobFox-iOS-SDK" "3.3.3"
 ```
 
 Carthage only supports dynamic frameworks. MobFoxSDKCoreDynamic.framework must be under 'Embedded Binaries' and 'Linked Frameworks and Libraries'.
@@ -303,9 +303,10 @@ Note that for native ads ```plist``` file should **not** include the following k
 ### Initiate MobFox Native Ad
 ```objective-c
 - (void)viewDidLoad {
-[super viewDidLoad];
+    [super viewDidLoad];
 
-self.nativeAd = [[MobFoxNativeAd alloc] init:@"your-publication-hash" nativeView:self.nativeAdView];
+     //where my 'myView' is the view used to display the native ad
+     self.nativeAd = [[MobFoxNativeAd alloc] init:@"your-publication-hash" nativeView:myView];
 }
 ```
 
@@ -380,15 +381,14 @@ Please refer to [MobFox Native API](http://dev.mobfox.com/index.php?title=Ad_Req
 When the native ad loads you must fire tracking pixel:
 ```objective-c
 - (void)MobFoxNativeAdDidLoad:(MobFoxNativeAd*)ad withAdData:(MobFoxNativeData *)adData {
-withAdData:(MobFoxNativeData *)adData {
 
-self.nativeAdTitle.text = adData.assetHeadline;
-self.nativeAdDescription.text = adData.assetDescription;
-self.nativeAdIcon.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:adData.main.url]];
-self.clickURL = [adData.clickURL absoluteURL];
-self.mobFoxNativeData = adData;
+    self.nativeAdTitle.text = adData.assetHeadline;
+    self.nativeAdDescription.text = adData.assetDescription;
+    self.nativeAdIcon.image = [UIImage imageWithData:[NSData dataWithContentsOfURL:adData.main.url]];
+    self.clickURL = [adData.clickURL absoluteURL];
+    self.mobFoxNativeData = adData;
 
-[ad fireTrackers];
+    [ad fireTrackers];
 }
 ```
 
