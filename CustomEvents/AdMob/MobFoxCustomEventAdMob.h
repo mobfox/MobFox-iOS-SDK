@@ -17,8 +17,6 @@
 
 @property(nonatomic, strong) GADBannerView* bannerView;
 
-- (void)requestAdWithSize:(CGSize)size networkID:(NSString*)nid customEventInfo:(NSDictionary *)info;
-
 @end
 
 #endif /* MobFoxCustomEventAdMob_h */

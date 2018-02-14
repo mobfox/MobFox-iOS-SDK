@@ -14,13 +14,13 @@
 
 - (void)requestAdWithSize:(CGSize)size networkID:(NSString*)nid customEventInfo:(NSDictionary *)info{
     
-    NSLog(@"dbg: ### AdMob: >>> BANNER: loadAd <<<");
+    //NSLog(@"dbg: ### AdMob: >>> BANNER: loadAd <<<");
 
     CGRect rect = CGRectMake(0,0,size.width,size.height);
     self.bannerView = [[GADBannerView alloc] initWithFrame:rect];
     self.bannerView.delegate = self;
     
-    UIViewController* rootVC = [info objectForKey:@"viewcontroller_parent"];
+    UIViewController* rootVC = [info objectForKey:@"viewcontroller"];
     
     self.bannerView.rootViewController = rootVC;
     self.bannerView.adUnitID = nid;
@@ -29,14 +29,14 @@
     //request.testDevices = @[ kGADSimulatorID ];
 
     
-    if([info valueForKey:@"accuracy"] && [info valueForKey:@"latitude"] && [info valueForKey:@"longitude"]) {
+    /*if(info[@"latitude"] && info[@"longitude"]) {
     
         CGFloat accuracy = [[info valueForKey:@"accuracy"] floatValue];;
         CGFloat latitude = [[info valueForKey:@"latitude"] floatValue];
         CGFloat longitude = [[info valueForKey:@"longitude"] floatValue];
 
         [request setLocationWithLatitude:latitude longitude:longitude accuracy:accuracy];
-    }
+    }*/
     
     NSString *gender = [info valueForKey:@"demo_gender"];
     

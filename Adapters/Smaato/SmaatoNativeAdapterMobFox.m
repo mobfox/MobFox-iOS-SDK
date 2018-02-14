@@ -18,7 +18,7 @@
     id json = [NSJSONSerialization JSONObjectWithData:data options:0 error:nil];
     NSString *inv_h = [json objectForKey:@"AD_UNIT_ID"];
     NSLog(@"loadNative invh: %@", inv_h);
-    self.native = [[MobFoxNativeAd alloc] init:inv_h];
+    self.native = [[MobFoxNativeAd alloc] init:inv_h nativeView:nil];
     self.native.delegate = self;
     [self.native loadAd];
     

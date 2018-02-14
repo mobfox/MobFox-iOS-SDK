@@ -8,45 +8,52 @@
 
 #import "MobFoxCustomEventMoPub.h"
 
+@interface MobFoxCustomEventMoPub()
+    @property (nonatomic)  CGSize requstedSize;
+    @property (nonatomic,weak)  UIViewController* vc;
+@end
 
 @implementation MobFoxCustomEventMoPub
 
-{
-    CGSize requstedSize;
-}
 
 - (void)requestAdWithSize:(CGSize)size networkID:(NSString*)nid customEventInfo:(NSDictionary *)info{
    
-    requstedSize = size;
-    self.adView = [[MPAdView alloc] initWithAdUnitId:nid size:CGSizeMake(size.width, size.height)];
+    self.requstedSize   = size;
+    self.vc             = [info objectForKey:@"viewcontroller"];
+    self.adView         = [[MPAdView alloc] initWithAdUnitId:nid size:CGSizeMake(size.width, size.height)];
+    //self.adView.testing = YES;
+    NSMutableArray* keywordsArr = [NSMutableArray arrayWithCapacity:5];
+    if(info[@"demo_gender"]){
+        [keywordsArr addObject:[NSString stringWithFormat:@"m_gender:%@",info[@"demo_gender"]]];
+    }
+    if(info[@"demo_age"]){
+        [keywordsArr addObject:[NSString stringWithFormat:@"m_age:%@",info[@"demo_age"]]];
+    }
+    
+    if(keywordsArr.count > 0){
+        self.adView.keywords = [keywordsArr componentsJoinedByString:@","];
+    }
+    
     self.adView.delegate = self;
     self.adView.frame = CGRectMake(0,0,size.width, size.height);
+    UIView* parent = info[@"parent"];
+    [parent addSubview:self.adView];
     
     [self.adView loadAd];
     
 }
 
-- (UIViewController*) getUIViewController:(UIView*)view  {
-    
-    id nextResponder = [view nextResponder];
-    if ([nextResponder isKindOfClass:[UIViewController class]]) {
-        return nextResponder;
-    } else if ([nextResponder isKindOfClass:[UIView class]]) {
-        return [self getUIViewController:(UIView*)nextResponder];
-    } else {
-        return nil;
-    }
+- (UIViewController *)viewControllerForPresentingModalView {
+    //UIViewController* rootVC = [info objectForKey:@"viewcontroller"];
+    return self.vc;
 }
 
 #pragma mark - <MPAdViewDelegate>
-- (UIViewController *)viewControllerForPresentingModalView{
-    return [self getUIViewController:self.adView];
-}
 
 - (void)adViewDidLoadAd:(MPAdView *)view{
    
     CGSize actualSize = [view adContentViewSize];
-    if(requstedSize.width < actualSize.width || requstedSize.height < actualSize.height){
+    if(self.requstedSize.width < actualSize.width || self.requstedSize.height < actualSize.height){
         NSDictionary* ui = [NSDictionary dictionaryWithObjectsAndKeys:
                             @"returned ad size different from requested size", @"message" ,nil];
         NSError* err = [NSError errorWithDomain:@"MoPubFailed"
@@ -59,7 +66,6 @@
   
 }
 
-#pragma mark - <MPAdViewDelegate>
 - (void)adViewDidFailToLoadAd:(MPAdView *)view{
     NSError* err = [NSError errorWithDomain:@"MoPubFailed"
                                        code:40401
@@ -67,9 +73,12 @@
     [self.delegate MFCustomEventAdDidFailToReceiveAdWithError:err];
 }
 
-#pragma mark - <MPAdViewDelegate>
 - (void)willLeaveApplicationFromAd:(MPAdView *)view{
-    
+    [self.delegate MFCustomEventMobFoxAdClicked];
+}
+
+- (void)willPresentModalViewForAd:(MPAdView *)view{
+    [self.delegate MFCustomEventMobFoxAdClicked];
 }
 
 

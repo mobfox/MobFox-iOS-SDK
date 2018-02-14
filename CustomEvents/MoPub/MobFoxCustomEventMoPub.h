@@ -16,16 +16,6 @@
 
 @property (nonatomic) MPAdView *adView;
 
-- (void)requestAdWithSize:(CGSize)size networkID:(NSString*)nid customEventInfo:(NSDictionary *)info;
-
-- (UIViewController *)viewControllerForPresentingModalView;
-
-- (void)adViewDidLoadAd:(MPAdView *)view;
-
-- (void)adViewDidFailToLoadAd:(MPAdView *)view;
-
-- (void)willLeaveApplicationFromAd:(MPAdView *)view;
-
 @end
 
 

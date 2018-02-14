@@ -17,7 +17,7 @@
 - (void)requestAdWithCustomEventInfo:(NSDictionary *)info {
     
 
-    self.ad = [[MobFoxNativeAd alloc] init:[info valueForKey:@"invh"]];
+    self.ad = [[MobFoxNativeAd alloc] init :[info valueForKey:@"invh"] nativeView:nil];
     self.ad.delegate = self;
     
     if(info != nil) {
