@@ -10,4 +10,5 @@ DemoApp/Gemfile.lock
 DemoApp/Index/
 DemoApp/build/
 DemoApp/fastlane/
+fastlane
 
