@@ -25,9 +25,9 @@
 
 #pragma mark MobFox Interstitial Ad Delegate
 
-- (void)MobFoxTagInterstitialAdDidLoad:(MobFoxInterstitialAd *)interstitial{
+- (void)MobFoxTagInterstitialAdDidLoad:(MobFoxTagInterstitialAd *)interstitial{
     NSLog(@"MoPub inter >> MobFox >> ad loaded");
-    
+
    // [self.delegate trackImpression];
     [self.delegate interstitialCustomEvent:self didLoadAd:interstitial];
 

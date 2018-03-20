@@ -24,7 +24,7 @@
     //self.adView.testing = YES;
     NSMutableArray* keywordsArr = [NSMutableArray arrayWithCapacity:5];
     if(info[@"demo_gender"]){
-        [keywordsArr addObject:[NSString stringWithFormat:@"m_gender:%@",info[@"demo_gender"]]];
+        [keywordsArr addObject:[NSString stringWithFormat:@"m_gender:%@",[info[@"demo_gender"] lowercaseString]]];
     }
     if(info[@"demo_age"]){
         [keywordsArr addObject:[NSString stringWithFormat:@"m_age:%@",info[@"demo_age"]]];
