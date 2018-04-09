@@ -322,6 +322,8 @@ Note that for native ads ```plist``` file should **not** include the following k
 //called when ad response cannot be returned
 - (void)MobFoxNativeAdDidFailToReceiveAdWithError:(NSError *)error;
 
+//called on ad click
+- (void)MobFoxNativeAdClicked;
 @end
 
 nativeAd.delegate = delegate;
