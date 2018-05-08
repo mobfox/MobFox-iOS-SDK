@@ -1,0 +1,6 @@
+framework module iSoma { 
+    umbrella header "iSoma.h" 
+ 
+    export * 
+    module * { export * }
+}

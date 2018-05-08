@@ -1,0 +1,1 @@
+{"waterfalls":{"interstitial":[{"name":"nativeFormat","prob":1.5},{"name":"banner","prob":1.5}],"interstitial":[{"name":"nativeFormat","prob":0.5},{"name":"video","prob":0.5},{"name":"banner","prob":1.5}]}}

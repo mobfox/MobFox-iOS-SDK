@@ -1,0 +1,6 @@
+framework module MobFoxSDKCoreDynamic {
+  umbrella header "MobFoxSDKCoreDynamic.h"
+
+  export *
+  module * { export * }
+}
