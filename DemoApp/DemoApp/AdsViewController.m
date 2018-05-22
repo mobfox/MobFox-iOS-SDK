@@ -111,12 +111,12 @@ typedef NS_ENUM(NSInteger, MFRandomStringPart) {
 /*
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+        // Get the new view controller using [segue destinationViewController].
+        // Pass the selected object to the new view controller.
+ }
+ */
 
 #pragma mark load ad
 
@@ -126,11 +126,15 @@ typedef NS_ENUM(NSInteger, MFRandomStringPart) {
     
     if([sdk isEqualToString:@"AdMob"] ) {
         
-//        MFAdNetworkExtras *extras = [[MFAdNetworkExtras alloc] init];
-//
-//        extras.gdpr = YES;
-//        extras.gdpr_consent = @"BannerTest";
+        
+        /***********************************************************
+         For GDPR testing please unmark this following lines
+        **********************************************************/
+       //MFAdNetworkExtras *extras = [[MFAdNetworkExtras alloc] init];
+       //extras.gdpr = YES;
+       //extras.gdpr_consent = @"BannerTest";
 
+ 
         self.gadBannerView = [[GADBannerView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT-50, 320, 50)];
         //self.gadBannerView = [[GADBannerView alloc] initWithAdSize:kGADAdSizeSmartBannerPortrait];
         //self.gadBannerView.adUnitID = @"ca-app-pub-6224828323195096/5677489566";
@@ -140,12 +144,15 @@ typedef NS_ENUM(NSInteger, MFRandomStringPart) {
         [self.view addSubview: self.gadBannerView];
         GADRequest *request = [[GADRequest alloc] init];
         
+        /***********************************************************
+        For GDPR testing please unmark this following single line
+        **********************************************************/
+        //[request registerAdNetworkExtras:extras];
         
-//       [request registerAdNetworkExtras:extras];
-
         
         //request.testDevices = @[ kGADSimulatorID ];
         //request.testDevices = @[ @"b94fb34e17824e61ad7e612ebc278a31" ];
+        
         [self.gadBannerView loadRequest:request];
         
         // DFP ad.
