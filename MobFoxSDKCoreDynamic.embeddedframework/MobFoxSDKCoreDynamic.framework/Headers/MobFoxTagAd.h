@@ -65,6 +65,9 @@
 @property (nonatomic, assign) BOOL imp_secure;
 @property (nonatomic, assign) BOOL adspace_strict;
 
+@property (nonatomic, assign) BOOL      gdpr;
+@property (nonatomic, assign) NSString* gdpr_consent;
+
 - (id) initWithMoPubAdaper:(NSString*)invh withFrame:(CGRect)aRect;
 - (id) initWithAdMobAdaper:(NSString*)invh withFrame:(CGRect)aRect;
 - (id) init:(NSString*)invh withFrame:(CGRect)aRect;

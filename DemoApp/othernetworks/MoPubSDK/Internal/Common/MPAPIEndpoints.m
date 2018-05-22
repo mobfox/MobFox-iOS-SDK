@@ -7,6 +7,7 @@
 
 #import "MPAPIEndpoints.h"
 #import "MPConstants.h"
+#import "MPCoreInstanceProvider.h"
 
 @implementation MPAPIEndpoints
 
@@ -19,6 +20,10 @@ static BOOL sUsesHTTPS = YES;
 
 + (NSString *)baseURL
 {
+    if ([[MPCoreInstanceProvider sharedProvider] appTransportSecuritySettings] == MPATSSettingEnabled) {
+        return [@"https://" stringByAppendingString:MOPUB_BASE_HOSTNAME];
+    }
+
     return [@"http://" stringByAppendingString:MOPUB_BASE_HOSTNAME];
 }
 
@@ -27,11 +32,11 @@ static BOOL sUsesHTTPS = YES;
     return sUsesHTTPS ? @"https://" : @"http://";
 }
 
-+ (NSString *)baseURLStringWithPath:(NSString *)path testing:(BOOL)testing
++ (NSString *)baseURLStringWithPath:(NSString *)path
 {
     return [NSString stringWithFormat:@"%@%@%@",
             [[self class] baseURLScheme],
-            testing ? MOPUB_BASE_HOSTNAME_FOR_TESTING : MOPUB_BASE_HOSTNAME,
+            MOPUB_BASE_HOSTNAME,
             path];
 }
 

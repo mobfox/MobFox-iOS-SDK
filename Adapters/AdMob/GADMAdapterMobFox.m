@@ -7,14 +7,16 @@
 //
 
 #import "GADMAdapterMobFox.h"
+#import "MFAdNetworkExtras.h"
 
 @interface GADMAdapterMobFox()
 
 //@property (nonatomic, strong) MFEventsHandler *eventsHandler;
-@property (nonatomic, strong) MobFoxTagAd* banner;
-@property (nonatomic, strong) MobFoxTagInterstitialAd* interstitial;
+@property (nonatomic, strong) MobFoxAd* banner;
+@property (nonatomic, strong) MobFoxInterstitialAd* interstitial;
 @property (nonatomic, weak) id <GADMAdNetworkConnector> connector;
 
+@property (nonatomic) CGRect bannerAdRect;
 
 @end
 
@@ -27,20 +29,58 @@
     return @"1.2";
 }
 
+//+ (Class<GADAdNetworkExtras>)networkExtrasClass {
+//
+//    return nil;
+//}
+
+
 + (Class<GADAdNetworkExtras>)networkExtrasClass {
-    
-    return nil;
+    return [MFAdNetworkExtras class];
 }
+
+
 
 - (id)initWithGADMAdNetworkConnector:(id<GADMAdNetworkConnector>)c {
     if ((self = [super init])) {
         _connector = c;
         //_eventsHandler = [[MFEventsHandler alloc] init];
     }
+    
+    
+//    //  GMA SDK forward consent patameters into onto the adapters
+//    
+//    NSDictionary *cred= [self.connector credentials];
+//
+//    NSString *publisherId = [self.connector publisherId];
+//    BOOL testMode = [self.connector testMode];
+//    NSNumber *childDirectedTreatment = [self.connector childDirectedTreatment];
+//    GADGender gn= [self.connector userGender];
+//    NSDate *userBirthday = [self.connector userBirthday];
+//    BOOL userHasLocation = [self.connector userHasLocation];
+//    
+//    
+//    CGFloat userLatitude = [self.connector userLatitude];
+//    CGFloat userLongitude = [self.connector userLongitude];
+//    CGFloat userLocationAccuracyInMeters = [self.connector userLocationAccuracyInMeters];
+//    
+//    NSString *userLocationDescription = [self.connector userLocationDescription];
+//    NSArray *userKeywords = [self.connector userKeywords];
+//    
+//    //NSDictionary *additionalParameters = [self.connector additionalParameters];
+//    //BOOL isTesting = [self.connector isTesting];
+//
+//    
+//    // NSDictionary *ne = [self.connector networkExtras];
+//    // [[self.connector credentials] objectForKey:@"ad_unit"];
+//    // NSLog(@"cred=%@",cred);
+    
+    
     return self;
 }
 
 - (void)getBannerWithSize:(GADAdSize)adSize {
+    
     
     
     //[_eventsHandler resetAdEventBlocker];
@@ -65,7 +105,17 @@
         
         //NSLog(@"screen width: %f   banner height: %f", screenWidth, bannerHeight);
         
-        self.banner = [[MobFoxTagAd alloc] init:invh withFrame:CGRectMake(0, 0, screenWidth, bannerHeight)];
+        self.bannerAdRect = CGRectMake(0,0, screenWidth, bannerHeight);
+        self.banner = [[MobFoxAd alloc] init:invh withFrame:self.bannerAdRect];
+        
+        
+        MFAdNetworkExtras *ne = [self.connector networkExtras];
+        
+        if (ne) {
+            self.banner.gdpr = ne.gdpr;
+            self.banner.gdpr_consent = ne.gdpr_consent;
+        }
+        
         self.banner.delegate = self;
         [self.banner loadAd];
         
@@ -75,8 +125,18 @@
         
     }
     
+
     
-    self.banner = [[MobFoxTagAd alloc] init:invh withFrame:CGRectMake(0, 0, adSize.size.width, adSize.size.height)];
+    self.bannerAdRect = CGRectMake(0,0, adSize.size.width, adSize.size.height);
+    self.banner = [[MobFoxAd alloc] init:invh withFrame:self.bannerAdRect];
+    
+    MFAdNetworkExtras *ne = [self.connector networkExtras];
+    
+    if (ne) {
+        self.banner.gdpr = ne.gdpr;
+        self.banner.gdpr_consent = ne.gdpr_consent;
+    }
+    
     self.banner.delegate = self;
     [self.banner loadAd];
     
@@ -89,8 +149,18 @@
     
     NSLog(@"MobFox >> GADMAdapterMobFox >> Got Interstitial Ad Request");
     
+
+    
     NSString *invh = [[self.connector credentials] objectForKey:@"pubid"];
-    self.interstitial = [[MobFoxTagInterstitialAd alloc] init:invh];
+    self.interstitial = [[MobFoxInterstitialAd alloc] init:invh];
+    
+    MFAdNetworkExtras *ne = [self.connector networkExtras];
+    
+    if (ne) {
+        self.interstitial.gdpr = ne.gdpr;
+        self.interstitial.gdpr_consent = ne.gdpr_consent;
+    }
+    
     self.interstitial.delegate = self;
     [self.interstitial loadAd];
     
@@ -119,69 +189,71 @@
 }
 
 
-#pragma mark MobFox Tag Ad Delegate
+#pragma mark MobFox Ad Delegate
 
-- (void)MobFoxTagAdDidLoad:(MobFoxTagAd *)banner {
+- (void)MobFoxAdDidLoad:(MobFoxAd *)banner {
     NSLog(@"MobFox >> GADMAdapterMobFox >> Ad Loaded");
     [self.connector adapter:self didReceiveAdView:banner];
 }
 
-- (void)MobFoxTagAdDidFailToReceiveAdWithError:(NSError *)error {
+- (void)MobFoxAdDidFailToReceiveAdWithError:(NSError *)error {
     NSLog(@"MobFox >> GADMAdapterMobFox >> Ad Loaded Failed: %@", error);
     [self.connector adapter:self didFailAd:error];
 }
 
-- (void)MobFoxTagAdClicked {
+- (void)MobFoxAdClicked {
    [self.connector adapterDidGetAdClick:self];
    [self.connector adapterWillLeaveApplication:self];
 }
 
-- (void)MobFoxTagAdClosed {
+- (void)MobFoxAdClosed {
 }
 
-- (void)MobFoxTagAdFinished {
+- (void)MobFoxAdFinished {
 }
 
 
 #pragma mark MobFox Interstitial Ad Delegate
 
-- (void)MobFoxTagInterstitialAdDidLoad:(MobFoxTagInterstitialAd *)interstitial{
+- (void)MobFoxInterstitialAdDidLoad:(MobFoxInterstitialAd *)interstitial{
     
-    NSLog(@"admob >>> MobFoxTagInterstitialAdDidLoad:");
+    NSLog(@"admob >>> MobFoxInterstitialAdDidLoad:");
     
     [self.connector adapterDidReceiveInterstitial:self];
         
    // [MFReport log:@"admob" withInventoryHash:interstitial.invh andWithMessage:@"impression" requestID:interstitial.requestID];
 }
 
-- (void)MobFoxTagInterstitialAdDidFailToReceiveAdWithError:(NSError *)error{
+- (void)MobFoxInterstitialAdDidFailToReceiveAdWithError:(NSError *)error{
     [self.connector adapter:self didFailAd:error];
 }
 
-- (void)MobFoxTagInterstitialAdWillShow:(MobFoxTagInterstitialAd *)interstitial{
+- (void)MobFoxInterstitialAdWillShow:(MobFoxInterstitialAd *)interstitial{
     
     [self.connector adapterWillPresentInterstitial:self];
 }
 
-- (void)MobFoxTagInterstitialAdDidShow:(MobFoxTagInterstitialAd *)interstitial {
+- (void)MobFoxInterstitialAdDidShow:(MobFoxInterstitialAd *)interstitial {
     
 }
 
 //called when ad is closed/skipped
-- (void)MobFoxTagInterstitialAdClosed{
+- (void)MobFoxInterstitialAdClosed{
     [self.connector adapterDidDismissInterstitial:self];
 }
 
 //called when ad is clicked
-- (void)MobFoxTagInterstitialAdClicked {
+- (void)MobFoxInterstitialAdClicked {
     
     [self.connector adapterDidGetAdClick:self];
     [self.connector adapterWillLeaveApplication:self];
     
+    
+    
 }
 
 //called when if the ad is a video ad and it has finished playing
-- (void)MobFoxTagInterstitialAdFinished{
+- (void)MobFoxInterstitialAdFinished{
 }
 
 - (void) dealloc{

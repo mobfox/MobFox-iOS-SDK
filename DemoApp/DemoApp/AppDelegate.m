@@ -7,7 +7,8 @@
 //
 
 #import "AppDelegate.h"
-
+#import "MoPub.h"
+#import "MFDemoConstants.h"
 
 @interface AppDelegate ()
 
@@ -19,6 +20,15 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    
+    MPMoPubConfiguration *sdkConfig = [[MPMoPubConfiguration alloc] initWithAdUnitIdForAppInitialization:MOPUB_HASH_BANNER];
+    
+    /*
+     sdkConfig.globalMediationSettings = @[];
+     sdkConfig.mediatedNetworks = @[];
+     */
+    [[MoPub sharedInstance] initializeSdkWithConfiguration:sdkConfig completion:nil];
     
     
     return YES;

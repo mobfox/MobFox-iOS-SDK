@@ -71,16 +71,16 @@
 
 @implementation MPVideoConfig
 
-- (instancetype)initWithVASTResponse:(MPVASTResponse *)response
+- (instancetype)initWithVASTResponse:(MPVASTResponse *)response additionalTrackers:(NSDictionary *)additionalTrackers
 {
     self = [super init];
     if (self) {
-        [self commonInit:response];
+        [self commonInit:response additionalTrackers:additionalTrackers];
     }
     return self;
 }
 
-- (void)commonInit:(MPVASTResponse *)response
+- (void)commonInit:(MPVASTResponse *)response additionalTrackers:(NSDictionary *)additionalTrackers
 {
     NSArray *candidates = [self playbackCandidatesFromVASTResponse:response];
 
@@ -89,7 +89,7 @@
     }
 
     MPVideoPlaybackCandidate *candidate = candidates[0];
-    MPVASTMediaFile *mediaFile = candidate.linearAd.mediaFiles[0];
+    MPVASTMediaFile *mediaFile = candidate.linearAd.highestBitrateMediaFile;
 
     _mediaURL = mediaFile.URL;
     _clickThroughURL = candidate.linearAd.clickThroughURL;
@@ -99,11 +99,11 @@
 
     NSDictionary *trackingEvents = candidate.linearAd.trackingEvents;
     _creativeViewTrackers = trackingEvents[MPVASTTrackingEventTypeCreativeView];
-    _startTrackers = trackingEvents[MPVASTTrackingEventTypeStart];
-    _firstQuartileTrackers = trackingEvents[MPVASTTrackingEventTypeFirstQuartile];
-    _midpointTrackers = trackingEvents[MPVASTTrackingEventTypeMidpoint];
-    _thirdQuartileTrackers = trackingEvents[MPVASTTrackingEventTypeThirdQuartile];
-    _completionTrackers = trackingEvents[MPVASTTrackingEventTypeComplete];
+    _startTrackers = [self trackersByMergingOriginalTrackers:trackingEvents additionalTrackers:additionalTrackers name:MPVASTTrackingEventTypeStart];
+    _firstQuartileTrackers = [self trackersByMergingOriginalTrackers:trackingEvents additionalTrackers:additionalTrackers name:MPVASTTrackingEventTypeFirstQuartile];
+    _midpointTrackers = [self trackersByMergingOriginalTrackers:trackingEvents additionalTrackers:additionalTrackers name:MPVASTTrackingEventTypeMidpoint];
+    _thirdQuartileTrackers = [self trackersByMergingOriginalTrackers:trackingEvents additionalTrackers:additionalTrackers name:MPVASTTrackingEventTypeThirdQuartile];
+    _completionTrackers = [self trackersByMergingOriginalTrackers:trackingEvents additionalTrackers:additionalTrackers name:MPVASTTrackingEventTypeComplete];
     _muteTrackers = trackingEvents[MPVASTTrackingEventTypeMute];
     _unmuteTrackers = trackingEvents[MPVASTTrackingEventTypeUnmute];
     _pauseTrackers = trackingEvents[MPVASTTrackingEventTypePause];
@@ -260,6 +260,20 @@
     } else {
         return value;
     }
+}
+
+- (NSArray *)trackersByMergingOriginalTrackers:(NSDictionary *)originalTrackers additionalTrackers:(NSDictionary *)additionalTrackers name:(NSString *)trackerName
+{
+    if (![originalTrackers[trackerName] isKindOfClass:[NSArray class]]) {
+        return additionalTrackers[trackerName];
+    }
+    if (![additionalTrackers[trackerName] isKindOfClass:[NSArray class]]) {
+        return originalTrackers[trackerName];
+    }
+    NSMutableArray *mergedTrackers = [NSMutableArray new];
+    [mergedTrackers addObjectsFromArray:originalTrackers[trackerName]];
+    [mergedTrackers addObjectsFromArray:additionalTrackers[trackerName]];
+    return mergedTrackers;
 }
 
 - (NSDictionary *)dictionaryByMergingTrackingDictionaries:(NSArray *)dictionaries

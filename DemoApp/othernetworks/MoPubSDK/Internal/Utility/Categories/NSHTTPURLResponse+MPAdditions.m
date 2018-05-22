@@ -28,7 +28,7 @@ NSString * const kMoPubHTTPHeaderContentType = @"Content-Type";
         NSString *charset = [contentType substringWithRange:[charsetResult range]];
 
         // ensure that charset is not deallocated early
-        CFStringRef cfCharset = CFBridgingRetain(charset);
+        CFStringRef cfCharset = (CFStringRef)CFBridgingRetain(charset);
         CFStringEncoding cfEncoding = CFStringConvertIANACharSetNameToEncoding(cfCharset);
         CFBridgingRelease(cfCharset);
 

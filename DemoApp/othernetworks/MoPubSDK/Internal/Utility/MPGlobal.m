@@ -185,18 +185,18 @@ BOOL MPViewIntersectsParentWindowWithPercent(UIView *view, CGFloat percentVisibl
 
 NSString *MPResourcePathForResource(NSString *resourceName)
 {
-#ifdef MP_FABRIC
-    // We store all assets inside a bundle for Fabric.
-    return [@"MoPub.bundle" stringByAppendingPathComponent:resourceName];
-#else
-    if ([[UIDevice currentDevice].systemVersion compare:@"8.0" options:NSNumericSearch] != NSOrderedAscending) {
+    if ([[NSBundle mainBundle] pathForResource:@"MoPub" ofType:@"bundle"] != nil) {
+        return [@"MoPub.bundle" stringByAppendingPathComponent:resourceName];
+    }
+    else if ([[UIDevice currentDevice].systemVersion compare:@"8.0" options:NSNumericSearch] != NSOrderedAscending) {
         // When using open source or cocoapods (on ios 8 and above), we can rely on the MoPub class
         // living in the same bundle/framework as the assets.
         // We can use pathForResource on ios 8 and above to succesfully load resources.
         NSBundle *resourceBundle = [NSBundle bundleForClass:[MoPub class]];
         NSString *resourcePath = [resourceBundle pathForResource:resourceName ofType:nil];
         return resourcePath;
-    } else {
+    }
+    else {
         // We can just return the resource name because:
         // 1. This is being used as an open source release so the resource will be
         // in the main bundle.
@@ -204,7 +204,6 @@ NSString *MPResourcePathForResource(NSString *resourceName)
         // on ios 8 and above.
         return resourceName;
     }
-#endif
 }
 
 NSArray *MPConvertStringArrayToURLArray(NSArray *strArray)
@@ -222,32 +221,6 @@ NSArray *MPConvertStringArrayToURLArray(NSArray *strArray)
 
     return urls;
 }
-
-NSBundle *MPResourceBundleForClass(Class aClass)
-{
-#ifdef MP_FABRIC
-    NSString *fabricBundlePath = [[NSBundle mainBundle] pathForResource:@"MoPub" ofType:@"bundle"];
-    return [NSBundle bundleWithPath:fabricBundlePath];
-#else
-    return [NSBundle bundleForClass:aClass];
-#endif
-}
-
-////////////////////////////////////////////////////////////////////////////////////////////////////
-
-@implementation NSString (MPAdditions)
-
-- (NSString *)mp_URLEncodedString
-{
-    NSString *result = (NSString *)CFBridgingRelease(CFURLCreateStringByAddingPercentEscapes(NULL,
-                                                                           (CFStringRef)self,
-                                                                           NULL,
-                                                                           (CFStringRef)@"!*'();:@&=+$,/?%#[]<>",
-                                                                           kCFStringEncodingUTF8));
-    return result;
-}
-
-@end
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 

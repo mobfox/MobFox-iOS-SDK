@@ -16,7 +16,10 @@ typedef enum {
     MPRewardedVideoAdErrorInvalidCustomEvent = -1200,
     MPRewardedVideoAdErrorMismatchingAdTypes = -1300,
     MPRewardedVideoAdErrorAdAlreadyPlayed = -1400,
-    MPRewardedVideoAdErrorInvalidAdUnitID = -1500
+    MPRewardedVideoAdErrorNoAdReady = -1401,
+    MPRewardedVideoAdErrorInvalidAdUnitID = -1500,
+    MPRewardedVideoAdErrorInvalidReward = -1600,
+    MPRewardedVideoAdErrorNoRewardSelected = -1601,
 } MPRewardedVideoErrorCode;
 
 extern NSString * const MoPubRewardedVideoAdsSDKDomain;

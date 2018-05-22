@@ -25,7 +25,6 @@ BOOL MPViewIsVisible(UIView *view);
 BOOL MPViewIntersectsParentWindowWithPercent(UIView *view, CGFloat percentVisible);
 NSString *MPResourcePathForResource(NSString *resourceName);
 NSArray *MPConvertStringArrayToURLArray(NSArray *strArray);
-NSBundle *MPResourceBundleForClass(Class aClass);
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /*
@@ -51,31 +50,17 @@ NSBundle *MPResourceBundleForClass(Class aClass);
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-enum {
+typedef NS_ENUM(NSUInteger, MPInterstitialCloseButtonStyle) {
     MPInterstitialCloseButtonStyleAlwaysVisible,
     MPInterstitialCloseButtonStyleAlwaysHidden,
-    MPInterstitialCloseButtonStyleAdControlled
+    MPInterstitialCloseButtonStyleAdControlled,
 };
-typedef NSUInteger MPInterstitialCloseButtonStyle;
 
-enum {
+typedef NS_ENUM(NSUInteger, MPInterstitialOrientationType) {
     MPInterstitialOrientationTypePortrait,
     MPInterstitialOrientationTypeLandscape,
-    MPInterstitialOrientationTypeAll
+    MPInterstitialOrientationTypeAll,
 };
-typedef NSUInteger MPInterstitialOrientationType;
-
-
-////////////////////////////////////////////////////////////////////////////////////////////////////
-
-@interface NSString (MPAdditions)
-
-/*
- * Returns string with reserved/unsafe characters encoded.
- */
-- (NSString *)mp_URLEncodedString;
-
-@end
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 

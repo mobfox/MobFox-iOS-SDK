@@ -33,7 +33,7 @@
 {
     if (self = [super init]) {
         _adUnitID = [adUnitID copy];
-        _communicator = [[MPCoreInstanceProvider sharedProvider] buildMPAdServerCommunicatorWithDelegate:self];
+        _communicator = [[MPAdServerCommunicator alloc] initWithDelegate:self];
         _delegate = delegate;
     }
 
@@ -45,6 +45,16 @@
     [_communicator cancel];
 }
 
+- (NSArray *)availableRewards
+{
+    return self.configuration.availableRewards;
+}
+
+- (MPRewardedVideoReward *)selectedReward
+{
+    return self.configuration.selectedReward;
+}
+
 - (Class)customEventClass
 {
     return self.configuration.customEventClass;
@@ -52,6 +62,11 @@
 
 - (BOOL)hasAdAvailable
 {
+    //An Ad is not ready or has expired.
+    if (!self.ready) {
+        return NO;
+    }
+
     // If we've already played an ad, return NO since we allow one play per load.
     if (self.playedAd) {
         return NO;
@@ -59,7 +74,7 @@
     return [self.adapter hasAdAvailable];
 }
 
-- (void)loadRewardedVideoAdWithKeywords:(NSString *)keywords location:(CLLocation *)location customerId:(NSString *)customerId
+- (void)loadRewardedVideoAdWithKeywords:(NSString *)keywords userDataKeywords:(NSString *)userDataKeywords location:(CLLocation *)location customerId:(NSString *)customerId
 {
     // We will just tell the delegate that we have loaded an ad if we already have one ready. However, if we have already
     // played a video for this ad manager, we will go ahead and request another ad from the server so we aren't potentially
@@ -74,13 +89,24 @@
         self.customerId = customerId;
         [self loadAdWithURL:[MPAdServerURLBuilder URLWithAdUnitID:self.adUnitID
                                                          keywords:keywords
-                                                         location:location
-                                                          testing:NO]];
+                                                 userDataKeywords:userDataKeywords
+                                                         location:location]];
     }
 }
 
-- (void)presentRewardedVideoAdFromViewController:(UIViewController *)viewController
+- (void)presentRewardedVideoAdFromViewController:(UIViewController *)viewController withReward:(MPRewardedVideoReward *)reward customData:(NSString *)customData
 {
+    // Don't allow the ad to be shown if it isn't ready.
+    if (!self.ready) {
+        NSError *error = [NSError errorWithDomain:MoPubRewardedVideoAdsSDKDomain code:MPRewardedVideoAdErrorNoAdReady userInfo:@{ NSLocalizedDescriptionKey: @"Rewarded video ad view is not ready to be shown"}];
+
+        // We don't want to remotely log this event -- it's simply for publisher troubleshooting -- so use NSLog
+        // rather than MPLog.
+        NSLog(@"%@", error.localizedDescription);
+        [self.delegate rewardedVideoDidFailToPlayForAdManager:self error:error];
+        return;
+    }
+
     // If we've already played an ad, don't allow playing of another since we allow one play per load.
     if (self.playedAd) {
         NSError *error = [NSError errorWithDomain:MoPubRewardedVideoAdsSDKDomain code:MPRewardedVideoAdErrorAdAlreadyPlayed userInfo:nil];
@@ -88,7 +114,35 @@
         return;
     }
 
-    [self.adapter presentRewardedVideoFromViewController:viewController];
+    // No reward is specified
+    if (reward == nil) {
+        // Only a single currency; It should automatically select the only currency available.
+        if (self.availableRewards.count == 1) {
+            MPRewardedVideoReward * defaultReward = self.availableRewards[0];
+            self.configuration.selectedReward = defaultReward;
+        }
+        // Unspecified rewards in a multicurrency situation are not allowed.
+        else {
+            NSError *error = [NSError errorWithDomain:MoPubRewardedVideoAdsSDKDomain code:MPRewardedVideoAdErrorNoRewardSelected userInfo:nil];
+            [self.delegate rewardedVideoDidFailToPlayForAdManager:self error:error];
+            return;
+        }
+    }
+    // Reward is specified
+    else {
+        // Verify that the reward exists in the list of available rewards. If it doesn't, fail to play the ad.
+        if (![self.availableRewards containsObject:reward]) {
+            NSError *error = [NSError errorWithDomain:MoPubRewardedVideoAdsSDKDomain code:MPRewardedVideoAdErrorInvalidReward userInfo:nil];
+            [self.delegate rewardedVideoDidFailToPlayForAdManager:self error:error];
+            return;
+        }
+        // Reward passes validation, set it as selected.
+        else {
+            self.configuration.selectedReward = reward;
+        }
+    }
+
+    [self.adapter presentRewardedVideoFromViewController:viewController customData:customData];
 }
 
 - (void)handleAdPlayedForCustomEventNetwork
@@ -119,9 +173,9 @@
 
 #pragma mark - MPAdServerCommunicatorDelegate
 
-- (void)communicatorDidReceiveAdConfiguration:(MPAdConfiguration *)configuration
+- (void)communicatorDidReceiveAdConfigurations:(NSArray<MPAdConfiguration *> *)configurations
 {
-    self.configuration = configuration;
+    self.configuration = configurations.firstObject;
 
     MPLogInfo(@"Rewarded video ad is fetching ad network type: %@", self.configuration.networkType);
 
@@ -150,7 +204,7 @@
     }
 
     self.adapter = adapter;
-    [self.adapter getAdWithConfiguration:configuration];
+    [self.adapter getAdWithConfiguration:self.configuration];
 }
 
 - (void)communicatorDidFailWithError:(NSError *)error

@@ -9,6 +9,7 @@
 #import "MPVASTModel.h"
 
 @class MPVASTDurationOffset;
+@class MPVASTMediaFile;
 
 @interface MPVASTLinearAd : MPVASTModel
 
@@ -20,5 +21,10 @@
 @property (nonatomic, readonly) NSArray *mediaFiles;
 @property (nonatomic, readonly) MPVASTDurationOffset *skipOffset;
 @property (nonatomic, readonly) NSDictionary *trackingEvents;
+
+@end
+
+@interface MPVASTLinearAd (Media)
+@property (nonatomic, readonly) MPVASTMediaFile *highestBitrateMediaFile;
 
 @end

@@ -1,9 +1,11 @@
 #import "MoPubAdapterMobFox.h"
-
+#import "MoPub.h"
+#import "MPConsentManager.h"
 
 @interface MoPubAdapterMobFox()
 
-@property (strong, nonatomic) MobFoxTagAd* ad;
+@property (strong, nonatomic) MobFoxAd* ad;
+@property (nonatomic) CGRect bannerAdRect;
 
 @end
 
@@ -16,8 +18,24 @@
   //  NSLog(@"MoPub >> MobFox >> invh: %@",[info valueForKey:@"invh"]);
     NSLog(@"MoPub >> MobFox >> custom event data: %@",[info description]);
     
+    MPBool gdpr= [[MoPub sharedInstance] isGDPRApplicable];
+    NSString *consentStatusStr;
     
-    self.ad = [[MobFoxTagAd alloc] init:[info valueForKey:@"invh"] withFrame:CGRectMake(0, 0, size.width, size.height)];
+    MPConsentStatus consentStatus= [[MoPub sharedInstance] currentConsentStatus];
+    
+    if (consentStatus == MPConsentStatusConsented) {
+        consentStatusStr = @"1";
+    }
+    else {
+        consentStatusStr = @"0";
+    }
+    
+    self.bannerAdRect = CGRectMake(0,0, size.width, size.height);
+    self.ad = [[MobFoxAd alloc] init:[info valueForKey:@"invh"] withFrame:self.bannerAdRect];
+    
+    self.ad.gdpr = gdpr;
+    self.ad.gdpr_consent = consentStatusStr;
+    
     self.ad.delegate = self;
     [self.ad loadAd];
 
@@ -32,7 +50,7 @@
 
 #pragma mark MobFox Ad Delegate
 
-- (void)MobFoxTagAdDidLoad:(MobFoxTagAd *)banner{
+- (void)MobFoxAdDidLoad:(MobFoxAd *)banner{
     
     NSLog(@"MoPub >> MobFox >> ad loaded");
 
@@ -41,23 +59,23 @@
     
 }
 
-- (void)MobFoxTagAdDidFailToReceiveAdWithError:(NSError *)error{
+- (void)MobFoxAdDidFailToReceiveAdWithError:(NSError *)error{
     
     [self.delegate bannerCustomEvent:self didFailToLoadAdWithError:error];
 }
 
-- (void)MobFoxTagAdClosed{
+- (void)MobFoxAdClosed{
     
 }
 
-- (void)MobFoxTagAdClicked {
+- (void)MobFoxAdClicked {
     
    // [self.delegate trackClick];
     [self.delegate bannerCustomEventWillLeaveApplication:self];
     
 }
 
-- (void)MobFoxTagAdFinished {
+- (void)MobFoxAdFinished {
     
    [self.delegate bannerCustomEventDidFinishAction:self];
     

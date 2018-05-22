@@ -6,7 +6,7 @@
 //
 
 #import "MRBundleManager.h"
-#import "MPGlobal.h"
+#import "NSBundle+MPAdditions.h"
 
 @implementation MRBundleManager
 
@@ -22,7 +22,7 @@ static MRBundleManager *sharedManager = nil;
 
 - (NSString *)mraidPath
 {
-    NSBundle *parentBundle = MPResourceBundleForClass(self.class);
+    NSBundle *parentBundle = [NSBundle resourceBundleForClass:self.class];
 
     NSString *mraidBundlePath = [parentBundle pathForResource:@"MRAID" ofType:@"bundle"];
     NSBundle *mraidBundle = [NSBundle bundleWithPath:mraidBundlePath];

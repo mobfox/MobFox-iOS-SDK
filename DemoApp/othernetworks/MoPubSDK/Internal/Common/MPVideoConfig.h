@@ -44,6 +44,6 @@
 @property (nonatomic, readonly) double minimumFractionOfVideoVisible;
 @property (nonatomic, readonly) NSURL *viewabilityTrackingURL;
 
-- (instancetype)initWithVASTResponse:(MPVASTResponse *)response;
+- (instancetype)initWithVASTResponse:(MPVASTResponse *)response additionalTrackers:(NSDictionary *)additionalTrackers;
 
 @end

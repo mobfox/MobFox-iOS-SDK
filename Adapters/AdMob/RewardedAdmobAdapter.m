@@ -7,7 +7,7 @@
 //
 
 #import "RewardedAdmobAdapter.h"
-
+#import "MFAdNetworkExtras.h"
 
 static NSString *const customEventErrorDomain = @"com.google.CustomEvent";
 
@@ -62,11 +62,17 @@ static NSString *const customEventErrorDomain = @"com.google.CustomEvent";
 - (void)requestRewardBasedVideoAd {
     
     NSString *invh = [self.connector.credentials objectForKey:GADCustomEventParametersServer];
-    self.interstitial = [[MobFoxTagInterstitialAd alloc] init:invh];
+    self.interstitial = [[MobFoxTagInterstitialAd alloc] initWithAdMobAdaper:invh];
     self.interstitial.delegate = self;
     self.interstitial.v_rewarded = @"1";
     //self.interstitial.type = @"video";
     
+    MFAdNetworkExtras *ne = [self.connector networkExtras];
+    
+    if (ne) {
+        self.interstitial.gdpr = ne.gdpr;
+        self.interstitial.gdpr_consent = ne.gdpr_consent;
+    }
     [self.interstitial loadAd];
 
 }

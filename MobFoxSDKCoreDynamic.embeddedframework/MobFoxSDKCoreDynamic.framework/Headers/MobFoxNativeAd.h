@@ -55,6 +55,8 @@
     @property (nonatomic, strong) NSString* invh;
     @property (nonatomic, strong) NSString* serverURL;
 
+    @property (nonatomic, assign) BOOL      gdpr;
+    @property (nonatomic, assign) NSString* gdpr_consent;
 
     // new properties (required for 1.1)
     //@property (nonatomic, strong) NSString* i_ipaddress;

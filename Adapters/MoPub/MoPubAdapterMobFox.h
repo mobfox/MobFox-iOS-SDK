@@ -13,7 +13,7 @@
 #import "MPBannerCustomEvent.h"
 #endif
 
-@interface MoPubAdapterMobFox : MPBannerCustomEvent <MobFoxAdTagDelegate>
+@interface MoPubAdapterMobFox : MPBannerCustomEvent <MobFoxAdDelegate>
 
 
 - (void)requestAdWithSize:(CGSize)size customEventInfo:(NSDictionary *)info;

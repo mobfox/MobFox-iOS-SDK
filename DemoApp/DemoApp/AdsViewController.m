@@ -10,6 +10,7 @@
 #import "CollectionViewCell.h"
 #import "MFDemoConstants.h"
 #import "DeviceExtension.h"
+#import "MFAdNetworkExtras.h"
 
 typedef NS_ENUM(NSInteger, MFRandomStringPart) {
     MFAdTypeBanner = 0,
@@ -37,6 +38,7 @@ typedef NS_ENUM(NSInteger, MFRandomStringPart) {
 
 
 /*** AdMob ***/
+
 @property (nonatomic, strong) GADBannerView *gadBannerView;
 @property (nonatomic, strong) DFPBannerView *dfpBannerView;
 @property (nonatomic, strong) GADInterstitial *gadInterstitial;
@@ -124,14 +126,24 @@ typedef NS_ENUM(NSInteger, MFRandomStringPart) {
     
     if([sdk isEqualToString:@"AdMob"] ) {
         
+//        MFAdNetworkExtras *extras = [[MFAdNetworkExtras alloc] init];
+//
+//        extras.gdpr = YES;
+//        extras.gdpr_consent = @"BannerTest";
+
         self.gadBannerView = [[GADBannerView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT-50, 320, 50)];
         //self.gadBannerView = [[GADBannerView alloc] initWithAdSize:kGADAdSizeSmartBannerPortrait];
         //self.gadBannerView.adUnitID = @"ca-app-pub-6224828323195096/5677489566";
-        self.gadBannerView.adUnitID = ADMOB_HASH_GAD_BANNER;
+        self.gadBannerView.adUnitID = ADMOB_HASH_GAD_TAG_BANNER;
         self.gadBannerView.rootViewController = self;
         self.gadBannerView.delegate = self;
         [self.view addSubview: self.gadBannerView];
         GADRequest *request = [[GADRequest alloc] init];
+        
+        
+//       [request registerAdNetworkExtras:extras];
+
+        
         //request.testDevices = @[ kGADSimulatorID ];
         //request.testDevices = @[ @"b94fb34e17824e61ad7e612ebc278a31" ];
         [self.gadBannerView loadRequest:request];
@@ -179,26 +191,31 @@ typedef NS_ENUM(NSInteger, MFRandomStringPart) {
     
     if([sdk isEqualToString:@"AdMob"] ) {
         
-        [GADRewardBasedVideoAd sharedInstance].delegate = self;
+//        MFAdNetworkExtras *extras = [[MFAdNetworkExtras alloc] init];
+//
+//        extras.gdpr = YES;
+//        extras.gdpr_consent = @"InterTest";
         
-        [[GADRewardBasedVideoAd sharedInstance] loadRequest:[GADRequest request]
-                                               withAdUnitID:ADMOB_HASH_GAD_INTER];
+        self.gadInterstitial = [[GADInterstitial alloc] initWithAdUnitID:ADMOB_HASH_GAD_INTER];
+        GADRequest *request_interstitial = [GADRequest request];
+        //Requests test ads on test devices.
         
-        //self.gadInterstitial = [[GADInterstitial alloc] initWithAdUnitID:ADMOB_HASH_GAD_INTER];
-        //GADRequest *request_interstitial = [GADRequest request];
-        // Requests test ads on test devices.
-        // request_interstitial.testDevices = @[ @"e79e2caa57cdab4fc709cf33c631dca3" ];
-        //self.gadInterstitial.delegate = self;
-        //[self.gadInterstitial loadRequest:request_interstitial];
-        //NSLog(@"%s", GoogleMobileAdsVersionString);
+//        [request_interstitial registerAdNetworkExtras:extras];
+        
+        request_interstitial.testDevices = @[ @"267d72ac3f77a3f447b32cf7ebf20673" ];
+        self.gadInterstitial.delegate = self;
+        [self.gadInterstitial loadRequest:request_interstitial];
+        NSLog(@"%s", GoogleMobileAdsVersionString);
+        
+        
         /*
-        // DFP Interstitial.
-        self.dfpInterstitial = [[DFPInterstitial alloc] initWithAdUnitID:@"ca-app-pub-6224828323195096/7876284361"];
-        GADRequest *dfp_request = [GADRequest request];
-        self.dfpInterstitial.delegate = self;
-        // Requests test ads on test devices.
-        dfp_request.testDevices = @[ @"221e6c438e8184e0556942ea14bb214b" ];
-        [self.dfpInterstitial loadRequest:dfp_request]; */
+         // DFP Interstitial.
+         self.dfpInterstitial = [[DFPInterstitial alloc] initWithAdUnitID:@"ca-app-pub-6224828323195096/7876284361"];
+         GADRequest *dfp_request = [GADRequest request];
+         self.dfpInterstitial.delegate = self;
+         // Requests test ads on test devices.
+         dfp_request.testDevices = @[ @"221e6c438e8184e0556942ea14bb214b" ];
+         [self.dfpInterstitial loadRequest:dfp_request]; */
         
         
     } else if([sdk isEqualToString:@"Smaato"] ) {

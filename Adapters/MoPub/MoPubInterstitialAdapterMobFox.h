@@ -15,9 +15,9 @@
 #endif
 
 
-@interface MoPubInterstitialAdapterMobFox : MPInterstitialCustomEvent<MobFoxTagInterstitialAdDelegate>
+@interface MoPubInterstitialAdapterMobFox : MPInterstitialCustomEvent<MobFoxInterstitialAdDelegate>
 
-@property (strong, nonatomic) MobFoxTagInterstitialAd* mobFoxInterAd;
+@property (strong, nonatomic) MobFoxInterstitialAd* mobFoxInterAd;
 
 - (void)requestInterstitialWithCustomEventInfo:(NSDictionary *)info;
 
