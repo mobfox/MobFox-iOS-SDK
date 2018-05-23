@@ -422,6 +422,7 @@ Configuration:
 - MobFox set properties 
 ------------------------
 @property (nonatomic, assign) BOOL      gdpr;
+
 @property (nonatomic, assign) NSString* gdpr_consent;
 
 -AdMob adapter use  "MFAdNetworkExtras" 
@@ -454,6 +455,9 @@ MoPub adapter
 For more information about GDPR:
 ----------------------------------
 https://www.mobfox.com/gdpr-faq/
+
+
+
 
 ## Location Services
 
