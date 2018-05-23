@@ -415,6 +415,46 @@ Adapters are the opposite of Custom Events, they let you use MobFox as a Custom 
 
 [Demo App Swift](https://github.com/mobfox/MobFox-iOS-SDK-Core-Lib/wiki/Demo-Application-in-Swift)
 
+## GDPR
+
+Configuration:
+
+- MobFox set properties 
+------------------------
+@property (nonatomic, assign) BOOL      gdpr;
+@property (nonatomic, assign) NSString* gdpr_consent;
+
+-AdMob adapter use  "MFAdNetworkExtras" 
+--------------------------------------------
+
+Example:
+
+        MFAdNetworkExtras *extras = [[MFAdNetworkExtras alloc] init];
+
+        extras.gdpr = YES;
+        extras.gdpr_consent = @"1";
+
+        self.gadBannerView = [[GADBannerView alloc] initWithFrame:CGRectMake(0, SCREEN_HEIGHT-50, 320, 50)];
+        self.gadBannerView.adUnitID = ADMOB_HASH_GAD_TAG_BANNER;
+        self.gadBannerView.rootViewController = self;
+        self.gadBannerView.delegate = self;
+        [self.view addSubview: self.gadBannerView];
+        GADRequest *request = [[GADRequest alloc] init];
+        [request registerAdNetworkExtras:extras];
+         [self.gadBannerView loadRequest:request];
+      
+MoPub adapter
+---------------
+
+1. Update to the latest MoPub SDK (MoPub SDK 5.0)
+2. Use MobFox Adapter module to pass gdpr & gdpr_consent to MobFox
+
+
+
+For more information about GDPR:
+----------------------------------
+https://www.mobfox.com/gdpr-faq/
+
 ## Location Services
 
 The SDK will query the current location and set the ```longitude``` and ```latitude``` ad request parameters, as long as it permitted by the user (in Privacy, Location Services).
