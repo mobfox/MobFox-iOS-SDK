@@ -21,7 +21,7 @@ Supports **iOS 9.0+**
 * [Adapters](#adapters)
 * [Plugins](#plugins)
 * [Demo App Swift](#demo-app-swift)
-* [GDPR] (#gdpr)
+* [GDPR](#gdpr)
 * [Location Services](#location-services)
 * [MOAT](#built-in-moat-viewability-measurement)
 
