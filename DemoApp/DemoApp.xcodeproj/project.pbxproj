@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		460307FC20C559FC0021C202 /* MFAdNetworkExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = 460307FB20C559FC0021C202 /* MFAdNetworkExtras.m */; };
+		460307FD20C559FC0021C202 /* MFAdNetworkExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = 460307FB20C559FC0021C202 /* MFAdNetworkExtras.m */; };
 		4635E907202752F800CD6521 /* URLProtocol.m in Sources */ = {isa = PBXBuildFile; fileRef = 4635E906202752F800CD6521 /* URLProtocol.m */; };
 		4635E91020275AFB00CD6521 /* TestsDefines.m in Sources */ = {isa = PBXBuildFile; fileRef = 4635E90E20275AFB00CD6521 /* TestsDefines.m */; };
 		4635E91320275E7A00CD6521 /* ScanHashViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4635E91120275E7A00CD6521 /* ScanHashViewController.m */; };
@@ -569,8 +571,6 @@
 		46EA53A520B410DF00B5B9BF /* MPInterstitialCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 46EA521920B410DE00B5B9BF /* MPInterstitialCustomEvent.m */; };
 		46EA53A620B410DF00B5B9BF /* MPConsentChangedNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 46EA521B20B410DE00B5B9BF /* MPConsentChangedNotification.m */; };
 		46EA53A720B410DF00B5B9BF /* MPConsentChangedNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = 46EA521B20B410DE00B5B9BF /* MPConsentChangedNotification.m */; };
-		46EA53AA20B4157C00B5B9BF /* MFAdNetworkExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = 46EA53A920B4157C00B5B9BF /* MFAdNetworkExtras.m */; };
-		46EA53AB20B4157C00B5B9BF /* MFAdNetworkExtras.m in Sources */ = {isa = PBXBuildFile; fileRef = 46EA53A920B4157C00B5B9BF /* MFAdNetworkExtras.m */; };
 		8603F7D11CF2EFE400CAE120 /* libxml2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 86186A281C79F0CB00D406BB /* libxml2.tbd */; };
 		86104BA71E819BB200DC1A9E /* MobFoxSDKCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86104BA61E819B8700DC1A9E /* MobFoxSDKCore.framework */; };
 		861204F01D084DB000EDDAF8 /* response_waterfalls.txt in Resources */ = {isa = PBXBuildFile; fileRef = 861204EF1D084DB000EDDAF8 /* response_waterfalls.txt */; };
@@ -713,6 +713,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		460307FA20C559FC0021C202 /* MFAdNetworkExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFAdNetworkExtras.h; path = ../../../Adapters/AdMob/MFAdNetworkExtras.h; sourceTree = "<group>"; };
+		460307FB20C559FC0021C202 /* MFAdNetworkExtras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFAdNetworkExtras.m; path = ../../../Adapters/AdMob/MFAdNetworkExtras.m; sourceTree = "<group>"; };
 		4635E905202752F800CD6521 /* URLProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URLProtocol.h; sourceTree = "<group>"; };
 		4635E906202752F800CD6521 /* URLProtocol.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = URLProtocol.m; sourceTree = "<group>"; };
 		4635E90E20275AFB00CD6521 /* TestsDefines.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TestsDefines.m; path = DemoAppTests/TestsDefines.m; sourceTree = SOURCE_ROOT; };
@@ -1207,8 +1209,6 @@
 		46EA521B20B410DE00B5B9BF /* MPConsentChangedNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPConsentChangedNotification.m; sourceTree = "<group>"; };
 		46EA521C20B410DE00B5B9BF /* MoPub-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MoPub-Bridging-Header.h"; sourceTree = "<group>"; };
 		46EA521D20B410DE00B5B9BF /* MPInterstitialAdController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPInterstitialAdController.h; sourceTree = "<group>"; };
-		46EA53A820B4157C00B5B9BF /* MFAdNetworkExtras.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MFAdNetworkExtras.h; path = ../../../Adapters/MoPub/MFAdNetworkExtras.h; sourceTree = "<group>"; };
-		46EA53A920B4157C00B5B9BF /* MFAdNetworkExtras.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MFAdNetworkExtras.m; path = ../../../Adapters/MoPub/MFAdNetworkExtras.m; sourceTree = "<group>"; };
 		860C0BCD1C95738D0001EEF3 /* libSystem.B.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libSystem.B.dylib; path = ../../../../../usr/lib/libSystem.B.dylib; sourceTree = "<group>"; };
 		860C0BCF1C9573D50001EEF3 /* libz.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.dylib; path = ../../../../../usr/lib/libz.1.dylib; sourceTree = "<group>"; };
 		860C0FB71C96B9B00001EEF3 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
@@ -1592,6 +1592,8 @@
 		46575E90205E651D00B66E74 /* AdMob */ = {
 			isa = PBXGroup;
 			children = (
+				460307FA20C559FC0021C202 /* MFAdNetworkExtras.h */,
+				460307FB20C559FC0021C202 /* MFAdNetworkExtras.m */,
 				46575E91205E651D00B66E74 /* RewardedAdmobAdapter.h */,
 				46575E92205E651D00B66E74 /* GADMAdapterMobFox.m */,
 				46575E93205E651D00B66E74 /* RewardedAdmobAdapter.m */,
@@ -1603,8 +1605,6 @@
 		46575E95205E651D00B66E74 /* MoPub */ = {
 			isa = PBXGroup;
 			children = (
-				46EA53A820B4157C00B5B9BF /* MFAdNetworkExtras.h */,
-				46EA53A920B4157C00B5B9BF /* MFAdNetworkExtras.m */,
 				46575E96205E651D00B66E74 /* MoPubAdapterMobFox.h */,
 				46575E97205E651D00B66E74 /* MoPubInterstitialAdapterMobFox.h */,
 				46575E98205E651D00B66E74 /* MoPubAdapterMobFox.m */,
@@ -2772,7 +2772,6 @@
 				46EA530320B410DE00B5B9BF /* MRVideoPlayerManager.m in Sources */,
 				46EA534120B410DE00B5B9BF /* NSHTTPURLResponse+MPAdditions.m in Sources */,
 				46575E9F205E651D00B66E74 /* GADMAdapterMobFox.m in Sources */,
-				46EA53AB20B4157C00B5B9BF /* MFAdNetworkExtras.m in Sources */,
 				46EA534920B410DE00B5B9BF /* UIView+MPAdditions.m in Sources */,
 				46EA532720B410DE00B5B9BF /* MOPUBExperimentProvider.m in Sources */,
 				46575E89205E64D700B66E74 /* MobFoxInterstitialCustomEventSupersonic.m in Sources */,
@@ -2827,6 +2826,7 @@
 				46EA527920B410DE00B5B9BF /* MPConstants.m in Sources */,
 				46EA536520B410DE00B5B9BF /* MPVASTTrackingEvent.m in Sources */,
 				46EA536920B410DE00B5B9BF /* MPVASTResponse.m in Sources */,
+				460307FD20C559FC0021C202 /* MFAdNetworkExtras.m in Sources */,
 				46EA52AD20B410DE00B5B9BF /* MPInterstitialAdManager.m in Sources */,
 				46EA537D20B410DE00B5B9BF /* MOPUBActivityIndicatorView.m in Sources */,
 				46EA534F20B410DE00B5B9BF /* MPVASTMediaFile.m in Sources */,
@@ -2994,7 +2994,6 @@
 				46EA530220B410DE00B5B9BF /* MRVideoPlayerManager.m in Sources */,
 				46EA534020B410DE00B5B9BF /* NSHTTPURLResponse+MPAdditions.m in Sources */,
 				46575E9E205E651D00B66E74 /* GADMAdapterMobFox.m in Sources */,
-				46EA53AA20B4157C00B5B9BF /* MFAdNetworkExtras.m in Sources */,
 				46EA534820B410DE00B5B9BF /* UIView+MPAdditions.m in Sources */,
 				46EA532620B410DE00B5B9BF /* MOPUBExperimentProvider.m in Sources */,
 				46575E88205E64D700B66E74 /* MobFoxInterstitialCustomEventSupersonic.m in Sources */,
@@ -3049,6 +3048,7 @@
 				46EA527820B410DE00B5B9BF /* MPConstants.m in Sources */,
 				46EA536420B410DE00B5B9BF /* MPVASTTrackingEvent.m in Sources */,
 				46EA536820B410DE00B5B9BF /* MPVASTResponse.m in Sources */,
+				460307FC20C559FC0021C202 /* MFAdNetworkExtras.m in Sources */,
 				46EA52AC20B410DE00B5B9BF /* MPInterstitialAdManager.m in Sources */,
 				46EA537C20B410DE00B5B9BF /* MOPUBActivityIndicatorView.m in Sources */,
 				46EA534E20B410DE00B5B9BF /* MPVASTMediaFile.m in Sources */,
