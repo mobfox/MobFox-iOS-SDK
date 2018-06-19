@@ -34,19 +34,30 @@ You will need a [MobFox](http://www.mobfox.com/) account.
 
 # Installation
 
-Make sure the following are included in your project's *frameworks*:
+Make sure the following are included in your project's *frameworks*: 
+(In your Xcode project go to **General** - **Linked Frameworks and Libaries**)
 - ```AdSupport.framework```
-- ```libz.dylib```
 
+
+
+In **Build Settings** click on **All** tag.
 Set ```Always Embed Swift Standard Libraries``` to Yes.
 
 ## CocoaPods
+
+
+If you do not have podfile yet, 
+1) write `pod init`  in your project location to create podfile.
+2) use `open -a Xcode Podfile` to edit podfile.
 
 Add to your Podfile:
 
 ```
 pod 'MobFoxSDK','3.5.0'
 ```
+
+save your pod file and write:
+`pod install`
 
 ## Carthage
 
