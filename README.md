@@ -47,7 +47,7 @@ Set ```Always Embed Swift Standard Libraries``` to Yes.
 
 
 If you do not have podfile yet, 
-1) write `pod init`  in your project location to create podfile.
+1) In terminal, go to your project location and type `pod init` to create podfile.
 2) use `open -a Xcode Podfile` to edit podfile.
 
 Add to your Podfile:
