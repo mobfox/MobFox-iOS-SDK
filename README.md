@@ -56,7 +56,7 @@ Add to your Podfile:
 pod 'MobFoxSDK','3.5.0'
 ```
 
-save your pod file and write:
+save your pod file and type:
 `pod install`
 
 ## Carthage
