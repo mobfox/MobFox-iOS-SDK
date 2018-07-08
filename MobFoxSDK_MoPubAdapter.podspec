@@ -71,5 +71,5 @@ puts wd
 
 
   #s.dependency 'Google-Mobile-Ads-SDK', '7.31.0'
-  s.dependency 'mopub-ios-sdk', '5.0'
+  s.dependency 'mopub-ios-sdk', '>= 5.0'
 end
