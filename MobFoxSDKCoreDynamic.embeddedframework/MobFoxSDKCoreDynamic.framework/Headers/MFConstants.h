@@ -14,7 +14,7 @@ extern NSString* const CORE_TARGET;
 
 
 /* Versions */
-#define SDK_VERSION @"3.5.0"
+#define SDK_VERSION @"3.5.1"
 #define OS_VERSION        [[[UIDevice currentDevice] systemVersion] floatValue]
 #define FW_VERSION        [[NSBundle mainBundle] objectForInfoDictionaryKey: @"CFBundleShortVersionString"]
 #define BUILD_VERSION     [[NSBundle mainBundle] objectForInfoDictionaryKey: (NSString *)kCFBundleVersionKey]
@@ -34,8 +34,8 @@ extern NSString* const CORE_TARGET;
 
 #define AD_REQUEST_DOMAIN    @"my.mobfox.com"
 
-#define TAG_VIDEO_FILE_NAME  @"tagVideoiOS.html"
-#define TAG_BANNER_FILE_NAME @"tagBanneriOS.html"
+#define TAG_VIDEO_FILE_NAME  @"tags/tagVideoiOS.html"
+#define TAG_BANNER_FILE_NAME @"tags/tagiOS.html"
 
 
 
