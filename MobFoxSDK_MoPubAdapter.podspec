@@ -33,9 +33,9 @@ puts wd
   s.author           = { "Matomy/MobFox" => "itamar.n@matomy.com"  }
 
   #s.source           = { :git => 'https://github.com/mobfox/MobFox-iOS-SDK.git', :tag => "#{s.version}" }
-  #s.source           = { :git => 'https://github.com/mobfox/MobFox-iOS-SDK.git', :commit => 'master' }
+  s.source           = { :git => 'https://github.com/mobfox/MobFox-iOS-SDK.git', :commit => 'master' }
 
-  s.source           = { :git => 'https://github.com/mobfox/MobFox-iOS-SDK.git', :commit => 'dev' }
+  #s.source           = { :git => 'https://github.com/mobfox/MobFox-iOS-SDK.git', :commit => 'dev' }
 
 
 
