@@ -2,6 +2,8 @@
 
 # MobFox-iOS-SDK
 
+## [New documentation page](https://mobfox.atlassian.net/wiki/spaces/PUMD/pages/354156654/Getting+Started)
+
 For any problems or questions not covered by the instructions below, please contact <sdk_support@mobfox.com> or open an issue.
 
 Supports **iOS 9.0+**
