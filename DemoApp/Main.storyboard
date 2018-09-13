@@ -1,18 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" colorMatched="YES" initialViewController="kvZ-yQ-Jrh">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" colorMatched="YES" initialViewController="kvZ-yQ-Jrh">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <array key="Bodoni72-OldStyle.ttc">
-            <string>BodoniSvtyTwoOSITCTT-Bold</string>
-        </array>
-    </customFonts>
     <scenes>
         <!--Generic Adapter View Controller-->
         <scene sceneID="MN1-Qd-RqL">
@@ -103,7 +98,7 @@
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </view>
                                     <view contentMode="scaleToFill" id="iy5-lR-UtG" userLabel="Inner Native Ad View">
-                                        <rect key="frame" x="8" y="141" width="312" height="81"/>
+                                        <rect key="frame" x="8" y="140" width="312" height="81"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="MC4-o0-sO0">
@@ -211,7 +206,7 @@
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </view>
                                     <view contentMode="scaleToFill" misplaced="YES" id="Dsu-Za-NeX" userLabel="Inner Native Ad View">
-                                        <rect key="frame" x="8" y="141" width="312" height="81"/>
+                                        <rect key="frame" x="8" y="140" width="312" height="81"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="E61-Tq-CnF">
@@ -330,7 +325,7 @@
                         <outlet property="nativeAdIcon" destination="E61-Tq-CnF" id="5v7-Gh-1B8"/>
                         <outlet property="nativeAdTitle" destination="8Sb-BZ-EA3" id="int-ad-8hS"/>
                         <outlet property="nativeAdView" destination="6P9-fX-wz1" id="hmY-Ch-qkI"/>
-                        <outlet property="navigationItem" destination="NYQ-d3-vVB" id="nUD-XJ-Ugu"/>
+                        <outlet property="navigationItem1" destination="NYQ-d3-vVB" id="lNs-jO-szx"/>
                         <segue destination="Wsj-Zn-wZh" kind="push" identifier="MainToGenericAdapter" id="b11-rW-wZe"/>
                         <segue destination="wAu-3o-RZh" kind="push" identifier="MainToAdapters" id="im3-3Z-njS"/>
                     </connections>
@@ -667,6 +662,7 @@
         <image name="title_mobfox.png" width="603" height="167"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="lsQ-eQ-TPh"/>
         <segue reference="auj-dE-UCn"/>
     </inferredMetricsTieBreakers>
 </document>

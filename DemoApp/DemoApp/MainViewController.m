@@ -63,7 +63,7 @@ typedef NS_ENUM(NSInteger, MFRandomStringPart) {
 @property (weak, nonatomic) IBOutlet UIImageView *nativeAdIcon;
 @property (weak, nonatomic) IBOutlet UILabel *nativeAdTitle;
 @property (weak, nonatomic) IBOutlet UILabel *nativeAdDescription;
-@property (weak, nonatomic) IBOutlet UINavigationItem *navigationItem;
+@property (weak, nonatomic) IBOutlet UINavigationItem *navigationItem1;
 
 
 @property (nonatomic) CGRect videoAdRect;
@@ -127,7 +127,7 @@ static bool perform_segue_enabled;
     //NSLog(@"-- viewDidLoad --");
 
     // Hides back button from current view.
-    self.navigationItem.hidesBackButton = YES;
+    self.navigationItem1.hidesBackButton = YES;
 
     
     
@@ -137,8 +137,8 @@ static bool perform_segue_enabled;
     UIBarButtonItem *settingsButton = [[UIBarButtonItem alloc] initWithTitle:@"Settings" style:UIBarButtonItemStylePlain
                                                                       target:self action:@selector(settingsBtnSelected:)];
     
-    _navigationItem.rightBarButtonItem = scanHashButton;
-    _navigationItem.leftBarButtonItem = settingsButton;
+    _navigationItem1.rightBarButtonItem = scanHashButton;
+    _navigationItem1.leftBarButtonItem = settingsButton;
 
 
 #ifdef  DemoAppDynamicTarget
