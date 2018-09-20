@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/MFConstants.h</key>
 		<data>
-		8D0qZKtUfCWuG+4kFx3/IMRlE6M=
+		Fr6UxAaRbmlVGYJ0NwWt5gfOQbE=
 		</data>
 		<key>Headers/MFEventsHandler.h</key>
 		<data>
@@ -22,7 +22,7 @@
 		</data>
 		<key>Headers/MobFoxAd.h</key>
 		<data>
-		4in/yhBsNYc3JlLMQEVOgxL09M4=
+		obImUJjxH7y9viCfMaLGxdy7Utk=
 		</data>
 		<key>Headers/MobFoxCustomEvent.h</key>
 		<data>
@@ -30,7 +30,7 @@
 		</data>
 		<key>Headers/MobFoxInterstitialAd.h</key>
 		<data>
-		HhFStLjnvorOJkMk02SmbB8NWCo=
+		Gr75KazMJJG/ijsn4Z+zDGKdUY0=
 		</data>
 		<key>Headers/MobFoxInterstitialCustomEvent.h</key>
 		<data>
@@ -82,7 +82,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		/hpL2+wuyYug8VwC/RvDqDHfBTQ=
+		a24lUOxf0jUA9aYf9ppujANepRY=
 		</data>
 		<key>LICENSE</key>
 		<data>
@@ -99,11 +99,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			8D0qZKtUfCWuG+4kFx3/IMRlE6M=
+			Fr6UxAaRbmlVGYJ0NwWt5gfOQbE=
 			</data>
 			<key>hash2</key>
 			<data>
-			xnLh5dFMNOonyi8LaaozitYSJtTtv4TqN1TskiSrR/E=
+			Db7xl+42FjBch32+O6pnFsD9s57e0rkPbFC9zR1147U=
 			</data>
 		</dict>
 		<key>Headers/MFEventsHandler.h</key>
@@ -143,11 +143,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			4in/yhBsNYc3JlLMQEVOgxL09M4=
+			obImUJjxH7y9viCfMaLGxdy7Utk=
 			</data>
 			<key>hash2</key>
 			<data>
-			6PJcxZXdHmz1H6y5dqh5ZnEnZDMji2ycM8wQ4C8e/PU=
+			ISCftyk/wBogTuwOe+4OptjY1zTOmZtbSuMsnnH+uhY=
 			</data>
 		</dict>
 		<key>Headers/MobFoxCustomEvent.h</key>
@@ -165,11 +165,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			HhFStLjnvorOJkMk02SmbB8NWCo=
+			Gr75KazMJJG/ijsn4Z+zDGKdUY0=
 			</data>
 			<key>hash2</key>
 			<data>
-			mzq2JgjDNzPvCLmspYE+qDqN6kvOkSGFTe5rDz+3lMg=
+			0dJ4kTUQfgbIvpSgVac6rm7f5ccIvRk0yAHdq61A0/I=
 			</data>
 		</dict>
 		<key>Headers/MobFoxInterstitialCustomEvent.h</key>

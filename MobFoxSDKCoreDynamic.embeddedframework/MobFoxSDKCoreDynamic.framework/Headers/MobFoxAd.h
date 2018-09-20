@@ -61,6 +61,8 @@
 @property (nonatomic, copy) NSString* debugReqURLStr;
 @property (nonatomic, copy) NSString* debugReqCustomEventURLStr;
 
+@property (nonatomic, strong) NSString* adapter;
+
 -(NSDictionary*) getCustomEventInfo;
 
 - (id) init:(NSString*)invh withFrame:(CGRect)aRect;

@@ -85,6 +85,8 @@
 @property (nonatomic, strong) NSNumber* refresh;
 @property (nonatomic, copy) NSString* debugReqCustomEventURLStr;
 
+@property (nonatomic, strong) NSString* adapter;
+
 
 - (id) init:(NSString*)invh;
 - (id) init:(NSString*)invh withRootViewController:(UIViewController*)root;
