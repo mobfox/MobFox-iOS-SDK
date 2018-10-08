@@ -14,7 +14,7 @@
 #import "MPInterstitialCustomEvent.h"
 #endif
 
-
+//
 @interface MoPubInterstitialAdapterMobFox : MPInterstitialCustomEvent<MobFoxInterstitialAdDelegate>
 
 @property (strong, nonatomic) MobFoxInterstitialAd* mobFoxInterAd;
