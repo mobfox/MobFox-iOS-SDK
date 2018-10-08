@@ -1595,9 +1595,9 @@
 				460307FA20C559FC0021C202 /* MFAdNetworkExtras.h */,
 				460307FB20C559FC0021C202 /* MFAdNetworkExtras.m */,
 				46575E91205E651D00B66E74 /* RewardedAdmobAdapter.h */,
-				46575E92205E651D00B66E74 /* GADMAdapterMobFox.m */,
 				46575E93205E651D00B66E74 /* RewardedAdmobAdapter.m */,
 				46575E94205E651D00B66E74 /* GADMAdapterMobFox.h */,
+				46575E92205E651D00B66E74 /* GADMAdapterMobFox.m */,
 			);
 			path = AdMob;
 			sourceTree = "<group>";
@@ -1606,8 +1606,8 @@
 			isa = PBXGroup;
 			children = (
 				46575E96205E651D00B66E74 /* MoPubAdapterMobFox.h */,
-				46575E97205E651D00B66E74 /* MoPubInterstitialAdapterMobFox.h */,
 				46575E98205E651D00B66E74 /* MoPubAdapterMobFox.m */,
+				46575E97205E651D00B66E74 /* MoPubInterstitialAdapterMobFox.h */,
 				46575E99205E651D00B66E74 /* MoPubInterstitialAdapterMobFox.m */,
 			);
 			path = MoPub;

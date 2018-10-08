@@ -32,7 +32,7 @@
     
     self.bannerAdRect = CGRectMake(0,0, size.width, size.height);
     self.ad = [[MobFoxAd alloc] init:[info valueForKey:@"invh"] withFrame:self.bannerAdRect];
-    
+    self.ad.adapter = @"mopub";
     self.ad.gdpr = gdpr;
     self.ad.gdpr_consent = consentStatusStr;
     

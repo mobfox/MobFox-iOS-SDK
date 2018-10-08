@@ -26,7 +26,7 @@
     }
     
     self.mobFoxInterAd = [[MobFoxInterstitialAd alloc] init:[info valueForKey:@"invh"]];
-    
+    self.mobFoxInterAd.adapter = @"mopub";
     self.mobFoxInterAd.gdpr = gdpr;
     self.mobFoxInterAd.gdpr_consent = consentStatusStr;
     

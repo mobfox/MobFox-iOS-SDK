@@ -107,6 +107,7 @@
         
         self.bannerAdRect = CGRectMake(0,0, screenWidth, bannerHeight);
         self.banner = [[MobFoxAd alloc] init:invh withFrame:self.bannerAdRect];
+        self.banner.adapter = @"admob";
         
         
         MFAdNetworkExtras *ne = [self.connector networkExtras];
@@ -129,6 +130,7 @@
     
     self.bannerAdRect = CGRectMake(0,0, adSize.size.width, adSize.size.height);
     self.banner = [[MobFoxAd alloc] init:invh withFrame:self.bannerAdRect];
+    self.banner.adapter = @"admob";
     
     MFAdNetworkExtras *ne = [self.connector networkExtras];
     
@@ -153,6 +155,7 @@
     
     NSString *invh = [[self.connector credentials] objectForKey:@"pubid"];
     self.interstitial = [[MobFoxInterstitialAd alloc] init:invh];
+    self.interstitial.adapter = @"admob";
     
     MFAdNetworkExtras *ne = [self.connector networkExtras];
     
