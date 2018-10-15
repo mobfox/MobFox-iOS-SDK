@@ -678,6 +678,8 @@
 		86F8A2CB1C79C1E200BDD8FD /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86F8A2CA1C79C1E200BDD8FD /* MessageUI.framework */; };
 		86F8A2CD1C79C1F200BDD8FD /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86F8A2CC1C79C1F200BDD8FD /* MobileCoreServices.framework */; };
 		86F8A2D11C79C20D00BDD8FD /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86F8A2D01C79C20D00BDD8FD /* Social.framework */; };
+		B70445002174D2780073FA14 /* CoreLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = B70444FF2174D2780073FA14 /* CoreLocation.m */; };
+		B70445012174D2780073FA14 /* CoreLocation.m in Sources */ = {isa = PBXBuildFile; fileRef = B70444FF2174D2780073FA14 /* CoreLocation.m */; };
 		E7970DA51FE955CF005AA888 /* MATMoatMobileAppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7970DA41FE955CF005AA888 /* MATMoatMobileAppKit.framework */; };
 /* End PBXBuildFile section */
 
@@ -1299,6 +1301,8 @@
 		86F8A2CA1C79C1E200BDD8FD /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		86F8A2CC1C79C1F200BDD8FD /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		86F8A2D01C79C20D00BDD8FD /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		B70444FE2174D2770073FA14 /* CoreLocation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CoreLocation.h; path = "../../../MobFox-iOS-SDK-Core/DemoApp/DemoApp/CoreLocation.h"; sourceTree = "<group>"; };
+		B70444FF2174D2780073FA14 /* CoreLocation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CoreLocation.m; path = "../../../MobFox-iOS-SDK-Core/DemoApp/DemoApp/CoreLocation.m"; sourceTree = "<group>"; };
 		E7970DA41FE955CF005AA888 /* MATMoatMobileAppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MATMoatMobileAppKit.framework; path = ../MATMoatMobileAppKit.framework; sourceTree = "<group>"; };
 		E7AF81191E2679DF00BD4296 /* MFDemoConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFDemoConstants.h; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -2341,6 +2345,8 @@
 				86891E541C5FC0260098C602 /* CollectionViewCell */,
 				86891E141C5FA8250098C602 /* AppDelegate.h */,
 				86891E151C5FA8250098C602 /* AppDelegate.m */,
+				B70444FE2174D2770073FA14 /* CoreLocation.h */,
+				B70444FF2174D2780073FA14 /* CoreLocation.m */,
 				467638C42029C99B00F2A9C7 /* DeviceExtension.h */,
 				467638C52029C99B00F2A9C7 /* DeviceExtension.m */,
 				86891E171C5FA8250098C602 /* MainViewController.h */,
@@ -2959,6 +2965,7 @@
 				46EA531B20B410DE00B5B9BF /* MPAdvancedBiddingManager.m in Sources */,
 				46EA525F20B410DE00B5B9BF /* MPNativeAdRenderingImageLoader.m in Sources */,
 				46EA523D20B410DE00B5B9BF /* MPNativePositionResponseDeserializer.m in Sources */,
+				B70445012174D2780073FA14 /* CoreLocation.m in Sources */,
 				46EA52BD20B410DE00B5B9BF /* MPCoreInstanceProvider.m in Sources */,
 				46EA538B20B410DE00B5B9BF /* MPRewardedVideo.m in Sources */,
 				46EA524F20B410DE00B5B9BF /* MPNativeView.m in Sources */,
@@ -3181,6 +3188,7 @@
 				46EA531A20B410DE00B5B9BF /* MPAdvancedBiddingManager.m in Sources */,
 				46EA525E20B410DE00B5B9BF /* MPNativeAdRenderingImageLoader.m in Sources */,
 				46EA523C20B410DE00B5B9BF /* MPNativePositionResponseDeserializer.m in Sources */,
+				B70445002174D2780073FA14 /* CoreLocation.m in Sources */,
 				46EA52BC20B410DE00B5B9BF /* MPCoreInstanceProvider.m in Sources */,
 				46EA538A20B410DE00B5B9BF /* MPRewardedVideo.m in Sources */,
 				46EA524E20B410DE00B5B9BF /* MPNativeView.m in Sources */,

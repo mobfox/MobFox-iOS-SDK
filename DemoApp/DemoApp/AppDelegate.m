@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "MoPub.h"
 #import "MFDemoConstants.h"
+#import "CoreLocation.h"
 
 @interface AppDelegate ()
 
@@ -30,7 +31,7 @@
      */
     [[MoPub sharedInstance] initializeSdkWithConfiguration:sdkConfig completion:nil];
     
-    
+    [[CoreLocation sharedManager] init];
     return YES;
 }
 

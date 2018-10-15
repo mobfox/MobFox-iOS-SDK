@@ -32,11 +32,15 @@
 	<key>NSCameraUsageDescription</key>
 	<string>DemoApp uses the camera to scan QR code and receives inv hash</string>
 	<key>NSLocationAlwaysUsageDescription</key>
-	<string></string>
+	<string>Save Location to receive proper advertisement.</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string>Save Location to receive proper advertisement.</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
+    <key>NSLocationUsageDescription</key>
+    <string>Save Location to receive proper advertisement.</string>
+    <key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+    <string>Save Location to receive proper advertisement.</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
 	<key>UIRequiredDeviceCapabilities</key>
