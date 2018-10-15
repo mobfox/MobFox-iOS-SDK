@@ -84,6 +84,7 @@
 @property (nonatomic, assign) BOOL ready;
 @property (nonatomic, strong) NSNumber* refresh;
 @property (nonatomic, copy) NSString* debugReqCustomEventURLStr;
+@property (nonatomic, copy) NSString* debug_ad_request_url;
 
 @property (nonatomic, strong) NSString* adapter;
 

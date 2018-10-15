@@ -51,7 +51,8 @@
 @property (nonatomic, assign) NSString* v_rewarded;
 
 @property (nonatomic, assign) BOOL v_autoplay;
-@property (nonatomic, assign) BOOL v_startmute;
+@property (nonatomic, assign) BOOL start_muted;
+@property (nonatomic, assign) BOOL skip;
 
 @property (nonatomic, assign) BOOL dev_js;
 @property (nonatomic, assign) BOOL imp_secure;
@@ -60,7 +61,7 @@
 
 @property (nonatomic, copy) NSString* debugReqURLStr;
 @property (nonatomic, copy) NSString* debugReqCustomEventURLStr;
-
+@property (nonatomic, copy) NSString* debug_ad_request_url;
 @property (nonatomic, strong) NSString* adapter;
 
 -(NSDictionary*) getCustomEventInfo;

@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/MFConstants.h</key>
 		<data>
-		Fr6UxAaRbmlVGYJ0NwWt5gfOQbE=
+		/a/1AhpNyJQthCIhYncTO1kLTgQ=
 		</data>
 		<key>Headers/MFEventsHandler.h</key>
 		<data>
@@ -22,7 +22,7 @@
 		</data>
 		<key>Headers/MobFoxAd.h</key>
 		<data>
-		obImUJjxH7y9viCfMaLGxdy7Utk=
+		xVAD9FRRdMPkFR7pp6SlWlQUrXk=
 		</data>
 		<key>Headers/MobFoxCustomEvent.h</key>
 		<data>
@@ -30,7 +30,7 @@
 		</data>
 		<key>Headers/MobFoxInterstitialAd.h</key>
 		<data>
-		Gr75KazMJJG/ijsn4Z+zDGKdUY0=
+		PpQDyq8qBxk+O9nOcpZJBVmyDTw=
 		</data>
 		<key>Headers/MobFoxInterstitialCustomEvent.h</key>
 		<data>
@@ -70,7 +70,7 @@
 		</data>
 		<key>Headers/MobFoxTagAd.h</key>
 		<data>
-		SfXi7jnW/RpVWOVOhNGz7QtYsEc=
+		R6LQRw5y/ssheTOFaGPrcftR5Lc=
 		</data>
 		<key>Headers/MobFoxTagInterstitialAd.h</key>
 		<data>
@@ -82,7 +82,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		a24lUOxf0jUA9aYf9ppujANepRY=
+		8cEeF8FwOPg4sjdTKEh3daAqa/A=
 		</data>
 		<key>LICENSE</key>
 		<data>
@@ -99,11 +99,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			Fr6UxAaRbmlVGYJ0NwWt5gfOQbE=
+			/a/1AhpNyJQthCIhYncTO1kLTgQ=
 			</data>
 			<key>hash2</key>
 			<data>
-			Db7xl+42FjBch32+O6pnFsD9s57e0rkPbFC9zR1147U=
+			N8EYWphPKSpj4YUR9wn+zTGZNeGZSQAD290TS0lnWoY=
 			</data>
 		</dict>
 		<key>Headers/MFEventsHandler.h</key>
@@ -143,11 +143,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			obImUJjxH7y9viCfMaLGxdy7Utk=
+			xVAD9FRRdMPkFR7pp6SlWlQUrXk=
 			</data>
 			<key>hash2</key>
 			<data>
-			ISCftyk/wBogTuwOe+4OptjY1zTOmZtbSuMsnnH+uhY=
+			C6m0Wez9zIAha3sdjYJunJkcvrjoRFQWyo+jfXOYjUQ=
 			</data>
 		</dict>
 		<key>Headers/MobFoxCustomEvent.h</key>
@@ -165,11 +165,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			Gr75KazMJJG/ijsn4Z+zDGKdUY0=
+			PpQDyq8qBxk+O9nOcpZJBVmyDTw=
 			</data>
 			<key>hash2</key>
 			<data>
-			0dJ4kTUQfgbIvpSgVac6rm7f5ccIvRk0yAHdq61A0/I=
+			u6auufmKtAZxe9+EtKxPnKC8iFs5vJ41bRTtlUgeIPI=
 			</data>
 		</dict>
 		<key>Headers/MobFoxInterstitialCustomEvent.h</key>
@@ -275,11 +275,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			SfXi7jnW/RpVWOVOhNGz7QtYsEc=
+			R6LQRw5y/ssheTOFaGPrcftR5Lc=
 			</data>
 			<key>hash2</key>
 			<data>
-			i34oliEetfxroItrDYJxTs0t4wy9ozWHuZfcH0aWJMQ=
+			aNU2r9iDUQ/FT0/RPbj4+LwPSHpR+6h9i+gZxg1ncqg=
 			</data>
 		</dict>
 		<key>Headers/MobFoxTagInterstitialAd.h</key>

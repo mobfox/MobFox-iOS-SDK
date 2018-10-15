@@ -72,7 +72,7 @@
 - (id) initWithAdMobAdaper:(NSString*)invh withFrame:(CGRect)aRect;
 - (id) init:(NSString*)invh withFrame:(CGRect)aRect;
 - (void) loadAd;
-- (void) renderAd:(NSArray*) cacheableParams withNonCacheableParams:(NSArray*) nonCacheableParams :(NSData*)respData andWithMoat:(BOOL)moat;
+- (void) renderAd:(NSArray*) cacheableParams withNonCacheableParams:(NSArray*) nonCacheableParams :(NSData*)respData withType:(NSString *) type andWithMoat:(BOOL)moat;
 
 @end
 

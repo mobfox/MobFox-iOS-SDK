@@ -14,7 +14,7 @@ extern NSString* const CORE_TARGET;
 
 
 /* Versions */
-#define SDK_VERSION @"3.5.2"
+#define SDK_VERSION @"3.5.4"
 #define OS_VERSION        [[[UIDevice currentDevice] systemVersion] floatValue]
 #define FW_VERSION        [[NSBundle mainBundle] objectForInfoDictionaryKey: @"CFBundleShortVersionString"]
 #define BUILD_VERSION     [[NSBundle mainBundle] objectForInfoDictionaryKey: (NSString *)kCFBundleVersionKey]
@@ -37,7 +37,8 @@ extern NSString* const CORE_TARGET;
 #define TAG_VIDEO_FILE_NAME  @"tags/tagVideoiOS.html"
 #define TAG_BANNER_FILE_NAME @"tags/tagiOS.html"
 
-
+#define SUBJECT_TO_GDPR      @"IABConsent_SubjectToGDPR"
+#define CONSENT_STRING       @"IABConsent_ConsentString"
 
 
 
