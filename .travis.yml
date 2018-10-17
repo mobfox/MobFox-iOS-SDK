@@ -3,3 +3,5 @@ language: objective-c
 xcode_project: DemoApp/DemoApp.xcodeproj # path to your xcodeproj folder
 xcode_scheme: DemoApp
 xcode_destination: platform=iOS Simulator,OS=11.4,name=iPhone 8
+branches:
+  only: ciTest
