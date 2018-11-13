@@ -42,7 +42,7 @@
 @property (nonatomic, copy) NSString* r_floor;
 
 @property (nonatomic, assign) BOOL      gdpr;
-@property (nonatomic, assign) NSString* gdpr_consent;
+@property (nonatomic, strong) NSString* gdpr_consent;
 
 @property (nonatomic, copy) NSNumber* v_dur_min;
 @property (nonatomic, copy) NSNumber* v_dur_max;

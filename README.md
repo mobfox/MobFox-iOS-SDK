@@ -55,7 +55,7 @@ If you do not have podfile yet,
 Add to your Podfile:
 
 ```
-pod 'MobFoxSDK','3.5.2'
+pod 'MobFoxSDK','3.5.5'
 ```
 
 save your pod file and type:
@@ -66,7 +66,7 @@ save your pod file and type:
 Add to your Cartfile:
 
 ```
-github "mobfox/MobFox-iOS-SDK" "3.5.2"
+github "mobfox/MobFox-iOS-SDK" "3.5.5"
 ```
 
 Carthage only supports dynamic frameworks. MobFoxSDKCoreDynamic.framework must be under 'Embedded Binaries' and 'Linked Frameworks and Libraries'.

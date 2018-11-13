@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "MobFoxSDK_AdMobAdapter"
-  s.version          = "3.5.4"
+  s.version          = "3.5.5"
   s.summary          = "MobFox's iOS SDK"
 
 wd = "Working Dir: %s" % [Dir.pwd]
