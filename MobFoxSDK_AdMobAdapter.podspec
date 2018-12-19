@@ -7,7 +7,7 @@
 #
 
 Pod::Spec.new do |s|
-  s.name             = "MobFoxSDK_AdMobAdapter"
+  s.name             = "MobFoxSDK_AdMobAdapter_3.5.6_A + "
   s.version          = "3.5.6"
   s.summary          = "MobFox's iOS SDK"
 
