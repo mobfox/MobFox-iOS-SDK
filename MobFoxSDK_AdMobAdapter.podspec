@@ -14,7 +14,7 @@ Pod::Spec.new do |s|
 wd = "Working Dir: %s" % [Dir.pwd]
 
 puts wd
-
+  
 #puts ENV #$(PODS_ROOT)
 
 #puts ENV['PODS_ROOT']
@@ -52,7 +52,7 @@ puts wd
   s.source_files = 'MobFoxSDKCore.embeddedframework/MobFoxSDKCore.framework/Headers/*.h','MATMoatMobileAppKit.framework/Headers/*.h'
   s.ios.libraries = 'z'
 
-#  s.ios.source_files = 'Adapters/AdMob/**/*.{h,m}','Adapters/MoPub/**/*.{h,m}'
+
   s.ios.source_files = 'Adapters/AdMob/**/*.{h,m}'
 
   # s.resource_bundles = {
