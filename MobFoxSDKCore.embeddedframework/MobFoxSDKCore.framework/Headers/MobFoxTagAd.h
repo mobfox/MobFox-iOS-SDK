@@ -66,13 +66,13 @@
 @property (nonatomic, assign) BOOL adspace_strict;
 
 @property (nonatomic, assign) BOOL      gdpr;
-@property (nonatomic, assign) NSString* gdpr_consent;
+@property (nonatomic, strong) NSString* gdpr_consent;
 
 - (id) initWithMoPubAdaper:(NSString*)invh withFrame:(CGRect)aRect;
 - (id) initWithAdMobAdaper:(NSString*)invh withFrame:(CGRect)aRect;
 - (id) init:(NSString*)invh withFrame:(CGRect)aRect;
 - (void) loadAd;
-- (void) renderAd:(NSData*)respData andWithMoat:(BOOL)moat;
+- (void) renderAd:(NSArray*) cacheableParams withNonCacheableParams:(NSArray*) nonCacheableParams :(NSData*)respData withType:(NSString *) type andWithMoat:(BOOL)moat;
 
 @end
 

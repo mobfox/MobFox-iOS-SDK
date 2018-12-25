@@ -42,7 +42,7 @@
 @property (nonatomic, copy) NSString* r_floor;
 
 @property (nonatomic, assign) BOOL      gdpr;
-@property (nonatomic, assign) NSString* gdpr_consent;
+@property (nonatomic, strong) NSString* gdpr_consent;
 
 @property (nonatomic, copy) NSNumber* v_dur_min;
 @property (nonatomic, copy) NSNumber* v_dur_max;
@@ -51,7 +51,8 @@
 @property (nonatomic, assign) NSString* v_rewarded;
 
 @property (nonatomic, assign) BOOL v_autoplay;
-@property (nonatomic, assign) BOOL v_startmute;
+@property (nonatomic, assign) BOOL start_muted;
+@property (nonatomic, assign) BOOL skip;
 
 @property (nonatomic, assign) BOOL dev_js;
 @property (nonatomic, assign) BOOL imp_secure;
@@ -60,6 +61,8 @@
 
 @property (nonatomic, copy) NSString* debugReqURLStr;
 @property (nonatomic, copy) NSString* debugReqCustomEventURLStr;
+@property (nonatomic, copy) NSString* debug_ad_request_url;
+@property (nonatomic, strong) NSString* adapter;
 
 -(NSDictionary*) getCustomEventInfo;
 

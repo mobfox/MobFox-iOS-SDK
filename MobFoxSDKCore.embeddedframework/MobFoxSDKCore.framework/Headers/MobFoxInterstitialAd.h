@@ -68,7 +68,7 @@
 @property (nonatomic, strong) MFLocationServicesManager *locationServicesManager;
 
 @property (nonatomic, assign) BOOL      gdpr;
-@property (nonatomic, assign) NSString* gdpr_consent;
+@property (nonatomic, strong) NSString* gdpr_consent;
 
 @property (nonatomic, copy) NSNumber* v_dur_min;
 @property (nonatomic, copy) NSNumber* v_dur_max;
@@ -84,6 +84,9 @@
 @property (nonatomic, assign) BOOL ready;
 @property (nonatomic, strong) NSNumber* refresh;
 @property (nonatomic, copy) NSString* debugReqCustomEventURLStr;
+@property (nonatomic, copy) NSString* debug_ad_request_url;
+
+@property (nonatomic, strong) NSString* adapter;
 
 
 - (id) init:(NSString*)invh;

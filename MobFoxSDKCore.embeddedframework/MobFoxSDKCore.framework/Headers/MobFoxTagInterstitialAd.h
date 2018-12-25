@@ -73,7 +73,7 @@
 @property (nonatomic, assign) BOOL ready;
 
 @property (nonatomic, assign) BOOL      gdpr;
-@property (nonatomic, assign) NSString* gdpr_consent;
+@property (nonatomic, strong) NSString* gdpr_consent;
 
 -(id) initWithAdMobAdaper:(NSString*)invh;
 -(id) initWithMoPubAdaper:(NSString*)invh;
