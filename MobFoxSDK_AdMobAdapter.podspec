@@ -70,6 +70,6 @@ puts wd
   # s.ios.frameworks = 'CoreData', 'SystemConfiguration'
 
 
-  s.dependency 'Google-Mobile-Ads-SDK', '= 7.32.0'
+  s.dependency 'Google-Mobile-Ads-SDK', '= 7.37.0'
   #s.dependency 'mopub-ios-sdk', '5.0'
 end
