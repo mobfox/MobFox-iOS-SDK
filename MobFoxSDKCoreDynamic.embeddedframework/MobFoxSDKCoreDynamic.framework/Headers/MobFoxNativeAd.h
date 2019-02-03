@@ -62,9 +62,14 @@
     //@property (nonatomic, strong) NSString* i_ipaddress;
 
 
-    - (id) init:(NSString*)invh nativeView:(UIView *) view;
+    - (id) init:(NSString*)invh nativeView:(UIView * _Nonnull) view; // The recommended initializer
+    - (id) initWithoutView:(NSString*)invh; // Special initializer, used for preload the assests before using view.
+    - (void)setNativeViewForClick:(UIView *)view; // Sets view in case "initWithoutView" was used, and create gestureRecognizer to this view.
     - (void) loadAd;
-    -(void) fireTrackers;
+    - (void) fireTrackers;
+
+    // added by ShSh: ISSUE-311
+    - (NSNumber*)getCPM;
 
 @end
 

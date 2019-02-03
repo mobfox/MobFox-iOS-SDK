@@ -18,6 +18,7 @@
 - (void)MobFoxScriptHandlerOnReady;
 - (void)MobFoxScriptHandlerOnFail:(NSString *)reason;
 - (void)MobFoxScriptHandlerOnAdClose;
+- (void)MobFoxScriptHandlerOnFinished;
 
 @end
 

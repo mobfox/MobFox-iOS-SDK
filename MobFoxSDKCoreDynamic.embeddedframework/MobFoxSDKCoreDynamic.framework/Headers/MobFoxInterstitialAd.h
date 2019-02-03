@@ -88,6 +88,8 @@
 
 @property (nonatomic, strong) NSString* adapter;
 
+@property (nonatomic, strong) NSNumber* cpm;
+
 
 - (id) init:(NSString*)invh;
 - (id) init:(NSString*)invh withRootViewController:(UIViewController*)root;

@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/MFConstants.h</key>
 		<data>
-		DlJLg6j7wSMsvE9fKXFHTZqZzq4=
+		iGblwIkVUFnyh6WMaF7ooTq2fOE=
 		</data>
 		<key>Headers/MFEventsHandler.h</key>
 		<data>
@@ -22,7 +22,7 @@
 		</data>
 		<key>Headers/MobFoxAd.h</key>
 		<data>
-		gsas0ozEKPXnYZg5ji1CKm4vDXc=
+		HgsWe/kNSI5SO+vsaSJZWSpIcUk=
 		</data>
 		<key>Headers/MobFoxCustomEvent.h</key>
 		<data>
@@ -30,7 +30,7 @@
 		</data>
 		<key>Headers/MobFoxInterstitialAd.h</key>
 		<data>
-		qgWk/k3T/tQsmjX5nr0Meche0hA=
+		r0wezgQGfIU9Zhk+33Ee3f9GBBU=
 		</data>
 		<key>Headers/MobFoxInterstitialCustomEvent.h</key>
 		<data>
@@ -46,7 +46,7 @@
 		</data>
 		<key>Headers/MobFoxNativeAd.h</key>
 		<data>
-		tEOr/vHQS2aes2A+zOMQ/tFzD7s=
+		BhSBmgIAp2NoF+y3vG1cPOGJId8=
 		</data>
 		<key>Headers/MobFoxNativeCustomEvent.h</key>
 		<data>
@@ -66,7 +66,7 @@
 		</data>
 		<key>Headers/MobFoxScriptHandler.h</key>
 		<data>
-		xfMctDU1opDPKbneDkmBraiWvRo=
+		z4DNVhbYk+rZIGQusLCtPFCF/vk=
 		</data>
 		<key>Headers/MobFoxTagAd.h</key>
 		<data>
@@ -78,15 +78,23 @@
 		</data>
 		<key>Headers/MobFoxWebView.h</key>
 		<data>
-		Jd8ClQXGuatv1yoACRB9yYn+cp8=
+		XkhpZsikru+9oshjDtbLS69vbl4=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		6aXejQYgLa0i57bxtWJoSK22Ldo=
+		75UWxMI8fC4BTtT2eqxop1sdQDM=
 		</data>
 		<key>LICENSE</key>
 		<data>
 		elPVPBh242+nVwnMWkG+l1fbYAA=
+		</data>
+		<key>MobFoxSDKCore-DMP.plist</key>
+		<data>
+		SQgNOOUxXpSlYGKOW10y5qlGLGE=
+		</data>
+		<key>MobFoxSDKCore-NoDMP.plist</key>
+		<data>
+		U7tYjrrEa11k/TJMlNpeA873uz8=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -99,11 +107,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			DlJLg6j7wSMsvE9fKXFHTZqZzq4=
+			iGblwIkVUFnyh6WMaF7ooTq2fOE=
 			</data>
 			<key>hash2</key>
 			<data>
-			R4dzDIhK9Q4qRFDdfUxEBZhj8s+djRPd1nnJ5lmrNT4=
+			m5kONIesFCB+3IAzMATcsHF/JYtDMZP8QW1UWInF5hM=
 			</data>
 		</dict>
 		<key>Headers/MFEventsHandler.h</key>
@@ -143,11 +151,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			gsas0ozEKPXnYZg5ji1CKm4vDXc=
+			HgsWe/kNSI5SO+vsaSJZWSpIcUk=
 			</data>
 			<key>hash2</key>
 			<data>
-			jbRoedKpu6pe/srbsrrqW5T0cZiqirdtCEWvE051USs=
+			GAGCQqEcQdwqvQnSZy6Kr8rqTZzvxOSDVUMC49/zz5U=
 			</data>
 		</dict>
 		<key>Headers/MobFoxCustomEvent.h</key>
@@ -165,11 +173,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			qgWk/k3T/tQsmjX5nr0Meche0hA=
+			r0wezgQGfIU9Zhk+33Ee3f9GBBU=
 			</data>
 			<key>hash2</key>
 			<data>
-			eG/1huYHGZtx2cpuOvRxRkmPCuqIuLPqmlqKlrv0mS0=
+			C1Y6YqIEiOVQ6M4rPWl8PfypidHZhmrA5/QpYVu62tc=
 			</data>
 		</dict>
 		<key>Headers/MobFoxInterstitialCustomEvent.h</key>
@@ -209,11 +217,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			tEOr/vHQS2aes2A+zOMQ/tFzD7s=
+			BhSBmgIAp2NoF+y3vG1cPOGJId8=
 			</data>
 			<key>hash2</key>
 			<data>
-			TFcaVMq4gwPVaxr/1VujsQ2Ykuu8D2NsaoA59ta3UOI=
+			JQO6NsKLdunCDBNMQtng2vCipw0FgZHsW5IMMwoED1k=
 			</data>
 		</dict>
 		<key>Headers/MobFoxNativeCustomEvent.h</key>
@@ -264,11 +272,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			xfMctDU1opDPKbneDkmBraiWvRo=
+			z4DNVhbYk+rZIGQusLCtPFCF/vk=
 			</data>
 			<key>hash2</key>
 			<data>
-			foSw2ItMhKMyArXMywDblCE1LRvF6WxcjA5zfCpeIYI=
+			7cgz5wmdfhEMrt8Oosx6lWV4TbfwCZo7EoG9UAtnv9I=
 			</data>
 		</dict>
 		<key>Headers/MobFoxTagAd.h</key>
@@ -297,11 +305,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			Jd8ClQXGuatv1yoACRB9yYn+cp8=
+			XkhpZsikru+9oshjDtbLS69vbl4=
 			</data>
 			<key>hash2</key>
 			<data>
-			RZXjNyVTfabRUT4S+2BuxEFX69LjLwspa3R8wULkQgU=
+			yCuAmP8FPeIJWIDlD6qhAESOB8zbjyvfKwD1sXsNFvA=
 			</data>
 		</dict>
 		<key>LICENSE</key>
@@ -313,6 +321,28 @@
 			<key>hash2</key>
 			<data>
 			vbeMKDz9X6qoCYHYzt9gMdRvfcnLXxn1idX1AmkbK7U=
+			</data>
+		</dict>
+		<key>MobFoxSDKCore-DMP.plist</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			SQgNOOUxXpSlYGKOW10y5qlGLGE=
+			</data>
+			<key>hash2</key>
+			<data>
+			XKrQ62s/kPB3sRSBAXGpems72qBF+Zbm9JuHVaqIaFY=
+			</data>
+		</dict>
+		<key>MobFoxSDKCore-NoDMP.plist</key>
+		<dict>
+			<key>hash</key>
+			<data>
+			U7tYjrrEa11k/TJMlNpeA873uz8=
+			</data>
+			<key>hash2</key>
+			<data>
+			O2cw92FBcjXRq8K4H8cwdeMFFVduVN1UcLoHRHvAGA4=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

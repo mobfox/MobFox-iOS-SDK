@@ -22,6 +22,7 @@
 - (void)MobFoxWebViewAdReady;
 - (void)MobFoxWebViewAdSucceeded;
 - (void)MobFoxWebViewAdClose;
+- (void)MobFoxWebViewAdFinished;
 
 @end
 

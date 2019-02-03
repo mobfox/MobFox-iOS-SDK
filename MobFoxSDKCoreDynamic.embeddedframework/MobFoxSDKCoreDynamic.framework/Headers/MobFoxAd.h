@@ -63,6 +63,7 @@
 @property (nonatomic, copy) NSString* debugReqCustomEventURLStr;
 @property (nonatomic, copy) NSString* debug_ad_request_url;
 @property (nonatomic, strong) NSString* adapter;
+@property (nonatomic, strong) NSNumber* cpm;
 
 -(NSDictionary*) getCustomEventInfo;
 
@@ -78,9 +79,6 @@
 */
 
 //- (void)removeTimeout;
-
-    
-
     
     
 
