@@ -14,7 +14,7 @@ extern NSString* const CORE_TARGET;
 
 
 /* Versions */
-#define SDK_VERSION @"3.6.0"
+#define SDK_VERSION @"3.6.1PR"
 #define OS_VERSION        [[[UIDevice currentDevice] systemVersion] floatValue]
 #define FW_VERSION        [[NSBundle mainBundle] objectForInfoDictionaryKey: @"CFBundleShortVersionString"]
 #define BUILD_VERSION     [[NSBundle mainBundle] objectForInfoDictionaryKey: (NSString *)kCFBundleVersionKey]
@@ -27,7 +27,8 @@ extern NSString* const CORE_TARGET;
 #define SCREEN_HEIGHT        [UIScreen mainScreen].bounds.size.height
 
 /* Request URLs */
-#define TAG_DOMAIN           @"sdk.starbolt.io" //@"sdk-origin.starbolt.io" 
+#define TAG_DOMAIN           @"convoy-blue.starbolt.io" //@"sdk-origin.starbolt.io"
+//#define TAG_DOMAIN           @"sdk.starbolt.io"
 #define TAG_PATH             @"dist"
 #define AD_DOMAIN            @"my.mobfox.com"
 #define AD_PATH              @"request.php"

@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/MFConstants.h</key>
 		<data>
-		iGblwIkVUFnyh6WMaF7ooTq2fOE=
+		uCRJzp09LpR3JqYqemysWsnFm60=
 		</data>
 		<key>Headers/MFEventsHandler.h</key>
 		<data>
@@ -18,7 +18,7 @@
 		</data>
 		<key>Headers/MFLocationServicesManager.h</key>
 		<data>
-		90Txz+6RYJsKJTMif3HpkahAd0k=
+		dVdB8h8a01b4zIc3jjLIl5ZcJZ4=
 		</data>
 		<key>Headers/MobFoxAd.h</key>
 		<data>
@@ -42,7 +42,7 @@
 		</data>
 		<key>Headers/MobFoxJSContext.h</key>
 		<data>
-		oCxKZPBtNLh10UNkDX9QwHj1pcI=
+		nYEBJZ3CjOPHdnpgTAfYpoLmZ2c=
 		</data>
 		<key>Headers/MobFoxNativeAd.h</key>
 		<data>
@@ -82,7 +82,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		75UWxMI8fC4BTtT2eqxop1sdQDM=
+		Qi5G5UsOebKbdO2mTUv1goG/6DI=
 		</data>
 		<key>LICENSE</key>
 		<data>
@@ -90,11 +90,11 @@
 		</data>
 		<key>MobFoxSDKCore-DMP.plist</key>
 		<data>
-		SQgNOOUxXpSlYGKOW10y5qlGLGE=
+		9yTBRN3V7imLO/EcFmjb5PwfhHI=
 		</data>
 		<key>MobFoxSDKCore-NoDMP.plist</key>
 		<data>
-		U7tYjrrEa11k/TJMlNpeA873uz8=
+		ijHfr+w3cM/f8on8Mt2H6kUojoM=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -107,11 +107,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			iGblwIkVUFnyh6WMaF7ooTq2fOE=
+			uCRJzp09LpR3JqYqemysWsnFm60=
 			</data>
 			<key>hash2</key>
 			<data>
-			m5kONIesFCB+3IAzMATcsHF/JYtDMZP8QW1UWInF5hM=
+			ly5THmKvyHX8ncIo/BtF+LZCKFINIM3mnfWqTg7YFZY=
 			</data>
 		</dict>
 		<key>Headers/MFEventsHandler.h</key>
@@ -140,11 +140,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			90Txz+6RYJsKJTMif3HpkahAd0k=
+			dVdB8h8a01b4zIc3jjLIl5ZcJZ4=
 			</data>
 			<key>hash2</key>
 			<data>
-			Zx3KmvFd2FqnCyoaFzg1q1MX/9/m4KJ8xjMsucLWA/s=
+			qOGoNOcFWCJleoEqZSMZKpZByYhF7o/yUgg4LtC+QIA=
 			</data>
 		</dict>
 		<key>Headers/MobFoxAd.h</key>
@@ -206,11 +206,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			oCxKZPBtNLh10UNkDX9QwHj1pcI=
+			nYEBJZ3CjOPHdnpgTAfYpoLmZ2c=
 			</data>
 			<key>hash2</key>
 			<data>
-			B7FpWB4JORtWUR2wQIViNTOl2m3NNmjLWEpXd60LLlg=
+			ChhkW2IXFEmkK/LAxRXiEN9F4xEhqysp6Bv9jDhwpho=
 			</data>
 		</dict>
 		<key>Headers/MobFoxNativeAd.h</key>
@@ -327,22 +327,22 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			SQgNOOUxXpSlYGKOW10y5qlGLGE=
+			9yTBRN3V7imLO/EcFmjb5PwfhHI=
 			</data>
 			<key>hash2</key>
 			<data>
-			XKrQ62s/kPB3sRSBAXGpems72qBF+Zbm9JuHVaqIaFY=
+			+TV6FfgYB6/DIiDJtkR8zZ/lNO76/WbB4bysDsCmFxQ=
 			</data>
 		</dict>
 		<key>MobFoxSDKCore-NoDMP.plist</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			U7tYjrrEa11k/TJMlNpeA873uz8=
+			ijHfr+w3cM/f8on8Mt2H6kUojoM=
 			</data>
 			<key>hash2</key>
 			<data>
-			O2cw92FBcjXRq8K4H8cwdeMFFVduVN1UcLoHRHvAGA4=
+			5qiQMBoisqBQTCBhZ4IhQayRJmrJfUBTQRTJ+YsqrpQ=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>

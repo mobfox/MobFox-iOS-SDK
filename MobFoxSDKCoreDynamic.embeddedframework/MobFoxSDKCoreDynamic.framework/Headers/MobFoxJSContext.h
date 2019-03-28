@@ -11,12 +11,15 @@
 
 #import <JavaScriptCore/JavaScriptCore.h>
 
+typedef void (^evaluateUrlCB)(JSValue *value, NSError *err);
+typedef void (^mfImportCB)(void);
+
 @interface MobFoxJSContext : JSContext
 
 - (id) init;
 
 - (JSValue *)evaluateScriptFromURL:(NSURL*) url;
-
+- (void)evaluateScriptFromURLWithBlock:(NSURL*) url andWithCB:(evaluateUrlCB)cb;
 @end
 
 #endif /* MFJSContext_h */

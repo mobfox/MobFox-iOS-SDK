@@ -2525,7 +2525,7 @@
 					};
 					86891E0D1C5FA8250098C602 = {
 						CreatedOnToolsVersion = 7.2;
-						DevelopmentTeam = AV662668AP;
+						DevelopmentTeam = 7C7H88B9P9;
 						DevelopmentTeamName = "Matomy Media Group Ltd.";
 						LastSwiftMigration = 0800;
 						ProvisioningStyle = Automatic;
@@ -3447,7 +3447,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = AV662668AP;
+				DEVELOPMENT_TEAM = 7C7H88B9P9;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/**",
@@ -3483,7 +3483,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = AV662668AP;
+				DEVELOPMENT_TEAM = 7C7H88B9P9;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/**",
