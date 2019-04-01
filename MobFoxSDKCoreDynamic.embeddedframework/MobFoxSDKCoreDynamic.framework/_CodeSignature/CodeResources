@@ -6,7 +6,7 @@
 	<dict>
 		<key>Headers/MFConstants.h</key>
 		<data>
-		iGblwIkVUFnyh6WMaF7ooTq2fOE=
+		RXW88leXjnomfGb4e/WDoYfQCNA=
 		</data>
 		<key>Headers/MFEventsHandler.h</key>
 		<data>
@@ -18,7 +18,7 @@
 		</data>
 		<key>Headers/MFLocationServicesManager.h</key>
 		<data>
-		90Txz+6RYJsKJTMif3HpkahAd0k=
+		dVdB8h8a01b4zIc3jjLIl5ZcJZ4=
 		</data>
 		<key>Headers/MobFoxAd.h</key>
 		<data>
@@ -42,7 +42,7 @@
 		</data>
 		<key>Headers/MobFoxJSContext.h</key>
 		<data>
-		oCxKZPBtNLh10UNkDX9QwHj1pcI=
+		nYEBJZ3CjOPHdnpgTAfYpoLmZ2c=
 		</data>
 		<key>Headers/MobFoxNativeAd.h</key>
 		<data>
@@ -82,7 +82,7 @@
 		</data>
 		<key>Info.plist</key>
 		<data>
-		HAE0l56IeWBd2PbBtuX7JiTSIZc=
+		z7/Nex3Yb33Dpn0rxcYZ9nintX8=
 		</data>
 		<key>LICENSE</key>
 		<data>
@@ -99,11 +99,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			iGblwIkVUFnyh6WMaF7ooTq2fOE=
+			RXW88leXjnomfGb4e/WDoYfQCNA=
 			</data>
 			<key>hash2</key>
 			<data>
-			m5kONIesFCB+3IAzMATcsHF/JYtDMZP8QW1UWInF5hM=
+			Pi/yHgy+K4fL4wxAJaWM1jw2c5H54jCxbO2bcjZbNUw=
 			</data>
 		</dict>
 		<key>Headers/MFEventsHandler.h</key>
@@ -132,11 +132,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			90Txz+6RYJsKJTMif3HpkahAd0k=
+			dVdB8h8a01b4zIc3jjLIl5ZcJZ4=
 			</data>
 			<key>hash2</key>
 			<data>
-			Zx3KmvFd2FqnCyoaFzg1q1MX/9/m4KJ8xjMsucLWA/s=
+			qOGoNOcFWCJleoEqZSMZKpZByYhF7o/yUgg4LtC+QIA=
 			</data>
 		</dict>
 		<key>Headers/MobFoxAd.h</key>
@@ -198,11 +198,11 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			oCxKZPBtNLh10UNkDX9QwHj1pcI=
+			nYEBJZ3CjOPHdnpgTAfYpoLmZ2c=
 			</data>
 			<key>hash2</key>
 			<data>
-			B7FpWB4JORtWUR2wQIViNTOl2m3NNmjLWEpXd60LLlg=
+			ChhkW2IXFEmkK/LAxRXiEN9F4xEhqysp6Bv9jDhwpho=
 			</data>
 		</dict>
 		<key>Headers/MobFoxNativeAd.h</key>

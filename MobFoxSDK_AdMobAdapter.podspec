@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "MobFoxSDK_AdMobAdapter"
-  s.version          = "3.6.0"
+  s.version          = "3.6.1"
   s.summary          = "MobFox's iOS SDK"
 
 wd = "Working Dir: %s" % [Dir.pwd]
@@ -70,6 +70,6 @@ puts wd
   # s.ios.frameworks = 'CoreData', 'SystemConfiguration'
 
 
-  s.dependency 'Google-Mobile-Ads-SDK', '= 7.32.0'
+  s.dependency 'Google-Mobile-Ads-SDK', '= 7.40.0'
   #s.dependency 'mopub-ios-sdk', '5.0'
 end

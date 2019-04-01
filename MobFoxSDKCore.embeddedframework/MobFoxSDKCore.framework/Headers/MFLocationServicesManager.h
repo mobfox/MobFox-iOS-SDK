@@ -22,7 +22,7 @@
 @property (nonatomic) double vCLLocationAccuracy;
 
 @property (nonatomic, strong) CLLocationManager *locationManager;
-
+@property (nonatomic, strong) CLGeocoder *geocoder;
 + (instancetype)sharedInstance;
 - (void)findLocation;
 - (void)stopFindingLocation;
